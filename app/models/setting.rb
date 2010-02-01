@@ -10,7 +10,7 @@ class Setting < ActiveRecord::Base
   
   def self.defaults
     Setting.new(
-      :title => I18n.translate(:el_dorado),
+      :title => I18n.translate(:linguar),
       :tagline => I18n.translate(:tagline),
       :footer => "<p style=\"text-align:right;margin:0;\">#{I18n.translate(:powered_by)} <a href=\"http://almosteffortless.com/eldorado/\">#{I18n.translate(:el_dorado)}</a></p>",
       :login_message => I18n.translate(:login_message),
