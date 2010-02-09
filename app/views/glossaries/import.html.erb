@@ -1,0 +1,31 @@
+<table >
+  <tr>
+    <td style="border-right: 1px solid; padding-right:20px;">  
+    <ul style="list-style: none">
+      <% @languages.each do |language| %>
+      <li class="languages_list">
+        <%= link_to_remote language[0], :url => { :controller => 'glossaries',
+                                                  :action => 'update_list'},
+                                        :with => "'from_language=#{h language[1]}'",
+                                        :update => "import_dictionaries_list" -%>
+        (<%= Dictionary.find(:all, :conditions =>
+                                            { :from_language => language[1],
+                                              :user_id => '1'} ).count  %>)
+      </li>
+      <%end%>
+    </ul>
+    </td>
+    <td style="width: 15em;  padding: 0px 20px 0px 20px; vertical-align: top;">
+      <ul style="list-style: none;">
+        <div id="dictionary_list">
+          <%= render  :partial => "import_dictionaries_list",
+                      :locals => {  :shared_dictionaries => @shared_dictionaries,
+                                    :my_dictionary => @my_dictionary } %>
+        </div>
+      </ul>
+    </td>
+  </tr>
+</table>
+<div id="back">
+  <%= link_to 'Back', dictionaries_path %>
+</div>

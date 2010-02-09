@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091011171508) do
+ActiveRecord::Schema.define(:version => 20100202151351) do
 
   create_table "articles", :force => true do |t|
     t.integer  "user_id"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(:version => 20091011171508) do
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.string   "attachment_remote_url"
+  end
+
+  create_table "cards", :force => true do |t|
+    t.integer  "glossary_id"
+    t.string   "question"
+    t.string   "answer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "categories", :force => true do |t|
@@ -74,6 +82,19 @@ ActiveRecord::Schema.define(:version => 20091011171508) do
     t.integer "position",     :default => 0
   end
 
+  create_table "glossaries", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "from_language"
+    t.integer  "int"
+    t.integer  "to_language"
+    t.string   "description",   :limit => 60
+    t.string   "title"
+    t.boolean  "public"
+    t.boolean  "shared"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "headers", :force => true do |t|
     t.text     "description"
     t.integer  "user_id"
@@ -84,6 +105,12 @@ ActiveRecord::Schema.define(:version => 20091011171508) do
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.string   "attachment_remote_url"
+  end
+
+  create_table "languages", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "messages", :force => true do |t|

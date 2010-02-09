@@ -1,0 +1,36 @@
+<% if @glossaries.length >= 1 %>
+<h2>Your Glossaries, </h2>
+<table class="glossaries_table">
+
+<% @glossaries.each do |glossary| %>
+  <tr>
+    <td><%= link_to ("practise!"), new_glossary_path %>
+    </td>
+    <td><%= h glossary.title %>
+    </td>
+    <td>(<%="#{h glossary.find_from_language} - #{h glossary.find_to_language}, #{h glossary.cards.count} cards" %>)</td>
+    <td class="first_action">  <%= link_to 'Change the details', edit_glossary_path(glossary), :class => "action" %></td>
+    <td>  <%= link_to 'Edit the words', glossary_cards_url(glossary)  %>
+    </td>
+    <td>  <%= link_to 'Delete', glossary, :confirm => 'Are you sure?', :method => :delete, :class => "action" %></td>
+  </tr>
+<% end %>
+</table>
+
+<ul class="action_list">
+    <li><%= link_to 'Create new', new_glossary_path %></li>
+    <li><%= link_to 'Select from catalogue', import_glossaries_path %></li>
+  </ul>  
+
+<% else %>
+<p>
+  <p>
+    On this page you can manage your existing glossaries, but currently it is empty.
+    Would you like to: 
+  </p>
+  <ul class="action_list">
+    <li><%= link_to 'Create new', new_glossary_path %></li>
+    <li><%= link_to 'Select from catalogue', import_glossaries_path %></li>
+  </ul> 
+</p>
+<% end %>

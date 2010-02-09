@@ -1,0 +1,57 @@
+<h2 class="title">-> <%= h @glossary.title %> </h2>
+<table class="question_table">
+    <thead>
+        <td>Word</td>
+        <td>Translation</td>
+    </thead>
+    
+    <% if @cards %>
+        <% for card in @cards %>
+        <tr>
+        <td><%=h card.question %></td>
+        <td><%=h card.answer %></td>
+        <td>
+        <%= link_to "Edit", { 	:action     	=> "edit", 
+                                :glossary_id	=> card.glossary.id.to_s,
+                                :id				=> card.id },
+                                :class => "action"%>
+                                
+        <%= link_to('Delete',  glossary_card_url(@glossary, card) ,
+                                :method => 'delete',
+                                :class => "action",
+                                :confirm => 'Are you sure?') %> 
+        </td>
+        </tr>
+        <%end%>
+    <% end %>
+    <tr>
+    <% form_for :card, 
+                :url => { 	    :controller 	=> "cards", 
+                                :action    	    => "create", 
+                                :glossary_id 	=> @glossary.id } do |f| %>
+
+            <%= f.error_messages %>
+            <td>
+                <%= f.text_field :question %>
+            </td>
+            <td>
+                <%= f.text_field :answer %>
+            </td>
+            <td>
+                <%= submit_tag "Create", :class => "submit" %>
+            </td>
+    <% end %>	
+    </tr>
+</table>
+<p>
+<%= link_to 'Back', glossaries_path %> 
+</p>
+
+<script type="text/javascript">
+window.onload = function() {
+  document.getElementById('card_question').focus();
+}
+</script>
+
+
+
