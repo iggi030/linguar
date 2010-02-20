@@ -10,6 +10,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :glossaries , :collection => { :import => :get} do |glossary|
     glossary.resources :cards
   end
+  map.resources :catalogues, :member => {:native_language => :get}
   map.resources :forums, :member => {:confirm_delete => :get}
   map.resources :headers, :member => {:vote_up => :post, :vote_down => :post}
   map.resources :messages, :collection => {:more => :get, :refresh => :get}

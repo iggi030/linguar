@@ -19,7 +19,7 @@
 
 <ul class="action_list">
     <li><%= link_to 'Create new', new_glossary_path %></li>
-    <li><%= link_to 'Select from catalogue', import_glossaries_path %></li>
+    <li><%= link_to 'Select from catalogue', catalogues_path %></li>
   </ul>  
 
 <% else %>
@@ -30,7 +30,7 @@
   </p>
   <ul class="action_list">
     <li><%= link_to 'Create new', new_glossary_path %></li>
-    <li><%= link_to 'Select from catalogue', import_glossaries_path %></li>
+    <li><%= link_to 'Select from catalogue', catalogue_path %></li>
   </ul> 
 </p>
 <% end %>
