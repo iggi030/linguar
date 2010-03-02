@@ -1,0 +1,11 @@
+<% form_for :catalogue, :url => {:action => :create } do |f| -%>
+<p>Select your native language(s)</p>
+
+ 
+  <%= select_tag :native_language,
+    options_from_collection_for_select(@languages, 'id', 'name'), {
+      :multiple => true,
+      :size =>5 } %>
+  
+  <div><%= submit_tag 'Continue' %></div>
+<% end -%>

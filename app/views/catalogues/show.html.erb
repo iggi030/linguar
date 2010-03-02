@@ -1,0 +1,24 @@
+<div id="glossaries_container">
+<% @glossaries.each do |glossary| %>
+
+<div class="gloss_container" onclick="window.open(href='<%= glossary_cards_url(glossary) %>'); return false;">
+  <div style="padding-top: 5px; float: left; width:120px; height:70px;">
+      <%= h find_name_for_language(glossary.to_language) %> -
+      <%= h find_name_for_language(glossary.from_language) %><br />
+      <%= h glossary.cards.count %> cards<br />
+      <br />
+      <p style="font-size: smaller;">
+        <b>Author:</b> <%= h glossary.users.first %><br />
+        <% if glossary.shared %>
+          <b>Editable</b> by others
+        <%end-%>
+      </p>
+  </div>
+  <div style=" float: left; height:70px; width: 500px;">
+    
+    <span style="font-size: 18px;"><%= link_to (h glossary.title), glossary_cards_url(glossary)%></span><br />
+    <%= h glossary.description %>
+  </div>
+</div>
+<%end%>
+</div>

@@ -16,7 +16,7 @@ module ApplicationHelper
     if @header
       return '<style type="text/css">.header { background: url("' + @header.attachment.url + '"); }</style>'
     else
-      return '<style type="text/css">.header { background: url("/images/eldorado.jpg"); }</style>'
+      return '<style type="text/css">.header { background: url("/images/japan.jpg"); }</style>'
     end
   end
     
@@ -29,7 +29,7 @@ module ApplicationHelper
     item = [@article, @category, @event, @forum, @header, @message, @topic, @user].compact.first if %w(show edit).include?(current_action)
     page = request.env['PATH_INFO'].delete('/').sub('new','').capitalize unless request.env['PATH_INFO'].nil?
     page = @settings.tagline if current_controller == 'home'
-    "#{@settings.title}: #{item || page}"
+    "#{item || page}"
   end
   
   def favicon_tag

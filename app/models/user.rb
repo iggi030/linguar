@@ -16,10 +16,13 @@ class User < ActiveRecord::Base
   has_many :topics, :dependent => :destroy, :order => 'created_at desc'
   has_many :viewings, :dependent => :destroy, :order => 'updated_at desc'
   has_many :uploads, :dependent => :destroy, :order => 'created_at desc'
-  has_many :glossaries, :dependent => :destroy, :order => 'created_at desc'
-  has_one :current_avatar, :class_name => 'Avatar', :foreign_key => 'current_user_id', :dependent => :nullify
-
-  has_many :subscriptions, :dependent => :destroy do
+  has_many :glownerships
+  has_many :glossaries, :through => :glownerships
+  
+  has_many  :knowabilities
+  has_many  :cards, :through => :knowabilities
+  has_one   :current_avatar, :class_name => 'Avatar', :foreign_key => 'current_user_id', :dependent => :nullify
+  has_many  :subscriptions, :dependent => :destroy do
     def toggle(topic_id)
       if include?(topic_id)
         find_by_topic_id(topic_id.to_i).destroy

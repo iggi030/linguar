@@ -799,3 +799,35 @@ cite {
 .fieldWithErrors {
 	display: inline;
 }
+.gloss_container {
+  margin: 0px;
+  padding: 0px;
+  height:80px;
+  border-bottom: 1px dotted;
+  cursor:pointer;
+}
+
+.gloss_container:hover {
+  background-color: #e1eafe;  
+}
+.flashcard {
+	width: 500px;
+	height: 160px;
+	text-align: center;
+	margin-top:	0px;
+	border: 0px dotted;
+	background: #feff93;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+.flashcard #question p {
+	width: auto;
+	border-bottom: 1px solid;
+	padding: 10px;
+}
+
+.flashcard #answer  {
+	width: auto;
+	visibility: hidden;
+}

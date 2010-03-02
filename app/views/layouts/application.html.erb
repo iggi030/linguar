@@ -17,7 +17,7 @@
     <%= render :file => 'shared/reminders' unless locked_out? -%>
     <div class="header">
       <h1><%= link_to h(@settings.title), root_path -%></h1>
-      <div class="tagline"><%=h @settings.tagline -%></div>
+      <div class="tagline"><%= h @settings.tagline -%></div>
       <%= render :file => 'shared/tabs' unless locked_out? -%>
     </div>
     <div class="content">

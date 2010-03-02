@@ -20,9 +20,10 @@ class GlossariesController < ApplicationController
   end
   
   def create
-    @glossary = current_user.glossaries.new(params[:glossary])
+    @glossary = Glossary.new(params[:glossary])
     logger.debug "params: #{params.map}"
     if @glossary.save
+      current_user.glossaries << @glossary
       redirect_to(@glossary)
     else
       render :action => "new"
@@ -39,66 +40,37 @@ class GlossariesController < ApplicationController
   end
 
   def destroy
-    @glossary = Glossary.find(params[:id])
-    @glossary.destroy
+    @glossary = current_user.glossaries.find(params[:id])
+    if @glossary.shared?
+      current_user.glossaries.delete(@glossary)
+    else
+      @glossary.cards.destroy_all
+      @glossary.destroy
+    end
+    
     redirect_to(glossaries_path)
   end
   
-  def import
-    from_language = params[:from_language] unless params[:from_language].nil? 
-    
-    @shared_dictionaries = find_shared_dictionaries(from_language)
-    
-    @my_dictionary = current_user.glossaries.new
-    @languages = Language.find(:all, :order => "name").collect {|l| [l.name, l.id] }
-    @questions = @shared_dictionaries.first.cards
-    @count = @questions.count
-    
-    respond_to do |format|
-      format.html # import.html
-      format.xml  { render :xml => @dictionary }
-    end
+  def add_shared
+    current_user.glossaries << Glossary.find(params[:id])
+    redirect_to(glossaries_path)
   end
   
-  def update_list
-    @my_dictionary = current_user.glossaries.new
-    @shared_dictionaries =  find_shared_dictionaries(params[:from_language])
+  def clone
+    this_glossary = Glossary.find(params[:id])  
     
-    @count = Card.find(   :all,
-                              :conditions => "glossary_id = #{@shared_dictionaries.first.id}"
-                              ).size unless @shared_dictionaries.first.nil?
+    new_glossary = this_glossary.clone
+    new_glossary.public = false
+    new_glossary.shared = false
+    new_glossary.save
     
-    @questions = Card.find( :all,
-                                :conditions => "glossary_id = #{@shared_dictionaries.first.id}",
-                                :limit => 10) unless @shared_dictionaries.first.nil?
-    
-    render :update do |page|
-      page.replace_html :dictionary_list,
-                        :partial => 'import_dictionaries_list',
-                        :locals => {  :shared_dictionaries => @shared_dictionaries,
-                                      :my_dictionary => @my_dictionary}
-                        
-      #page.replace_html :questions_list,
-       #                 :partial => 'glossary_questions_list',
-        #                :locals => { :questions => @questions, :count => @count }
-    end
-  end
-  
-  private
-  def find_shared_dictionaries(language)
-    if language.eql?("---")
-      language = nil
+    this_glossary.cards.each do |card|
+      new_card = card.clone
+      new_card.glossary_id = new_glossary.id
+      new_card.save
     end
     
-    if !language.nil?
-      shared_dictionaries = Glossary.find(:all,
-                                              :conditions =>
-                                            { :from_language => language,
-                                              :user_id => '1'} )
-    else
-      shared_dictionaries = Glossary.find(:all,
-                                              :conditions => {:user_id => '1'} )
-    end
-    shared_dictionaries
+    current_user.glossaries << new_glossary
+    redirect_to(glossaries_path)
   end
 end

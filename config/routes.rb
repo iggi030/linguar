@@ -7,10 +7,11 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :categories, :member => {:confirm_delete => :get}
   map.resources :comments
   map.resources :events
-  map.resources :glossaries , :collection => { :import => :get} do |glossary|
+  map.resources :glossaries , :member => { :add_shared => :get, :clone => :get} do |glossary|
     glossary.resources :cards
+    glossary.resource   :practise, :member => {:update_scores => :post}
   end
-  map.resources :catalogues, :member => {:native_language => :get}
+  map.resource  :catalogue
   map.resources :forums, :member => {:confirm_delete => :get}
   map.resources :headers, :member => {:vote_up => :post, :vote_down => :post}
   map.resources :messages, :collection => {:more => :get, :refresh => :get}

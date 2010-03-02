@@ -1,0 +1,122 @@
+<script type="text/javascript">
+
+	var cards = new Array();
+	var learned_cards = new Array();
+	var item = 0;
+	
+	function Card(id,q,a,score){
+		this.id = id;
+        this.q = q;
+		this.a = a;
+		this.score = score;
+	}
+	
+	function first_load(){
+		<% unless @cards.nil? %>
+			<% for card in @cards  -%>
+			  cards.push(new Card("<%= h card.id %>","<%= h card.question %>","<%= h card.answer %>", 1));
+			<% end -%>
+        <% end %>
+		var card = cards[0];
+		if (cards.length > 0)
+			show_card(card);
+		else
+			done("No more cards scheduled for today");
+	}
+	
+	function store_knowability(score){
+		//dont want to show the answer before the card
+		hide_answer();
+		//add the score to the card
+		cards[item].score += (score);
+		
+		//if we managed to remember the word, take it out of the queue for now...
+		if (score > 0){
+			learned_cards.push ( cards[item]);
+            cards.splice(item,1)
+            item++;
+		}
+
+		var card = find_next_card();
+		if (card)
+			show_card(card);
+		else
+			save_score();
+	}
+	
+	function save_score(){
+		done("All cards answered, saving scores!");
+        var objJSON = new Array();
+        
+        learned_cards.each( function(item) {
+          objJSON.push( {
+            score: item.score, id: item.id
+          })
+          
+        });
+        //alert(objJSON);    
+        var strJSON = encodeURIComponent(Object.toJSON(objJSON));
+        //alert(strJSON);
+        new Ajax.Request("<%= update_scores_glossary_practise_path %>",
+        {
+          method: "post",
+          parameters: "data=" + strJSON,
+          onComplete: function(transport) {
+							window.location = "/glossaries"
+                        }
+        });
+    }
+    
+	function done(message){
+		document.getElementById('q').innerHTML = message;
+		document.getElementById('show_answer_button').style.display = "none";
+	}
+	
+	function find_next_card(){
+		//move to next item, if we are at the end of the array jump back to the start
+		item++;
+		if (item >= (cards.length) )
+			item = 0;
+		return cards[item];
+	}
+	
+	function show_card(card){
+		document.getElementById('cards_left').innerHTML = cards.length + " cards to go";
+		document.getElementById('q').innerHTML = card.q;
+		document.getElementById('a').innerHTML = card.a;
+	}
+	
+	function show_answer(){
+		document.getElementById('answer').style.visibility = "visible";
+		document.getElementById('show_answer_button').style.visibility = "hidden";
+	}
+	function hide_answer(){		
+		document.getElementById('answer').style.visibility = "hidden";
+		document.getElementById('show_answer_button').style.visibility = "visible";
+        document.getElementById('show_answer_button').focus();
+	}
+    window.onload = function() {
+      first_load();
+      document.getElementById('show_answer_button').focus();
+    } 
+</script>
+<div class="flashcard">
+	
+	<div id="card">
+	  <p id="q"></p>
+	</div>	
+	<div id="answer">
+		<p id="a"></p>
+		<p> how hard was this for you to remember? </p>
+		<button onclick="store_knowability(0)">No idea</button>
+		<button onclick="store_knowability(1)">Very hard</button>
+		<button onclick="store_knowability(2)">Hard</button>
+		<button onclick="store_knowability(3)">Medium</button>
+		<button onclick="store_knowability(4)">Easy</button>
+		<button onclick="store_knowability(5)">Very easy</button>
+	</div>
+	<button id="show_answer_button" onclick="show_answer()">Show answer</button>
+</div>
+<div style="float: left">
+	<p id="cards_left"></p>
+</div>

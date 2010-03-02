@@ -1,36 +1,46 @@
 <% if @glossaries.length >= 1 %>
-<h2>Your Glossaries, </h2>
+<h2>Your Glossaries</h2>
 <table class="glossaries_table">
 
 <% @glossaries.each do |glossary| %>
   <tr>
-    <td><%= link_to ("practise!"), new_glossary_path %>
+    <td><%= link_to ("practise!"), new_glossary_practise_path(glossary) %>
     </td>
     <td><%= h glossary.title %>
     </td>
-    <td>(<%="#{h glossary.find_from_language} - #{h glossary.find_to_language}, #{h glossary.cards.count} cards" %>)</td>
-    <td class="first_action">  <%= link_to 'Change the details', edit_glossary_path(glossary), :class => "action" %></td>
-    <td>  <%= link_to 'Edit the words', glossary_cards_url(glossary)  %>
-    </td>
-    <td>  <%= link_to 'Delete', glossary, :confirm => 'Are you sure?', :method => :delete, :class => "action" %></td>
+    <td>
+      <% if glossary.shared? %>
+        <b>Shared glossary,</b>
+      <% end %>
+      (<%="#{h glossary.find_from_language} - #{h glossary.find_to_language}, #{h glossary.cards.count} cards" %>)</td>
+    <% unless glossary.shared? && !is_owner(glossary) %>
+      <td class="first_action">  <%= link_to 'Change the details', edit_glossary_path(glossary), :class => "action" %></td>
+    <%end%>
+    <td>  <%= link_to 'Edit the words', glossary_cards_url(glossary)  %>  </td>
+    <td>
+      <% if glossary.shared? %>
+        <%= link_to 'Remove link', glossary, :confirm => 'Are you sure?', :method => :delete, :class => "action" %></td>
+      <% else %>
+        <%= link_to 'Delete', glossary, :confirm => 'Are you sure?', :method => :delete, :class => "action" %></td>
+      <%end%>
   </tr>
 <% end %>
 </table>
 
 <ul class="action_list">
     <li><%= link_to 'Create new', new_glossary_path %></li>
-    <li><%= link_to 'Select from catalogue', catalogues_path %></li>
+    <li><%= link_to 'Select from catalogue', new_catalogue_path %></li>
   </ul>  
 
 <% else %>
-<p>
   <p>
-    On this page you can manage your existing glossaries, but currently it is empty.
+    On this page you can manage your existing glossaries. But first we need to
+    either copy on from the Catalogue or start from scratch on a new one.</p>
+  <p>
     Would you like to: 
   </p>
   <ul class="action_list">
     <li><%= link_to 'Create new', new_glossary_path %></li>
-    <li><%= link_to 'Select from catalogue', catalogue_path %></li>
+    <li><%= link_to 'Select from catalogue', new_catalogue_path %></li>
   </ul> 
-</p>
 <% end %>

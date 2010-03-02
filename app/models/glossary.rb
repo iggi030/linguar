@@ -1,7 +1,38 @@
 class Glossary < ActiveRecord::Base
-  has_many    :cards
-  belongs_to  :user
+  has_many  :cards
+  has_many  :languages
+  has_many  :glownerships, :dependent => :destroy
+  has_many  :users, :through => :glownerships
 
+  def find_questions_for_this_session(user, max_cards, max_new_cards)
+    @todays_questions = Array.new
+    user_cards = user.cards
+    #get all questions which have been scheduled for today
+    user_cards.each do |card| 
+      return @todays_questions if @todays_questions.length >= max_cards 
+      knowability = card.knowabilities.find_by_user_id(user.id)
+      
+      if( knowability.scheduled_in <= ((Time.now.to_date - knowability.created_at.to_date).to_i) )
+        @todays_questions.push(card)
+        logger.debug("----added with N = #{knowability.scheduled_in}")
+        
+      elsif (knowability.ef.to_f <= 2.5)
+        logger.debug("----added with EF = #{knowability.ef}")
+        @todays_questions.push(card)
+      end
+    end
+    
+  new_cards = cards.find( :all,
+                          :joins => "LEFT JOIN knowabilities
+                                      ON cards.id = knowabilities.card_id",
+                          :conditions => ["knowabilities.id is null" , user.id],
+                          :limit => max_new_cards
+                          )
+  logger.debug("----new cards = #{new_cards.length}")
+  @todays_questions += new_cards
+  return @todays_questions
+  end
+      
   def find_from_language
     Language.find(self.from_language).name
   end

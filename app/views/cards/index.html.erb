@@ -1,29 +1,50 @@
-<h2 class="title">-> <%= h @glossary.title %> </h2>
+<% if @glossary %>
+<h2 class="title"> "<%= h @glossary.title %>" </h2>
+<% if !is_owner? && !in_user_glossary_list? %>
+
+<p>
+    <%= link_to "Clone this glossary", clone_glossary_url(@glossary) %>
+</p>
+<% if @glossary.shared? %>
+    <p>
+        This glossary is editable by everybody, you can instead of making
+        your own clone of it just make a local shortcut to it and all changes
+        will be seen by all others collaborating on it. 
+    </p>
+    <p>
+        <%= link_to "Add shortcut your glossaries", add_shared_glossary_url(@glossary) %>  
+    </p>
+<%end-%>
+<%end-%>
 <table class="question_table">
     <thead>
-        <td>Word</td>
-        <td>Translation</td>
+        <td><%= h find_name_for_language(@glossary.from_language) %></td>
+        <td><%= h find_name_for_language(@glossary.to_language) %></td>
     </thead>
     
     <% if @cards %>
         <% for card in @cards %>
-        <tr>
-        <td><%=h card.question %></td>
-        <td><%=h card.answer %></td>
-        <td>
-        <%= link_to "Edit", { 	:action     	=> "edit", 
-                                :glossary_id	=> card.glossary.id.to_s,
-                                :id				=> card.id },
-                                :class => "action"%>
-                                
-        <%= link_to('Delete',  glossary_card_url(@glossary, card) ,
-                                :method => 'delete',
-                                :class => "action",
-                                :confirm => 'Are you sure?') %> 
-        </td>
-        </tr>
+            <tr>
+            <td><%=h card.question %></td>
+            <td><%=h card.answer %></td>
+            <% if @glossary.shared? || is_owner? %>
+            <td>
+            <%= link_to "Edit", { 	:action     	=> "edit", 
+                                    :glossary_id	=> card.glossary.id.to_s,
+                                    :id				=> card.id },
+                                    :class => "action"%>
+            <% if is_owner? %>                        
+            <%= link_to('Delete',  glossary_card_url(@glossary, card) ,
+                                    :method => 'delete',
+                                    :class => "action",
+                                    :confirm => 'Are you sure?') %> 
+            <%end%>
+            </td>
+            <%end-%>
+            </tr>
         <%end%>
     <% end %>
+    <% if @glossary.shared? || is_owner? %>
     <tr>
     <% form_for :card, 
                 :url => { 	    :controller 	=> "cards", 
@@ -42,9 +63,10 @@
             </td>
     <% end %>	
     </tr>
+    <%end -%>
 </table>
 <p>
-<%= link_to 'Back', glossaries_path %> 
+<%= link_to 'To your glossaries', glossaries_path %> 
 </p>
 
 <script type="text/javascript">
@@ -52,6 +74,7 @@ window.onload = function() {
   document.getElementById('card_question').focus();
 }
 </script>
+<%end-%>
 
 
 
