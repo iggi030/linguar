@@ -18,7 +18,8 @@ class CataloguesController < ApplicationController
       @foreign_languages = params[:foreign_language]
       
       @glossaries = Glossary.find(:all, :conditions => {:from_language => @native_languages,
-                                                        :to_language => @foreign_languages})
+                                                        :to_language => @foreign_languages,
+                                                        :public => true})
       
       render :show
    end

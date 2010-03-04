@@ -1,0 +1,6 @@
+ <% form_for :user, :url => { :action => "sendmail" } do |f| %>
+    <%= f.error_messages %>
+    <p>Your email: <%= h current_user.email %></p>
+    <p>Message : </p><p><%= f.text_area :message %></p>
+    <%= submit_tag 'Send' %>
+  <% end %>

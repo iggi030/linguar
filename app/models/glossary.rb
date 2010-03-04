@@ -6,9 +6,9 @@ class Glossary < ActiveRecord::Base
 
   def find_questions_for_this_session(user, max_cards, max_new_cards)
     @todays_questions = Array.new
-    user_cards = user.cards
+    old_cards = user.cards.find(:all, :conditions => ["glossary_id = ?" , id])
     #get all questions which have been scheduled for today
-    user_cards.each do |card| 
+    old_cards.each do |card| 
       return @todays_questions if @todays_questions.length >= max_cards 
       knowability = card.knowabilities.find_by_user_id(user.id)
       

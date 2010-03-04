@@ -100,6 +100,20 @@ class UsersController < ApplicationController
     flash[:notice] = @flash
     redirect_to login_path
   end
+  
+  def contact
+    
+  end
+  
+  def sendmail
+    from = current_user.email
+    recipient = User.find(params[:id]).email
+    subject = "User #{current_user} has send you a message on linguar.com"
+    message = params[:user][:message]
+    UserMailer.deliver_contact(recipient, subject, message, from)
+    flash[:notice] = "Message to #{User.find(params[:id])} sent sucessfully"
+    redirect_to :controller => "home", :action => "index"
+  end
     
   protected
     

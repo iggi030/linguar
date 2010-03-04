@@ -10,5 +10,5 @@ class Mailer < ActionMailer::Base
     sent_on       Time.now.utc
     body          :topic => topic, :post => post
   end
-
+  
 end
