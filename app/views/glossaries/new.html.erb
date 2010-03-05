@@ -1,4 +1,4 @@
-<h2>New dictionary:</h2>
+<h2>New glossary:</h2>
 <div class="form">
 <% form_for(@glossary) do |f| %>
   <%= f.error_messages %>
@@ -20,8 +20,8 @@
     <%= f.text_area :description %>
   </p>
    <p>
-    <%= f.label "Allow everyone to view?" %>
-    <%= f.check_box :public, {:checked => true}%>
+    <%= f.label "Should it appear in the Catalogue?" %>
+    <%= f.check_box :public, {:checked => false}%>
   </p>
     <p>
     <%= f.label "Allow others to edit?" %>
