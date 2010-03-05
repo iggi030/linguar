@@ -4,6 +4,7 @@ class CreateKnowabilities < ActiveRecord::Migration
       t.integer :card_id
       t.integer :user_id
       t.float   :ef
+      t.integer :n
       t.integer :scheduled_in
       t.timestamps
     end

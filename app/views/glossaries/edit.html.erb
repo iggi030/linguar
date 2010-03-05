@@ -5,14 +5,14 @@
 
   <p>
     <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :style => "width: 350px;" %>
   </p>
   <p>
     <%= f.label :description %><br />
-    <%= f.text_field :description %>
+    <%= f.text_area :description, :style => "width: 350px; height: 200px;" %>
   </p>
-  <p>
-    <%= f.label "Want it to be public?" %>
+   <p>
+    <%= f.label "Should it appear in the Catalogue?" %>
     <%= f.check_box :public %>
   </p>
   <p>
