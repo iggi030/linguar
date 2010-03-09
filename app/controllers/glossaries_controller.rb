@@ -1,7 +1,7 @@
 class GlossariesController < ApplicationController
   before_filter :find_parent_user_or_class, :only => [:index]
   before_filter :require_login, :except => [:index]
-  before_filter :can_edit, :only => [:edit, :update, :destroy]
+  #before_filter :can_edit, :only => [:edit, :update, :destroy]
 
   def index
     if logged_in?
