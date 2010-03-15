@@ -7,7 +7,8 @@
   <%= select_tag :foreign_language,
     options_from_collection_for_select(@languages, 'id', 'name'), {
       :multiple => true,
-      :size => 5,
+      :size =>8,
+      :style => "width:150px;",
       :id => "foreign_lang" } %></p
   
   <div><%= submit_tag 'Continue' %></div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -8,6 +8,9 @@
   <title><%=h page_title -%></title>
   <%= render :file => 'shared/rss' unless @settings.private? %>
   <%= javascript_include_tag "prototype", "audio_player", "calendar_date_select", "prototip", :cache => true %>
+  <script type="text/javascript" src="javascripts/scriptaculous.js?load=effects,builder"></script>
+  <script type="text/javascript" src="javascripts/lightbox.js"></script>
+  <link rel="stylesheet" href="stylesheets/lightbox.css" type="text/css" media="screen" />
   <%= favicon_tag %>
   <%= header_css %>
   <%= theme_css %>
@@ -21,7 +24,7 @@
       <%= render :file => 'shared/tabs' unless locked_out? -%>
     </div>
     <div class="content">
-      <%= render :file => 'shared/nav' %>
+      <%= render :file => 'shared/nav' unless current_controller == 'home' && !logged_in? %>
       <div class="announcement"><%= @settings.announcement if current_controller == 'home' -%></div>
       <%= render :partial => 'search/form.html.erb' if current_controller == 'search' -%>
       <%= render :file => 'shared/flash' -%>

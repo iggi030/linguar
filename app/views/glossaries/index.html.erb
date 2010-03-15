@@ -34,11 +34,11 @@
     </ul>  
   
   <% else %>
-    <p>
-      On this page you can manage your existing glossaries. But first we need to
-      either copy on from the Catalogue or start from scratch on a new one.</p>
-    <p>
-      Would you like to: 
+    <h2>
+      On this page you can manage your glossaries.
+    </h2>
+    <p>Since it's currently empty
+    you'll need to either create a new one or choose an existing from the catalogue.</p>
     </p>
     <ul class="action_list">
       <li><%= link_to 'Create new', new_glossary_path %></li>
@@ -46,6 +46,7 @@
     </ul> 
   <% end %>
 <% else %>
+
 <p>
   Here you can create your own flashcard based glossary to practise on.
 </p>
@@ -60,7 +61,13 @@ necessary for you to be able to learn them as quick as possible.
 In order for this to work you need to tell us after each card how well you could remember
 each it, using a scale from 1 to 6.
 </p>
-<p>
-  So please either log in and or create a new user to start building up your vocabulary!
-</p>
+
+<p>Check out the screenshots below for an overview</p>
+
+  <a href="images/linguar_new_glossary.jpg" rel="lightbox[sitepics]" title="Creating your new glossary">
+    <%=image_tag("linguar_new_glossary_thumb.jpg")%></a>
+  <a href="images/linguar_add_cards.jpg" rel="lightbox[sitepics]" title="Adding some cards to it">
+    <%=image_tag("linguar_add_cards_thumb.jpg")%></a>
+  <a href="images/linguar_practise.jpg" rel="lightbox[sitepics]" title="Revising a glossary">
+    <%=image_tag("linguar_practise_thumb.jpg" )%></a>
 <%end%>

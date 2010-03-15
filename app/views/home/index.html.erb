@@ -1,22 +1,57 @@
 <div class="home-left">
-  <% unless @chatters.empty? || @message.nil? %>
-    <div class="info-left">
-      <span class="title"><%= link_to 'Chat', chat_path %></span>
-      <span class="detail">
-        <%= render :partial => 'messages/chatters' %>
-        &nbsp;|&nbsp; <%= link_to "Last active #{time_ago_or_time_stamp(@message.created_at)}", chat_path, :class => 'text' if @message %>
-      </span>
-    </div>
-  <% end %>
+  <%if !logged_in? %>
+    <h2>Welcome to Linguar.com</h2>
+    <p>
+        This is a site for everybody struggling to learn a new language.
+    </p>
+    <p>
+        It features a <b><%= link_to 'vocabulary trainer', glossaries_path %></b> and a forum for finding
+        <b><%= link_to 'pen pals', forums_path %></b> 
+        and to ask for help regarding translations, grammar and so on.
+    </p>
+    <p>
+      You can create your own
+      <b><%= link_to 'flashcard', glossaries_path %></b> based
+      glossary to train on.<br />
+      This is very useful for remembering all
+      the new words you get when following a language course, words you
+      pick up from tandem partners or maybe just from walking around. <br />
+      
+      You also have a possibility to <b>share theese lists with your
+      friends</b> from school or with other people which may be interested.
+    </p>
+    <p>
+      Using a <b>sophisticated memory scheduler</b> you will be able to learn the cards
+      as fast as possible!
+    </p>
+    
+    <p>
+      <%= link_to image_tag( "regbutton.png", :border => 0 ), register_path %> 
+    </p>
+    <p style="margin-top: 50px;">Latest topics in forum</p>
+  <%= render :file => 'topics/index' %>
+ 
+  
+</div>
+<div style="text-align: right; margin: 5px 10px 0px 0px;">Already a member? <%= link_to 'login', login_path %></div>
+<div class="home-right" style="border-left: 1px dotted; padding: 0px 0px 10px 10px;">
+  <h2>What does it look like?</h2>
+  <p style="border-bottom: 1px dotted;">
+  <a href="images/linguar_new_glossary.jpg" rel="lightbox[sitepics]" title="Creating your new glossary">
+    <%=image_tag("linguar_new_glossary_thumb.jpg")%></a>
+  </p>
+  <p style="border-bottom: 1px dotted;">
+  <a href="images/linguar_add_cards.jpg" rel="lightbox[sitepics]" title="Adding some cards to it">
+    <%=image_tag("linguar_add_cards_thumb.jpg")%></a>
+  </p>
+  <p style="border-bottom: 1px dotted;">
+  <a href="images/linguar_practise.jpg" rel="lightbox[sitepics]" title="Revising a glossary">
+    <%=image_tag("linguar_practise_thumb.jpg" )%></a>
+  </p>
+</div>
+<%else%>
+<p>Latest topics in forum</p>
   <%= render :file => 'topics/index' %>
 </div>
-
-<div class="home-right">
-  <% render :partial => 'events/mini.html.erb' %>
-  <%= render :file => 'uploads/index' %>
-  <%= render :file => 'headers/list' %>
-  <%= render :file => 'users/index' %>
-  <%= render :file => 'avatars/list' %>
-</div>
-
+<%end%>
 <div class="clear"> </div>

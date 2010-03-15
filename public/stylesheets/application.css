@@ -16,8 +16,8 @@ body {
   margin: 20px auto;
   padding: 10px;
   background-color: #ccc;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
   border: 1px solid #000; 
   background: #fff;
 }
