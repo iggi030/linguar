@@ -21,7 +21,7 @@
       friends</b> from school or with other people which may be interested.
     </p>
     <p>
-      Using a <b>sophisticated memory scheduler</b> you will be able to learn the cards
+      Using a <b>sophisticated spacing algorithm</b> you will be able to learn the cards
       as fast as possible!
     </p>
     
@@ -33,9 +33,10 @@
  
   
 </div>
-<div style="text-align: right; margin: 5px 10px 0px 0px;">Already a member? <%= link_to 'login', login_path %></div>
+<div style="text-align: right; margin: 5px 10px 5px 0px;">Already a member? <%= link_to 'login', login_path %></div>
 <div class="home-right" style="border-left: 1px dotted; padding: 0px 0px 10px 10px;">
-  <h2>What does it look like?</h2>
+  <h3>What does it look like?</h3>
+  <p>(click on an image to make it bigger)
   <p style="border-bottom: 1px dotted;">
   <a href="images/linguar_new_glossary.jpg" rel="lightbox[sitepics]" title="Creating your new glossary">
     <%=image_tag("linguar_new_glossary_thumb.jpg")%></a>
@@ -48,10 +49,11 @@
   <a href="images/linguar_practise.jpg" rel="lightbox[sitepics]" title="Revising a glossary">
     <%=image_tag("linguar_practise_thumb.jpg" )%></a>
   </p>
-</div>
+
 <%else%>
+<h2>Welcome <%=current_user%>!</h2>
 <p>Latest topics in forum</p>
   <%= render :file => 'topics/index' %>
-</div>
 <%end%>
+</div> 
 <div class="clear"> </div>
