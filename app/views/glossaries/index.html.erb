@@ -20,7 +20,7 @@
       <td>  <%= link_to 'Edit the words', glossary_cards_url(glossary)  %>  </td>
       <td>
         <% if glossary.shared? %>
-          <%= link_to 'Remove link', glossary, :confirm => 'Are you sure?', :method => :delete, :class => "action" %></td>
+          
         <% else %>
           <%= link_to 'Delete', glossary, :confirm => 'Are you sure?', :method => :delete, :class => "action" %></td>
         <%end%>
