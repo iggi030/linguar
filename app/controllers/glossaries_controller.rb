@@ -29,7 +29,7 @@ class GlossariesController < ApplicationController
     if @glossary.save
       current_user.glossaries << @glossary
       if params[:attachment][:file]
-        f = File.open(params[:attachment][:file])
+        f = params[:attachment][:file].read
         doc = Nokogiri::XML(f)
         doc.root.children.each do |node|
           if node.name == 'item'
