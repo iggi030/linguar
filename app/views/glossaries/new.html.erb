@@ -1,6 +1,6 @@
 <h2>New glossary:</h2>
 <div class="form">
-<% form_for(@glossary) do |f| %>
+<% form_for(@glossary, :html => { :multipart => true })do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -26,6 +26,10 @@
   <p>
     <%= f.label "Allow others to edit?" %>
     <%= f.check_box :shared, {:checked => false}%>
+  </p>
+  <p>
+      <%= f.label "Import a Mnemosyne file?" %><br />
+      <%= file_field(:attachment, :file, :class => 'file_input') -%>
   </p>
   <p>
     <%= f.submit 'Create' %>

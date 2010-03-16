@@ -4,11 +4,11 @@
   <%= f.error_messages %>
   
   <p>
-    <div id="label"><%= f.label ('New cards per day')%></div>
+    <div id="label"><%= f.label ('New cards')%></div>
     <%= f.text_field :max_new_cards, :value => @settings[:max_new_cards], :size => '3' %>
   </p>
   <p>
-    <div id="label"><%= f.label ('Maximum amount of cards') %></div>
+    <div id="label"><%= f.label ('Maximum amount of cards (including old cards)') %></div>
     <%= f.text_field :max_total_cards, :value => @settings[:max_total_cards], :size => '3'  %>
   </p>
   <p>

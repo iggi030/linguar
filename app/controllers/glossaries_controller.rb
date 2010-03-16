@@ -1,3 +1,5 @@
+require 'nokogiri'
+
 class GlossariesController < ApplicationController
   before_filter :find_parent_user_or_class, :only => [:index]
   before_filter :require_login, :except => [:index]
@@ -26,6 +28,19 @@ class GlossariesController < ApplicationController
     logger.debug "params: #{params.map}"
     if @glossary.save
       current_user.glossaries << @glossary
+      if params[:attachment][:file]
+        f = File.open(params[:attachment][:file])
+        doc = Nokogiri::XML(f)
+        doc.root.children.each do |node|
+          if node.name == 'item'
+            node.children.each do |sub_e|
+              @question = sub_e.inner_text if sub_e.name == 'Q'
+              @answer = sub_e.inner_text if sub_e.name == 'A'
+            end            
+          @glossary.cards.create(:question => @question, :answer =>@answer)
+          end
+        end
+      end    
       redirect_to(@glossary)
     else
       render :action => "new"
