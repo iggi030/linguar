@@ -88,10 +88,12 @@
 	
 	function show_answer(){
 		document.getElementById('answer').style.visibility = "visible";
+        document.getElementById('rating').style.visibility = "visible";
 		document.getElementById('show_answer_button').style.visibility = "hidden";
 	}
 	function hide_answer(){		
 		document.getElementById('answer').style.visibility = "hidden";
+        document.getElementById('rating').style.visibility = "hidden";
 		document.getElementById('show_answer_button').style.visibility = "visible";
         document.getElementById('show_answer_button').focus();
 	}
@@ -101,22 +103,24 @@
     } 
 </script>
 <div class="flashcard">
-	
-	<div id="card">
-	  <p id="q"></p>
-	</div>	
-	<div id="answer">
-		<p id="a"></p>
-		<p> how hard was this for you to remember? </p>
-		<button onclick="store_knowability(0)">No idea</button>
-		<button onclick="store_knowability(1)">Very hard</button>
-		<button onclick="store_knowability(2)">Hard</button>
-		<button onclick="store_knowability(3)">Medium</button>
-		<button onclick="store_knowability(4)">Easy</button>
-		<button onclick="store_knowability(5)">Very easy</button>
+	<div id="question">
+	  <p id="q" style="font-size: 16px"></p>
 	</div>
-	<button id="show_answer_button" onclick="show_answer()">Show answer</button>
+    <div id="answer">
+		<p id="a" style="font-size: 16px"></p>
+    </div>
+    <button id="show_answer_button" onclick="show_answer()">Show answer</button>
 </div>
+<div id="rating" class="knowability">
+  <p>How hard was this for you to remember? </p>
+  <button onclick="store_knowability(0)">No idea</button>
+  <button onclick="store_knowability(1)">Very hard</button>
+  <button onclick="store_knowability(2)">Hard</button>
+  <button onclick="store_knowability(3)">Medium</button>
+  <button onclick="store_knowability(4)">Easy</button>
+  <button onclick="store_knowability(5)">Very easy</button>
+</div>
+	
 <div style="float: left">
 	<p id="cards_left"></p>
 </div>

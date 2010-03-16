@@ -811,7 +811,7 @@ cite {
   background-color: #e1eafe;  
 }
 .flashcard {
-	width: 500px;
+	width: 350px;
 	height: 160px;
 	text-align: center;
 	margin-top:	0px;
@@ -821,13 +821,27 @@ cite {
 	-webkit-border-radius: 10px;
 }
 
-.flashcard #question p {
+.flashcard #question {
 	width: auto;
 	border-bottom: 1px solid;
-	padding: 10px;
+	padding: 0px;
+}
+.flashcard #question p {
+  padding:10px;
 }
 
 .flashcard #answer  {
 	width: auto;
 	visibility: hidden;
+}
+
+.flashcard #answer p{
+  padding:10px;
+}
+.knowability {
+  visibility: hidden;
+}
+.new_practices_form #label{
+  width: 170px;
+  float: left;
 }

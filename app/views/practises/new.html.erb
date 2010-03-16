@@ -1,18 +1,19 @@
-<h2>New practise session</h2>
+<h2>Study options</h2>
+<div class="new_practices_form">
 <% form_for :catalogue, :url => {:action => :create } do |f| -%>
-<%= f.error_messages %>
-
-<p>
-  <%= f.label ('Max new cards') %><br />
-  <%= f.text_field :max_new_cards, :value => @settings[:max_new_cards] %>
-</p>
-<p>
-  <%= f.label ('Max total cards') %><br />
-  <%= f.text_field :max_total_cards, :value => @settings[:max_total_cards]  %>
-</p>
-<p>
-  <%= f.submit 'Start!' %>
-</p>
+  <%= f.error_messages %>
+  
+  <p>
+    <div id="label"><%= f.label ('New cards per day')%></div>
+    <%= f.text_field :max_new_cards, :value => @settings[:max_new_cards], :size => '3' %>
+  </p>
+  <p>
+    <div id="label"><%= f.label ('Maximum amount of cards') %></div>
+    <%= f.text_field :max_total_cards, :value => @settings[:max_total_cards], :size => '3'  %>
+  </p>
+  <p>
+    <%= f.submit 'Start!' %>
+  </p>
 <% end %>
 </div>
 
