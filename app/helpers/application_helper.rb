@@ -123,4 +123,8 @@ module ApplicationHelper
     return (time.strftime("%l:%M%p, ").downcase + time.strftime("%d %b")).squeeze(' ') if short
     (time.strftime("%a, %d %b %Y, %l:%M") + time.strftime("%p").downcase).squeeze(' ')
   end
+  
+  def line_break(string)
+    string.gsub("\n", '<br/>')
+  end
 end

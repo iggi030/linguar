@@ -14,7 +14,7 @@
 	function first_load(){
 		<% unless @cards.nil? %>
 			<% for card in @cards  -%>
-			  cards.push(new Card("<%= h card.id %>","<%= h card.question %>","<%= h card.answer %>", 1));
+			  cards.push(new Card("<%= h card.id %>","<%= line_break(card.question) %>","<%= line_break(card.answer) %>", 1));
 			<% end -%>
         <% end %>
 		var card = cards[0];
