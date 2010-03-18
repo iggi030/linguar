@@ -28,7 +28,7 @@ class GlossariesController < ApplicationController
     logger.debug "params: #{params.map}"
     if @glossary.save
       current_user.glossaries << @glossary
-      if params[:attachment][:file]
+      if params[:attachment]
         f = params[:attachment][:file].read
         doc = Nokogiri::XML(f)
         doc.root.children.each do |node|
