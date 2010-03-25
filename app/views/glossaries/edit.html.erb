@@ -8,6 +8,14 @@
     <%= f.text_field :title, :style => "width: 350px;" %>
   </p>
   <p>
+    <%= f.label(:language, "From language") %> <br />
+    <%= select("glossary", "from_language", Language.find(:all, :order => "name").collect {|l| [l.name, l.id] }) %>
+  </p>
+  <p>
+    <%= f.label(:language, "To language") %> <br />
+    <%= select("glossary", "to_language", Language.find(:all, :order => "name").collect {|l| [l.name, l.id] }) %>
+  </p>
+  <p>
     <%= f.label :description %><br />
     <%= f.text_area :description, :style => "width: 350px; height: 200px;" %>
   </p>
