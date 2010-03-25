@@ -75,7 +75,7 @@ class UsersController < ApplicationController
   def login
     redirect_to root_path and return false if logged_in?
     if request.post?
-      @user = User.authenticate(params[:user][:login], params[:user][:password]) unless params[:user].blank?
+      @user = User.authenticate(params[:user][:email], params[:user][:password]) unless params[:user].blank?
       if @user
         do_login(@user)
       else

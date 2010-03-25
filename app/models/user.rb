@@ -90,7 +90,7 @@ class User < ActiveRecord::Base
   end
   
   def self.authenticate(login, password)
-    find_by_login_and_password_hash(login, encrypt(password))
+    find_by_email_and_password_hash(login, encrypt(password))
   end
   
   def self.encrypt(password)
