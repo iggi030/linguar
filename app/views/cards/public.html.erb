@@ -1,0 +1,22 @@
+<% if @glossary %>
+<h1 class="public_glossary"> <%= h @glossary.title %> </h1>
+
+<table class="question_table">
+    <thead>
+        <td><%= h find_name_for_language(@glossary.from_language) %></td>
+        <td><%= h find_name_for_language(@glossary.to_language) %></td>
+    </thead>
+    
+    <% if @cards %>
+        <% for card in @cards %>
+            <tr>
+            <td><%=h card.question %></td>
+            <td><%=h card.answer %></td>
+            </tr>
+        <%end%>
+    <% end %>
+</table>
+<%end-%>
+
+
+

@@ -845,3 +845,16 @@ cite {
   width: 170px;
   float: left;
 }
+.bottom_links {
+  margin: 0 20% 0 20%;
+  text-align: center;
+}
+.bottom_links a {
+  color: #777777;
+  
+}
+.public_glossary {
+  font-size: 20px;
+  color: black;
+  padding: 10px 0 10px 0;
+}

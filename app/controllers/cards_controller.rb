@@ -3,6 +3,9 @@ class CardsController < ApplicationController
   def index
     @glossary = Glossary.find(params[:glossary_id])
     @cards = @glossary.cards unless @glossary.cards.nil?
+    if !logged_in?
+      render :action => "public"
+    end
   end
 
   def edit

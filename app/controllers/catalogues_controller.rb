@@ -1,7 +1,7 @@
 class CataloguesController < ApplicationController
-      
+        
    def show
-      @glossaries = Glossary.find(:all)
+      @glossaries = Glossary.find(:all, :conditions => {:public => true})
    end
    
    def new
