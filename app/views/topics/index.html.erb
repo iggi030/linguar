@@ -47,7 +47,7 @@
             <td class="tcm"><%= number_with_delimiter(topic.views) %></td>
           <% end %>
           <td class="tcr">
-            <%= link_to time_ago_or_time_stamp(topic.last_post_at), show_new_topic_path(topic) %> 
+            <%= time_ago_or_time_stamp(topic.last_post_at) %> 
             by <%=h topic.last_poster %>
           </td>
         </tr>
