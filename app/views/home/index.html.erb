@@ -1,60 +1,35 @@
 <div class="home-left">
   <%if !logged_in? %>
-    <h2>Welcome to Linguar.com</h2>
-    <p>
-        This is a site for everybody struggling to learn a new language.
-    </p>
-    <p>
-        It features a <b><%= link_to 'vocabulary trainer', glossaries_path %></b> and a forum for finding
-        <b><a href="http://linguar.com/categories/3-pen-pals">pen pals</a></b> 
-        and to ask for help regarding translations, grammar and so on.
-    </p>
-    <p>
-      Using the <em> vocabulary trainer</em> you can create your own
-      <em>flashcard</em> based glossary to train on.<br />
-      This is very useful for remembering all
-      the new words you get when following a language course, words you
-      pick up from tandem partners or maybe just from walking around. <br />
-      
-      You also have a possibility to <b>share these</b>
-      <%= link_to 'flashcards', catalogue_path %>
-      with your
-      friends from school or with other people which may be interested.
-    </p>
-    <p>
-      Using a <b>sophisticated spacing algorithm</b> you will be able to learn the cards
-      as fast as possible!
-    </p>
+    <h2>Linguar - Language learning community</h2>
     
-    <p>
-      <%= link_to image_tag( "regbutton.png", :border => 0 ), register_path %> 
+    <h3>Are you learning a language? Thinking of starting a new one?</h3>
+    <p>If so, this is the site for you Whatever your level, Linguar 
+    has some useful tools that will help you expand your vocabulary and find people to practice with - and it's all free.
+    You can use the vocabulary trainer to save flashcards with all the handy new words you come across. 
+    Learning them is quick and fun with our intelligent online program and you can even share them with your friends.
     </p>
-    <p style="margin-top: 50px;">Latest topics in forum</p>
-  <%= render :file => 'topics/index' %>
+    <p>In the language exchange forum you can find a native speaker to practice with  face-to-face in your area,
+     chatting on Skype or MSN, or as an email pen pal. When you help each other with your own language, you will be 
+     amazed how quickly you can progress!
+     </p>
+     <p>Get started now! </p>
+     
+     <p>
+      <%= link_to 'Register Free', register_path, :class => "large blue button" %> 
+    </p>
  
   
+</div> 
+<div style="text-align: right; margin: 5px 10px 5px 0px;">
+  Already a member?
+  <%= link_to 'login', login_path %>
 </div>
-<div style="text-align: right; margin: 5px 10px 5px 0px;">Already a member? <%= link_to 'login', login_path %></div>
-<div class="home-right" style="border-left: 1px dotted; padding: 0px 0px 10px 10px;">
-  <h3>What does it look like?</h3>
-  <p>(click on an image to make it bigger)
-  <p style="border-bottom: 1px dotted;">
-  <a href="images/linguar_new_glossary.jpg" rel="lightbox[sitepics]" title="Creating your new glossary">
-    <%=image_tag("linguar_new_glossary_thumb.jpg")%></a>
-  </p>
-  <p style="border-bottom: 1px dotted;">
-  <a href="images/linguar_add_cards.jpg" rel="lightbox[sitepics]" title="Adding some cards to it">
-    <%=image_tag("linguar_add_cards_thumb.jpg")%></a>
-  </p>
-  <p style="border-bottom: 1px dotted;">
-  <a href="images/linguar_practise.jpg" rel="lightbox[sitepics]" title="Revising a glossary">
-    <%=image_tag("linguar_practise_thumb.jpg" )%></a>
-  </p>
+   
 
 <%else%>
 <h2>Welcome <%=current_user%>!</h2>
-<p>Latest topics in forum</p>
-  <%= render :file => 'topics/index' %>
+<h3>Latest topics in forum</h3>
+  <%= render :file => 'topics/list_home' %>
 <%end%>
 </div> 
 <div class="clear"> </div>

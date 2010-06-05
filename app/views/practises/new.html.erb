@@ -1,20 +1,50 @@
-<h2>Study options</h2>
 <div class="new_practices_form">
-<% form_for :catalogue, :url => {:action => :create } do |f| -%>
+<% form_for :catalogue, :html => {:id => 'test'}, :url => {:action => :create } do |f| -%>
+<fieldset>
+<legend>Study options</legend>
   <%= f.error_messages %>
-  
-  <p>
-    <div id="label"><%= f.label ('New cards')%></div>
+  <div>
+    <%= f.label ('New cards')%>
     <%= f.text_field :max_new_cards, :value => @settings[:max_new_cards], :size => '3' %>
-  </p>
-  <p>
-    <div id="label"><%= f.label ('Maximum amount of cards (including old cards)') %></div>
+  </div>
+
+  <div>
+    <%= f.label ('Highest amount of cards') %>
     <%= f.text_field :max_total_cards, :value => @settings[:max_total_cards], :size => '3'  %>
-  </p>
-  <p>
+  </div>
+
+  <div>
+    <%= f.label ('Language order?(soon...)') %>
+    <span onclick="switch_languages();" style="cursor: pointer;">
+      
+      <span id="from_language">English</span> -> <span id="to_language">Swedish</span></div></span>
+    <%= hidden_field_tag :reverse_language_order, false %>
+  </div>
+  
+  <div>
     <%= f.submit 'Start!' %>
-  </p>
+  </div>
+</fieldset>
 <% end %>
 </div>
 
-<%= link_to 'Back to your glossaries', glossaries_path %> 
+<p>
+<%= link_to 'Back to your glossaries', glossaries_path %>
+</p>
+<script type="text/javascript">
+//<![CDATA[
+
+function switch_languages() {
+  from = document.getElementById("from_language");
+  to = document.getElementById("to_language");
+  temp = from.innerHTML;
+  from.innerHTML = to.innerHTML;
+  to.innerHTML = temp;
+  
+  language_order = document.getElementById("reverse_language_order");
+  value = !!language_order.valueOf;
+  value != value;
+  language_order.value = value;  
+  }
+//]]
+</script>
