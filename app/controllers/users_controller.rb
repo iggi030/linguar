@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   skip_filter :check_privacy, :only => [:login, :logout]
   
   def index
-    @users = User.paginate(:page => params[:page], :order => 'profile_updated_at desc')
+    @users = User.paginate(:page => params[:page], :order => 'online_at desc')
     @users_count = User.count
   end
 
