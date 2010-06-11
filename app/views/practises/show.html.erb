@@ -81,7 +81,7 @@
 	}
 	
 	function show_card(card){
-		document.getElementById('cards_left').innerHTML = cards.length + " cards to go";
+		document.getElementById('cards_left').innerHTML = "<b>" + cards.length + " </b>cards to go";
 		document.getElementById('q').innerHTML = card.q;
 		document.getElementById('a').innerHTML = card.a;
 	}
@@ -102,16 +102,16 @@
       document.getElementById('show_answer_button').focus();
     } 
 </script>
-<div class="flashcard">
+<div class="flashcard" style="margin: auto;">
 	<div id="question">
-	  <p id="q" style="font-size: 16px"></p>
+	  <p id="q"></p>
 	</div>
     <div id="answer">
-		<p id="a" style="font-size: 16px"></p>
+		<p id="a"></p>
     </div>
     <button id="show_answer_button" onclick="show_answer()">Show answer</button>
 </div>
-<div id="rating" class="knowability">
+<div id="rating" class="knowability" style="margin-left: 28%;">
   <p>How hard was this for you to remember? </p>
   <button onclick="store_knowability(0)">No idea</button>
   <button onclick="store_knowability(1)">Very hard</button>
