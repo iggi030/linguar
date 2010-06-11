@@ -30,6 +30,11 @@ module ApplicationHelper
     page = request.env['PATH_INFO'].delete('/').sub('new','').capitalize unless request.env['PATH_INFO'].nil?
     page = @settings.tagline if current_controller == 'home'
     page = "Vocabulary trainer" if current_controller == 'glossaries'
+    
+    if current_controller == 'cards' || current_controller == 'practises'
+      glossary_name = Glossary.find(params[:glossary_id]).title
+      page = "#{glossary_name}"
+    end
     "#{item || page}"
   end
   
