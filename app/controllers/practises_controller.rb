@@ -1,11 +1,14 @@
 class PractisesController < ApplicationController
   def new
+    @glossary = current_user.glossaries.find(params[:glossary_id])
     @settings[:max_total_cards] = 30
     @settings[:max_new_cards] = 15
   end
   
   def create
     glossary = current_user.glossaries.find(params[:glossary_id])
+    glossary.language_order = params[:language_order]
+    
     @cards = glossary.find_questions_for_this_session(current_user,params[:catalogue][:max_total_cards].to_i, params[:catalogue][:max_new_cards].to_i)
     render :show
   end

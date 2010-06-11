@@ -14,11 +14,12 @@
   </div>
 
   <div>
-    <%= f.label ('Language order?(soon...)') %>
+    <%= f.label ('Language order') %>
     <span onclick="switch_languages();" style="cursor: pointer;">
       
-      <span id="from_language">English</span> -> <span id="to_language">Swedish</span></div></span>
-    <%= hidden_field_tag :reverse_language_order, false %>
+      <span id="from_language"><%= h @glossary.find_from_language %></span> ->
+      <span id="to_language"><%= h @glossary.find_to_language %></span></div></span>
+    <%= hidden_field_tag :language_order, :normal %>
   </div>
   
   <div>
@@ -35,16 +36,25 @@
 //<![CDATA[
 
 function switch_languages() {
-  from = document.getElementById("from_language");
-  to = document.getElementById("to_language");
-  temp = from.innerHTML;
+  var from = document.getElementById("from_language");
+  var to = document.getElementById("to_language");
+  var temp = from.innerHTML;
   from.innerHTML = to.innerHTML;
   to.innerHTML = temp;
   
-  language_order = document.getElementById("reverse_language_order");
-  value = !!language_order.valueOf;
-  value != value;
-  language_order.value = value;  
+  var language_order = document.getElementById("language_order");
+  
+  switch (language_order.value)
+  {
+  case "normal":
+    language_order.value = "reversed";
+    break;
+  case "reversed":
+    language_order.value = "normal";
+    break;
+  }
+
+  
   }
 //]]
 </script>

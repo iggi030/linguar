@@ -4,7 +4,10 @@ class Glossary < ActiveRecord::Base
   has_many  :glownerships, :dependent => :destroy
   has_many  :users, :through => :glownerships
 
+  attr_accessor :language_order
+  
   def find_questions_for_this_session(user, max_cards, max_new_cards)
+    logger.debug("-----#{language_order}")
     @todays_questions = Array.new
     old_cards = user.cards.find(:all, :conditions => ["glossary_id = ?" , id])
     #get all questions which have been scheduled for today
@@ -30,6 +33,14 @@ class Glossary < ActiveRecord::Base
                           )
   logger.debug("----new cards = #{new_cards.length}")
   @todays_questions += new_cards
+  
+  if @language_order == "reversed"
+    @todays_questions.each { |question|
+      q = question.question
+      question.question = question.answer
+      question.answer = q            
+    }
+  end
   return @todays_questions
   end
       
