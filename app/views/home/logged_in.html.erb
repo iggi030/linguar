@@ -1,0 +1,32 @@
+<div class="home-left">
+  
+<% if current_user.glossaries.count < 2 %>
+  <p>Hi <%=current_user%>! You seem to be new on our site. There are already
+  a lot of flashcard sets which other users have created and decided to share
+  with the rest of us. Would you like to take a look inside and see if there is
+  anything you could use?</p>
+   <p>
+      <%= link_to 'Yes! take me to the catalogue', catalogue_path, :class => "large blue button" %> 
+    </p>
+   
+  <p>
+    If you cant find anything which fit your need, you can also create a new set of cards.
+    all you have to enter is a short description and between which languages
+    you are translating. Enjoy!
+  </p>
+  <p>
+    <%= link_to 'New set', new_glossary_path, :class => "large blue button" %> 
+  </p>
+  <% else %>
+    <h2>Welcome back <%=current_user%>!</h2>
+    <p>
+      Time to revise your vocabulary? Take a look at your</p>
+    <p>
+        <%= link_to 'Flashcards', glossaries_path, :class => "large blue button" %> 
+    </p>   
+    
+  <%end%>
+  <h3>Latest topics in forum</h3>
+  <%= render :file => 'topics/list_home' %>
+</div> 
+<div class="clear"> </div>
