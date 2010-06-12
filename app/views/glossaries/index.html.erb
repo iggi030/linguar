@@ -1,6 +1,6 @@
 <% if logged_in? %>
   <% if @glossaries.length >= 1 %>
-  <h2>Your Glossaries</h2>
+  <h2>Your flashcard sets</h2>
   <table class="glossaries_table">
   
   <% @glossaries.each do |glossary| %>
@@ -30,7 +30,7 @@
   
   <ul class="action_list">
       <li><%= link_to 'Create new', new_glossary_path %></li>
-      <li><%= link_to 'Select from catalogue', new_catalogue_path %></li>
+      <li><%= link_to 'Select from catalogue', catalogue_path %></li>
     </ul>  
   
   <% else %>
@@ -42,7 +42,7 @@
     </p>
     <ul class="action_list">
       <li><%= link_to 'Create new', new_glossary_path %></li>
-      <li><%= link_to 'Select from catalogue', new_catalogue_path %></li>
+      <li><%= link_to 'Select from catalogue', catalogue_path %></li>
     </ul> 
   <% end %>
 <% else %>

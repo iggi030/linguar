@@ -1,5 +1,4 @@
 <div class="home-left">
-  <%if !logged_in? %>
     <h2>Linguar - Language learning community</h2>
     
     <h3>Are you learning a language? Thinking of starting a new one?</h3>
@@ -17,19 +16,9 @@
      <p>
       <%= link_to 'Register Free', register_path, :class => "large blue button" %> 
     </p>
- 
-  
 </div> 
 <div style="text-align: right; margin: 5px 10px 5px 0px;">
   Already a member?
   <%= link_to 'login', login_path %>
-</div>
-   
-
-<%else%>
-<h2>Welcome <%=current_user%>!</h2>
-<h3>Latest topics in forum</h3>
-  <%= render :file => 'topics/list_home' %>
-<%end%>
 </div> 
 <div class="clear"> </div>
