@@ -39,7 +39,6 @@ input:hover, input:focus {
   
 .header {
   position: relative;
-  height: 200px;
   background-color: #333;
 }
 
@@ -67,26 +66,22 @@ a:active, a:hover {
 
 h1 { 
   font-family: 'Trebuchet MS', Verdana, Sans-Serif;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: bold;
-  letter-spacing: -1px;
-  margin: 0;
-  padding: 83px 0 0 40px;
 }
 
-h1, h1 a:link, h1 a:visited, h1 a:hover, h1 a:active {
-  text-decoration: none;
-  color: #fff;
+h2 { 
+  font-family: 'Trebuchet MS', Verdana, Sans-Serif;
+  font-size: 16px;
+  font-weight:normal;
 }
 
-h1 a:hover, h1 a:active {
-  text-decoration: underline;
-}
 
 h3 {
   font-size: 14px;
   font-weight: normal;
 }
+
   
 .tagline {
   font-family: 'Lucida Grande', Verdana, Arial, Sans-Serif;
@@ -110,10 +105,16 @@ h3 {
 
 .tabs, .tabs li a {
 	padding: 6px 12px 6px;
+	-o-border-radius: 5px 5px 0 0;
+	-icab-border-radius: 5px 5px 0 0;
+	-khtml-border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+	-webkit-border-radius: 5px 5px 0 0;
 	}
 
 .tabs li a {
-	color: white;
+	color: black;
+	background: white;
 	text-decoration: none;
 	}
 
@@ -129,8 +130,8 @@ h3 {
 	}
 
 .tabs li.current_tab a, .tabs li.current_tab a:hover {
-	color: #333;
-	background: white;
+	color: white;
+	background: gray;
 	border-radius: 5px 5px 0 0;
 	-o-border-radius: 5px 5px 0 0;
 	-icab-border-radius: 5px 5px 0 0;

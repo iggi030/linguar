@@ -11,16 +11,16 @@
   <script type="text/javascript" src="http://linguar.com/javascripts/lightbox.js"></script>
   <link rel="stylesheet" href="http://linguar.com/stylesheets/lightbox.css" type="text/css" media="screen" />
   <%= favicon_tag %>
-  <%= header_css %>
   <%= theme_css %>
 </head>
 <body>
+	<div class="logo" style="width: 870px; margin: auto;">
+		<%= link_to image_tag "linguar_logo_big.jpg", {:action => :home, :style => "height: 100px;"} %>
+	</div>
   <div class="wrapper">
     <%= render :file => 'shared/reminders' unless locked_out? -%>
     <div class="header">
-      <h1><%= link_to h(@settings.title), root_path -%></h1>
-      <div class="tagline"><%= h @settings.tagline -%></div>
-      <%= render :file => 'shared/tabs' unless locked_out? -%>
+    	<%= render :file => 'shared/tabs' unless locked_out? -%>  
     </div>
     <div class="content">
       <%= render :file => 'shared/nav' unless current_controller == 'home' && !logged_in? %>
