@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   has_many :uploads, :dependent => :destroy, :order => 'created_at desc'
   has_many :glownerships
   has_many :glossaries, :through => :glownerships
-  
+  has_many :tandems
   has_many  :knowabilities
   has_many  :cards, :through => :knowabilities
   has_one   :current_avatar, :class_name => 'Avatar', :foreign_key => 'current_user_id', :dependent => :nullify

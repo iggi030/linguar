@@ -1,0 +1,30 @@
+<%= javascript_include_tag "tandems_new" %>
+<h2>Create a new tandem post</h2>
+<div class="form">
+<% form_for @tandem do |f| %>
+  <%= f.error_messages %>
+		<p>
+    		What are you searching for?<br />
+    		<%= select_tag 'tandem[post_type]', options_for_select(@types),  :size => 2 %>
+  		</p>
+  		<p>
+    		Which language are you learning?<br />
+    		<%= select("tandem", "learning_language", Language.find(:all, :order => "name").collect {|l| [l.name, l.id] })%>
+  		</p>
+		<p>
+    		Why are you learning it (optional)?<br />
+    		<%= f.text_area :motivation, :style => "width: 30em; height: 5em;" %>
+  		</p>
+		<p>
+		In which town do you live? (click on the map to select)
+		<div id="map" style="width: 500px; height: 500px"></div>
+		</p>
+		<input type="hidden" id="tandem_lat" name="tandem[lat]" />
+		<input type="hidden" id="tandem_lng" name="tandem[lng]" />
+  		<p>
+    		<%= f.submit 'Create' %>
+  		</p>
+	<% end %>
+</div>
+
+<%= link_to 'Back', tandems_path %>

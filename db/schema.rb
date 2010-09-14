@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100225172507) do
+ActiveRecord::Schema.define(:version => 20100906073820) do
 
   create_table "articles", :force => true do |t|
     t.integer  "user_id"
@@ -83,9 +83,7 @@ ActiveRecord::Schema.define(:version => 20100225172507) do
   end
 
   create_table "glossaries", :force => true do |t|
-    t.integer  "user_id"
     t.integer  "from_language"
-    t.integer  "int"
     t.integer  "to_language"
     t.string   "description",   :limit => 60
     t.string   "title"
@@ -114,14 +112,8 @@ ActiveRecord::Schema.define(:version => 20100225172507) do
     t.string   "attachment_remote_url"
   end
 
-  create_table "knowabilities", :force => true do |t|
-    t.integer  "card_id"
-    t.integer  "user_id"
-    t.float    "ef"
-    t.integer  "scheduled_in"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+# Could not dump table "knowabilities" because of following StandardError
+#   Unknown type '' for column 'ef'
 
   create_table "languages", :force => true do |t|
     t.string   "name"
@@ -170,6 +162,18 @@ ActiveRecord::Schema.define(:version => 20100225172507) do
   create_table "subscriptions", :force => true do |t|
     t.integer "user_id"
     t.integer "topic_id"
+  end
+
+  create_table "tandems", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "motivation",        :limit => 120
+    t.string   "location",          :limit => 35
+    t.decimal  "lat"
+    t.decimal  "lng"
+    t.integer  "post_type"
+    t.integer  "learning_language"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "themes", :force => true do |t|

@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  motivation: MyString
+  location: MyString
+  type: 1
+  spoken_language: 1
+  learning_language: 1
+
+two:
+  motivation: MyString
+  location: MyString
+  type: 1
+  spoken_language: 1
+  learning_language: 1

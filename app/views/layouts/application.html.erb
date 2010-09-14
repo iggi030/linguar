@@ -12,15 +12,18 @@
   <link rel="stylesheet" href="http://linguar.com/stylesheets/lightbox.css" type="text/css" media="screen" />
   <%= favicon_tag %>
   <%= theme_css %>
+<script src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAAKC_hvdLBE54UllMJ11fWYxT2yXp_ZAY8_ufC3CFXhHIE1NvwkxTr4K4aT9A_6XWQ1KG2aCWBsVl7lw"
+    type="text/javascript"></script>
+	<%=javascript_include_tag 'application'%>
+</head>
 </head>
 <body>
-	<div class="logo" style="width: 870px; margin: auto;">
-		<%= link_to image_tag "linguar_logo_big.jpg", {:action => :home, :style => "height: 100px;"} %>
-	</div>
   <div class="wrapper">
     <%= render :file => 'shared/reminders' unless locked_out? -%>
     <div class="header">
+		<%= link_to image_tag "logo_big.png", {:action => :home} %>
     	<%= render :file => 'shared/tabs' unless locked_out? -%>  
+
     </div>
     <div class="content">
       <%= render :file => 'shared/nav' unless current_controller == 'home' && !logged_in? %>
@@ -34,7 +37,7 @@
     <div class="footer">		
 		<%= @settings.footer -%></div>
   </div>
-  <div class="bottom_links">
+  <!--div class="bottom_links">
 		<a href="http://linguar.com/glossaries">Vocabulary trainer</a>
 		| <a href="http://linguar.com/forums/5-japanese-pen-pals">Japanese pen pals</a>
 		| <a href="http://linguar.com/forums/2-german-pen-pals">German pen pals</a>
@@ -44,6 +47,6 @@
 		| <a href="http://linguar.com/glossaries/9/cards">JLPT3 vocabulary</a>
 		| <a href="http://linguar.com/glossaries/28/cards">New practical chinese reader vocabulary</a>
 		| <a href="http://linguar.com/glossaries/7/cards">Hiragana symbols</a>
-  </div>
+  </div> -->
 </body>
 </html>

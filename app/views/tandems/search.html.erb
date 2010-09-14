@@ -1,0 +1,26 @@
+<%= javascript_include_tag "tandems_search" %>
+
+<h2>Find a tandem partner</h2>
+<div class="form">
+<% form_tag tandems_path, :method => 'get' do %>
+		<p>
+    		What are you searching for?<br />
+    		<%= select_tag 'tandem[type]', options_for_select(@types),  :size => 2 %>
+  		</p>
+  		<p>
+    		Which language are you learning?<br />
+    		<%= select("tandem", "language", Language.find(:all, :order => "name").collect {|l| [l.name, l.id] })%>
+  		</p>
+		<p>
+		In which town do you want to search? (click on the map to select)
+		<div id="map" style="width: 500px; height: 500px"></div>
+		</p>
+		<input type="hidden" id="lat" name="tandem[lat]" />
+		<input type="hidden" id="lng" name="tandem[lng]" />
+  		<p>
+    		<%= submit_tag 'Search', :name => nil%>
+  		</p>
+	<% end %>
+</div>
+
+<%= link_to 'Back', tandems_path %>

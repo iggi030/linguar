@@ -5,7 +5,7 @@ li { margin: 0; padding: 0; list-style-type: none; }
 a img { border: 0; }
 
 body {
-  background: #ededed;
+  background: white;
   color: #333;
   font-family: verdana, sans-serif;
   font-size: 11px;
@@ -28,18 +28,19 @@ input:hover, input:focus {
 } 
 .wrapper {
   width: 850px;
-  margin: 20px auto;
+  margin: 0px auto;
   padding: 10px;
   background-color: #ccc;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
-  border: 1px solid #000; 
+  border: 0px solid #555; 
   background: #fff;
 }
   
 .header {
+  height:163px;
   position: relative;
-  background-color: #333;
+  background-color: #fff;
 }
 
 .content {
@@ -92,10 +93,18 @@ h3 {
 
 .tabs {
 	position: absolute;
-	margin: -18px 0 0 14px;
+	#margin: -18px 0 0 14px;
+	margin-left: -10px;
 	padding: 0;
 	bottom: 0;
 	font-size: 10px;
+	background-color: #9abcbe;
+	width: 858px;
+	-moz-box-shadow:0 2px 3px rgba(0, 0, 0, 0.25);
+	-webkit-box-shadow:0 2px 3px rgba(0, 0, 0, 0.25);
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 95%, from(rgba(255, 255, 255, 0.3)), to(rgba(255, 255, 255, 0)));
+	background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 95%);
+
 	}
 
 .tabs li {
@@ -104,18 +113,15 @@ h3 {
 	}
 
 .tabs, .tabs li a {
-	padding: 6px 12px 6px;
-	-o-border-radius: 5px 5px 0 0;
-	-icab-border-radius: 5px 5px 0 0;
-	-khtml-border-radius: 5px 5px 0 0;
-	-moz-border-radius: 5px 5px 0 0;
-	-webkit-border-radius: 5px 5px 0 0;
+	padding: 6px;
 	}
 
 .tabs li a {
 	color: black;
-	background: white;
+	background: #9abcbe;
 	text-decoration: none;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 95%, from(rgba(255, 255, 255, 0.3)), to(rgba(255, 255, 255, 0)));
+	background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 95%);
 	}
 
 .tabs li a:hover {
@@ -127,6 +133,9 @@ h3 {
 	-khtml-border-radius: 5px 5px 0 0;
 	-moz-border-radius: 5px 5px 0 0;
 	-webkit-border-radius: 5px 5px 0 0;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 95%, from(rgba(255, 255, 255, 0.3)), to(rgba(255, 255, 255, 0)));
+	background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 95%);
+	
 	}
 
 .tabs li.current_tab a, .tabs li.current_tab a:hover {
@@ -138,6 +147,8 @@ h3 {
 	-khtml-border-radius: 5px 5px 0 0;
 	-moz-border-radius: 5px 5px 0 0;
 	-webkit-border-radius: 5px 5px 0 0;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 95%, from(rgba(255, 255, 255, 0.3)), to(rgba(255, 255, 255, 0)));
+	background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 95%);
 	}
 
 .nav {
@@ -616,7 +627,7 @@ cite {
   border: 1px solid #ccc;
 }
 
-.thread dd.avatar img, .profile-avatar img, .avatar-list .avatar img {
+.thread dd.avatar img, .profile-avatar img, .avatar-list .avatar img, .tandem-post img {
 	max-width: 150px;
 }
 

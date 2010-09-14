@@ -1,0 +1,20 @@
+<div class="tandem-post">
+	<div style="float: left; width: 200px;">
+		<% link_to(@tandem.user) do %>
+			<h2><%= h @tandem.user.login %></h2>
+		<% end %>
+	
+		<%= avatar_for(@tandem.user) %>
+		<p style="margin-bottom: 0;">Speaks: English</p>
+		<p style="margin: 0;">Wants to learn: <%= h find_name_for_language(@tandem.learning_language) %></p>
+	</div>
+	<div style="float: left; width: 600px;">
+		<h2>Motivation</h2>
+		<p><%= h @tandem.motivation %></p>
+		<h2>Users description</h2>
+		<p><%= h @tandem.user.bio %></p>
+				
+		<p>location: <%= h @tandem.lat %></p>		
+</div>
+
+<%= link_to 'Back', tandems_path %>
