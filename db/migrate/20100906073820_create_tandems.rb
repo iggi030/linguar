@@ -3,11 +3,12 @@ class CreateTandems < ActiveRecord::Migration
     create_table :tandems do |t|
       t.integer :user_id
       t.string  :motivation,  :limit => 120
-      t.string  :location,    :limit => 35
+      t.string  :location,    :limit => 40
       t.decimal :lat
       t.decimal :lng
       t.integer :post_type
       t.integer :learning_language
+      t.integer :offering_language
       t.timestamps
     end
     #execute("ALTER TABLE tandems MODIFY lat numeric(15,10);")

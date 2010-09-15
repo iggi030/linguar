@@ -167,11 +167,12 @@ ActiveRecord::Schema.define(:version => 20100906073820) do
   create_table "tandems", :force => true do |t|
     t.integer  "user_id"
     t.string   "motivation",        :limit => 120
-    t.string   "location",          :limit => 35
+    t.string   "location",          :limit => 40
     t.decimal  "lat"
     t.decimal  "lng"
     t.integer  "post_type"
     t.integer  "learning_language"
+    t.integer  "offering_language"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

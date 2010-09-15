@@ -1,21 +1,18 @@
-<div class="tandem-post" style="overflow: auto; width: 100%;">
-
-<% @tandems.each do |tandem| %>
-	<div style="border-bottom: 1px solid; padding: 5px;">
-		<div style="float: left; width: 200px;">
-			<% link_to(tandem.user) do %>
-				<h2><%= h tandem.user.login %></h2>
-			<% end %>
-			<%= avatar_for(tandem.user) %>
-			<p style="margin-bottom: 0;">Speaks: English</p>
-			<p style="margin: 0;">Wants to learn: <%= h find_name_for_language(tandem.learning_language) %></p>
-		</div>
-		<div style="float: right; width: 600px;">
-			<h2>Motivation</h2>
-			<p><%= h tandem.motivation %></p>		
-			<p>location: <%= h tandem.lat %></p>	
-		</div>
-	</div>
-	<div style="clear: both;"></div>
+<%= link_to 'Search!', search_tandems_url, :class => "large blue button" %> 
+<% if logged_in? %>
+<%= link_to 'Insert new tandem post', new_tandem_url, :class => "large blue button" %> 
 <% end %>
-</div>
+
+<% if @tandems.count < 1 %>
+	<p>
+		Sorry we couldnt find any tandem partners in this area for you!
+	</p>	
+<% end %>
+<% @tandems.each do |tandem| %>
+	<div class="tandem-post">
+		<%= render :partial => 'tandem', :locals => 
+		                   { :post => tandem } %>
+		<div style="clear: both;">
+	</div>	
+<% end %>
+

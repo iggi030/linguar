@@ -14,8 +14,8 @@ function init() {
 		
 		GEvent.addListener(map, "click", function(overlay,latlng) {
 			if (latlng) {   
-				document.getElementById("tandem_lat").value = latlng.lat();
-				document.getElementById("tandem_lng").value = latlng.lng();
+				document.getElementById("lat").value = latlng.lat();
+				document.getElementById("lng").value = latlng.lng();
 						
 				if (!marker){
 					marker = new GMarker(latlng);
@@ -24,6 +24,12 @@ function init() {
 				else
 		         marker.setLatLng(latlng);  
 			 }
+		});
+		GEvent.addListener(map, "move", function() {
+			if (!marker){
+				document.getElementById("lat").value = map.getCenter().lat();
+				document.getElementById("lng").value = map.getCenter().lng();
+			}
 		});
 	}
 }

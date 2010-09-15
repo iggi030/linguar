@@ -1,8 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta name="description" content="<%=h page_title -%>" />
   <title><%=h page_title -%></title>
   <%= render :file => 'shared/rss' unless @settings.private? %>
@@ -10,11 +10,10 @@
   <script type="text/javascript" src="http://linguar.com/javascripts/scriptaculous.js?load=effects,builder"></script>
   <script type="text/javascript" src="http://linguar.com/javascripts/lightbox.js"></script>
   <link rel="stylesheet" href="http://linguar.com/stylesheets/lightbox.css" type="text/css" media="screen" />
-  <%= favicon_tag %>
+  <% favicon_tag %>
   <%= theme_css %>
 <script src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAAKC_hvdLBE54UllMJ11fWYxT2yXp_ZAY8_ufC3CFXhHIE1NvwkxTr4K4aT9A_6XWQ1KG2aCWBsVl7lw"
     type="text/javascript"></script>
-	<%=javascript_include_tag 'application'%>
 </head>
 </head>
 <body>
@@ -37,16 +36,5 @@
     <div class="footer">		
 		<%= @settings.footer -%></div>
   </div>
-  <!--div class="bottom_links">
-		<a href="http://linguar.com/glossaries">Vocabulary trainer</a>
-		| <a href="http://linguar.com/forums/5-japanese-pen-pals">Japanese pen pals</a>
-		| <a href="http://linguar.com/forums/2-german-pen-pals">German pen pals</a>
-		| <a href="http://linguar.com/forums/8-chinese-pen-pals">Chinese pen pals</a>
-		| <a href="http://linguar.com/forums/10-turkish-pen-pals">Turkish pen pals</a>
-		| <a href="http://linguar.com/glossaries/8/cards">JLPT4 vocabulary</a>
-		| <a href="http://linguar.com/glossaries/9/cards">JLPT3 vocabulary</a>
-		| <a href="http://linguar.com/glossaries/28/cards">New practical chinese reader vocabulary</a>
-		| <a href="http://linguar.com/glossaries/7/cards">Hiragana symbols</a>
-  </div> -->
 </body>
 </html>

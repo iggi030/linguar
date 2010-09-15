@@ -15,10 +15,11 @@
     <hr class="sig-hr" /><%= bb(@user.signature) %>
   <% end %>  
   
-  <p style="margin-top:20px">
-    <b>Registered</b>: <%= time_ago_or_time_stamp(@user.created_at) %> &nbsp;
+  <p style="margin-top:20px"> 
     <b>Last Visit</b>: <%= time_ago_or_time_stamp(@user.online_at) %> &nbsp;
-    <b>Profile Updated</b>: <%= time_ago_or_time_stamp(@user.profile_updated_at) %>
   </p>
+<p>
+<%= link_to 'Contact User', contact_user_path(@user) , :class => "large blue button" %> 
+  </p>  
   <div class="clear"> </div>  
 </div>

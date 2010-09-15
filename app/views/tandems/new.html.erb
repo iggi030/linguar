@@ -7,6 +7,10 @@
     		What are you searching for?<br />
     		<%= select_tag 'tandem[post_type]', options_for_select(@types),  :size => 2 %>
   		</p>
+		<p>
+    		Which language are you offering?<br />
+    		<%= select("tandem", "offering_language", Language.find(:all, :order => "name").collect {|l| [l.name, l.id] })%>
+  		</p>
   		<p>
     		Which language are you learning?<br />
     		<%= select("tandem", "learning_language", Language.find(:all, :order => "name").collect {|l| [l.name, l.id] })%>
@@ -19,8 +23,8 @@
 		In which town do you live? (click on the map to select)
 		<div id="map" style="width: 500px; height: 500px"></div>
 		</p>
-		<input type="hidden" id="tandem_lat" name="tandem[lat]" />
-		<input type="hidden" id="tandem_lng" name="tandem[lng]" />
+		<input type="hidden" id="lat" name="tandem[lat]" />
+		<input type="hidden" id="lng" name="tandem[lng]" />
   		<p>
     		<%= f.submit 'Create' %>
   		</p>

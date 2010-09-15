@@ -1,5 +1,23 @@
 <% if logged_in? %>
-  <% if @glossaries.length >= 1 %>
+<% if current_user.glossaries.count < 1 %>
+  <p>Hi <%=current_user%>! You seem to be new on our site. There are already
+  a lot of flashcard sets which other users have created and decided to share
+  with the rest of us. Would you like to take a look inside and see if there is
+  anything you could use?</p>
+   <p>
+      <%= link_to 'Yes! take me to the catalogue', catalogue_path, :class => "large blue button" %> 
+    </p>
+  <p>
+    If you cant find anything which fit your need, you can also create a new set of cards.
+    all you have to enter is a short description and between which languages
+    you are translating. Enjoy!
+  </p>
+  <p>
+    <%= link_to 'New set', new_glossary_path, :class => "large blue button" %> 
+  </p>
+<% end %>  
+
+<% if @glossaries.length >= 1 %>
   <h2>Your flashcard sets</h2>
   <table class="glossaries_table">
   
@@ -32,19 +50,7 @@
       <li><%= link_to 'Create new', new_glossary_path %></li>
       <li><%= link_to 'Select from catalogue', catalogue_path %></li>
     </ul>  
-  
-  <% else %>
-    <h2>
-      On this page you can manage your glossaries.
-    </h2>
-    <p>Since it's currently empty
-    you'll need to either create a new one or choose an existing from the catalogue.</p>
-    </p>
-    <ul class="action_list">
-      <li><%= link_to 'Create new', new_glossary_path %></li>
-      <li><%= link_to 'Select from catalogue', catalogue_path %></li>
-    </ul> 
-  <% end %>
+<%end%>
 <% else %>
 
 <p>

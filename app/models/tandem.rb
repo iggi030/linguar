@@ -9,4 +9,11 @@ class Tandem < ActiveRecord::Base
     
     self.find
   end
+  
+  def offering_language_to_string
+    Language.find_by_id(self.offering_language).name    
+  end
+  def learning_language_to_string
+    Language.find_by_id(self.learning_language).name    
+  end
 end

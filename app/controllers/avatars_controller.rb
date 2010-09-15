@@ -5,7 +5,7 @@ class AvatarsController < ApplicationController
   before_filter :can_edit, :only => [:destroy]
   
   def index
-    @avatars = Avatar.paginate(:page => params[:page], :order => 'updated_at desc')
+    @avatars = current_user.avatars.paginate(:page => params[:page], :order => 'updated_at desc')
   end
   
   def new
@@ -14,6 +14,7 @@ class AvatarsController < ApplicationController
   def create
     @avatar = current_user.avatars.build(params[:avatar])
     if @avatar.save
+      current_user.select_avatar(@avatar)
       redirect_to avatars_path
     else
       render :action => "new"

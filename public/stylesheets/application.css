@@ -42,6 +42,9 @@ input:hover, input:focus {
   position: relative;
   background-color: #fff;
 }
+.header img{
+  margin-left: -20px;
+}
 
 .content {
   clear: both;
@@ -55,14 +58,15 @@ input:hover, input:focus {
 }
 
 a {
-  text-decoration: underline;
+  color: #1f979f;
+  
 }
 a:link, a:visited {
-  color: #638137;
+  text-decoration: none;
 }
 
 a:active, a:hover {
-  color: #8EB653;
+ text-decoration: underline;
 }
 
 h1 { 
@@ -225,15 +229,15 @@ table {
 }
 
 thead th {
-  background: #35604d;
-  color: #fff;
+  background: #f1f1f1;
+  color: black;
   text-align: left;
   font-weight: normal;
   padding: 4px 5px;
 }
 
 thead th a:link, thead th a:visited {
-  color: #fff;
+  color: #000;
 }
 
 thead .tcm {
@@ -290,7 +294,7 @@ tbody .tds {
   width: 76%;
 	max-width: 560px;
   line-height: 1.4em;
-  background: #dedfdf;
+  background: white;
 }
 
 .thread .body p {
@@ -320,7 +324,7 @@ tbody .tds {
 
 .thread dt, .comment-user {
   font-size: 12px;
-  font-weight: bold;
+  font-weight: normal;
   letter-spacing: -1px;
 }
 
@@ -907,5 +911,36 @@ cite {
   position:relative;
   text-decoration:none;
   text-shadow:0 -1px 1px rgba(0, 0, 0, 0.25);
-width:auto;
+  width:auto;
 }
+
+/*
+	Tandem börse
+*/
+.tandem-post .tandem_header {
+	margin: 10px 0 0 0;
+	background-color: #eee;	
+}
+.tandem-post .tandem_header h2{
+	margin: 0px;
+	background-color: #eee;	
+}
+.tandem-post .left-col{
+	float: left; 
+	width: 200px;
+}
+.tandem-post .left-col p{
+	margin: 0px;
+}
+.tandem-post .right-col{
+	float: left; 
+	width: 600px;
+}
+.tandem-post .right-col h2{
+	margin: 0;
+	font-size: 12px;
+}
+.tandem-post .right-col h2 a:hover{
+	text-decoration: underline;
+}
+

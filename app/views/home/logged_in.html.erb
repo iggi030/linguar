@@ -1,32 +1,28 @@
 <div class="home-left">
-  
-<% if current_user.glossaries.count < 2 %>
-  <p>Hi <%=current_user%>! You seem to be new on our site. There are already
-  a lot of flashcard sets which other users have created and decided to share
-  with the rest of us. Would you like to take a look inside and see if there is
-  anything you could use?</p>
-   <p>
-      <%= link_to 'Yes! take me to the catalogue', catalogue_path, :class => "large blue button" %> 
-    </p>
-   
-  <p>
-    If you cant find anything which fit your need, you can also create a new set of cards.
-    all you have to enter is a short description and between which languages
-    you are translating. Enjoy!
-  </p>
-  <p>
-    <%= link_to 'New set', new_glossary_path, :class => "large blue button" %> 
-  </p>
-  <% else %>
-    <h2>Welcome back <%=current_user%>!</h2>
-    <p>
-      Time to revise your vocabulary? Take a look at your</p>
-    <p>
-        <%= link_to 'Flashcards', glossaries_path, :class => "large blue button" %> 
-    </p>   
-    
-  <%end%>
-  <h3>Latest topics in forum</h3>
+<h2>Welcome <%=current_user%>!</h2>
+<% if current_user.bio.blank? %><p>
+Your user profile seems to be empty. <br />If you are looking for a tandem partner or pen pal we recommend 
+writing a bit about yourself, to make it easier for other users to find you! </p>
+	<%= link_to 'Edit my profile', edit_user_path(@user), :class => "large blue button" %> 
+<% end %>
+
+<% if @tandems.count >= 1 %>
+<h3>Your tandem posts</h3>
+	<% @tandems.each do |tandem| %>
+		<% link_to tandem do %>
+			<%= h tandem.offering_language_to_string %> - 
+			<%= h tandem.learning_language_to_string %> 
+			<%= h tandem.created_at.to_s %> <br/>
+	    <%end%>
+		
+	<% end %>
+
+<% elsif current_user.bio  %>
+<p>Are you looking for a pen pal or tandem partner? </p>
+	<%= link_to 'Insert a new post', new_tandem_path, :class => "large blue button" %> 
+<%end%>
+
+<h3>Latest topics in forum</h3>
   <%= render :file => 'topics/list_home' %>
 </div> 
 <div class="clear"> </div>

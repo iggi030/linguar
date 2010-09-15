@@ -2,7 +2,9 @@ class UsersController < ApplicationController
   
   before_filter :can_edit, :only => [:edit, :update, :destroy, :confirm_delete]
   before_filter :require_admin, :only => [:admin, :ban, :remove_ban]
+  before_filter :require_login, :except => [:login, :register, :new, :create]
   skip_filter :check_privacy, :only => [:login, :logout]
+  
   
   def index
     @users = User.paginate(:page => params[:page], :order => 'online_at desc')
