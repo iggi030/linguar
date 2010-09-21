@@ -2,8 +2,9 @@ class TandemsController < ApplicationController
   before_filter :find_parent_user_or_class, :only => [:index]
   
   def index
+    page = params[:page] || 1
     if params[:tandem]
-      @tandems = Tandem.find(:all, :conditions => 
+      @tandems = Tandem.paginate(:all, :conditions => 
       ['post_type = ? AND offering_language = ? AND lat BETWEEN ? AND ? AND lng BETWEEN ? AND ?', 
         params[:tandem][:type], 
         params[:tandem][:language],
@@ -11,9 +12,9 @@ class TandemsController < ApplicationController
         (params[:tandem][:lat].to_f + 2.0),
         (params[:tandem][:lng].to_f - 2.0),
         (params[:tandem][:lng].to_f + 2.0)
-      ])
+      ], :page => page)
     else
-      @tandems = Tandem.find(:all)
+      @tandems = Tandem.paginate(:all, :page => page)
     end
   end
   
