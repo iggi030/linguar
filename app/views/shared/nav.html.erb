@@ -10,7 +10,7 @@
   <p class="nav-right">
     <% if logged_in? %>
       <% unless @settings.admin_only_create.include?(current_controller) && !admin? %>
-        <% if current_controller == 'home' %><%= link_to 'Start a New Topic', new_topic_path %>
+        <% if current_controller == 'home' %>
         <% elsif current_controller == 'articles' %><%= link_to 'Post a New Article', new_article_path %>
         <% elsif current_controller == 'avatars' %><%= link_to 'Upload a New Avatar', new_avatar_path %>
         <% elsif current_controller == 'categories' %><%= link_to 'Start a New Topic', new_topic_path %>
@@ -28,17 +28,22 @@
         <% elsif current_controller == 'users' %><%= link_to 'Register a New User', new_user_path %>
         <% end %>
       <% end %>
-      &nbsp; <%= link_to 'Search', search_path(:type => current_controller) %>
-      <% if admin? && current_controller == 'home' %>
+      &nbsp; 
+  	<% if current_controller == 'forums' %>
+		<%= link_to 'Search', search_path(:type => current_controller) %>
+	<% elsif current_controller == 'users' %>
+		<%= link_to 'Search', search_path(:type => current_controller) %>
+    <%end%>
+  <% if admin? && current_controller == 'home' %>
         &nbsp; <%= link_to 'Admin', admin_path %>
       <% end %>
       <% if current_controller == 'home' %>
-        &nbsp; <%= link_to 'Help', help_path %>
+        &nbsp; <% link_to 'Help', help_path %>
       <% end %>
       &nbsp; <%= link_to 'Logout', logout_path %>
     <% end %>
     <% if !logged_in? && !locked_out? %>
-      &nbsp; <%= link_to 'Search', search_path(:type => current_controller) %> &nbsp; 
+      &nbsp; <% link_to 'Search', search_path(:type => current_controller) %> &nbsp; 
       <%= link_to 'Register', register_path %> &nbsp;
       <%= link_to 'Login', login_path %> 
     <% end %>

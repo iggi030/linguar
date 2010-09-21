@@ -13,17 +13,17 @@ body {
 
 
 input {
-  padding:0.15em;
-	width:10em;
-	border:1px solid #ddd;
-	background:#fafafa;
+  	padding:0.15em;
+	width:14em;
+	border:2px solid black;
+	background:#f6f6f6;
 	font:bold 0.95em arial, sans-serif;
 	-moz-border-radius:0.4em;
 	-khtml-border-radius:0.4em;
 }
 
 input:hover, input:focus {
-	border-color:#c5c5c5;
+	border-color: #aaa;
 	background:#f6f6f6;
 } 
 .wrapper {
@@ -129,7 +129,7 @@ h3 {
 	}
 
 .tabs li a:hover {
-	background: #333;
+	background: gray;
 	color: #eee;
 	border-radius: 5px 5px 0 0;
 	-o-border-radius: 5px 5px 0 0;
@@ -144,7 +144,7 @@ h3 {
 
 .tabs li.current_tab a, .tabs li.current_tab a:hover {
 	color: white;
-	background: gray;
+	background: #333;	
 	border-radius: 5px 5px 0 0;
 	-o-border-radius: 5px 5px 0 0;
 	-icab-border-radius: 5px 5px 0 0;

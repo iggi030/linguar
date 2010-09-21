@@ -5,7 +5,7 @@
 <% form_tag tandems_path, :method => 'get' do %>
 		<p>
     		What are you searching for?<br />
-    		<%= select_tag 'tandem[type]', options_for_select(@types),  :size => 2 %>
+    		<%= select_tag 'tandem[type]', options_for_select(@types),  :size => 1 %>
   		</p>
   		<p>
     		Which language are you learning?<br />
@@ -13,7 +13,7 @@
   		</p>
 		<p>
 		In which town do you want to search? (click on the map to select)
-		<div id="map" style="width: 500px; height: 500px"></div>
+		<div id="map" style="width: 400px; height: 300px"></div>
 		</p>
 		<input type="hidden" id="lat" name="tandem[lat]" />
 		<input type="hidden" id="lng" name="tandem[lng]" />

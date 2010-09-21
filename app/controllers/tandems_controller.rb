@@ -24,6 +24,7 @@ class TandemsController < ApplicationController
   def new
     @tandem = Tandem.new
     @types = {'Tandem partner' => 1, 'Pen pal' => 2}
+    @payments = {'Visa' => 1, 'Mastercard' => 2, 'Switch' => 3}
   end
   
   def create

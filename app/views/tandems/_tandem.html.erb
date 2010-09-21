@@ -1,0 +1,22 @@
+<div class="tandem-post">
+	
+	<div class="tandem_header">
+	<% link_to(post.user) do %>
+		<h2><%= h post.user.login %></h2>
+	<% end %>
+	</div>
+	<div class="left-col">	
+		<%= avatar_for(post.user) %>
+		<p>Offering: <%= h find_name_for_language(post.offering_language) %></p>
+		<p>Wants to learn: <%= h find_name_for_language(post.learning_language) %></p>
+	</div>
+	<div class="right-col">
+		<h2>Motivation</h2>
+		<p><%= h post.motivation %></p>
+		<h2>Description</h2>
+		<p><%= h post.user.bio %></p>
+		
+		<% if post.location != nil %>		
+			<p>location: <%= h post.location %></p>		
+		<% end %>
+</div>
