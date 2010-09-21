@@ -43,7 +43,11 @@ module ApplicationHelper
   end
   
   def avatar_for(user)
-    image_tag user.avatar unless user.avatar.nil?
+    if user.avatar.nil?
+      image_tag('user-icon.jpg')
+    else
+      image_tag user.avatar
+    end
   end
   
   def rank_for(user)

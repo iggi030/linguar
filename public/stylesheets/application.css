@@ -16,7 +16,7 @@ input {
   	padding:0.15em;
 	width:14em;
 	border:2px solid black;
-	background:#f6f6f6;
+	background:white;
 	font:bold 0.95em arial, sans-serif;
 	-moz-border-radius:0.4em;
 	-khtml-border-radius:0.4em;
@@ -24,7 +24,6 @@ input {
 
 input:hover, input:focus {
 	border-color: #aaa;
-	background:#f6f6f6;
 } 
 .wrapper {
   width: 850px;
@@ -932,9 +931,13 @@ cite {
 .tandem-post .left-col p{
 	margin: 0px;
 }
+.tandem-post .left-col img{
+	height:100px; 
+}
 .tandem-post .right-col{
 	float: left; 
 	width: 600px;
+	background-color: #fafafa;
 }
 .tandem-post .right-col h2{
 	margin: 0;

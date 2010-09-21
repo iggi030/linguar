@@ -7,10 +7,10 @@ class TandemsController < ApplicationController
       ['post_type = ? AND offering_language = ? AND lat BETWEEN ? AND ? AND lng BETWEEN ? AND ?', 
         params[:tandem][:type], 
         params[:tandem][:language],
-        (params[:tandem][:lat].to_f - 20.0),
-        (params[:tandem][:lat].to_f + 20.0),
-        (params[:tandem][:lng].to_f - 20.0),
-        (params[:tandem][:lng].to_f + 20.0)
+        (params[:tandem][:lat].to_f - 2.0),
+        (params[:tandem][:lat].to_f + 2.0),
+        (params[:tandem][:lng].to_f - 2.0),
+        (params[:tandem][:lng].to_f + 2.0)
       ])
     else
       @tandems = Tandem.find(:all)
@@ -30,7 +30,9 @@ class TandemsController < ApplicationController
   def create
     @tandem = current_user.tandems.new(params[:tandem])
     if params[:search]
-      @tandem.location = (params[:search]).capitalize
+      if params[:search] != "search the map"
+       @tandem.location = (params[:search]).capitalize!
+      end
     end
     if @tandem.save
       redirect_to(@tandem)

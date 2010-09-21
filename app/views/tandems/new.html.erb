@@ -5,7 +5,7 @@
   <%= f.error_messages %>
 		<p>
     		What are you searching for?<br />
-    		<%= select_tag 'tandem[post_type]', options_for_select(@types),  :size => 2 %>
+    		<%= select_tag 'tandem[post_type]', options_for_select(@types),  :size => 1 %>
   		</p>
 		<p>
     		Which language are you offering?<br />
@@ -16,11 +16,11 @@
     		<%= select("tandem", "learning_language", Language.find(:all, :order => "name").collect {|l| [l.name, l.id] })%>
   		</p>
 		<p>
-    		Why are you learning it (optional)?<br />
+    		Why are you learning it?<br />
     		<%= f.text_area :motivation, :style => "width: 30em; height: 5em;" %>
   		</p>
 		<p>
-		In which town do you live? (click on the map to select)
+		Where do you live? (click on the map to select)
 		<div id="map" style="width: 400px; height: 300px"></div>
 		</p>
 		<input type="hidden" id="lat" name="tandem[lat]" />

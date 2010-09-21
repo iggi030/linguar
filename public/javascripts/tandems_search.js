@@ -18,7 +18,7 @@ function init() {
 					document.getElementById("lng").value = latlng.lng();
 
 					if (!marker){
-						marker = new GMarker(latlng);
+						marker = new GMarker(latlng, {draggable: true});
 						map.addOverlay(marker);	  
 					}
 					else

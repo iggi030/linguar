@@ -12,7 +12,7 @@
     		<%= select("tandem", "language", Language.find(:all, :order => "name").collect {|l| [l.name, l.id] })%>
   		</p>
 		<p>
-		In which town do you want to search? (click on the map to select)
+		In which area do you want to search? (click on the map to select)
 		<div id="map" style="width: 400px; height: 300px"></div>
 		</p>
 		<input type="hidden" id="lat" name="tandem[lat]" />
