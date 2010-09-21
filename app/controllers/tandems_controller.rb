@@ -4,6 +4,7 @@ class TandemsController < ApplicationController
   def index
     page = params[:page] || 1
     if params[:tandem]
+      if (params[:tandem][:type].to_i == 1)
       @tandems = Tandem.paginate(:all, :conditions => 
       ['post_type = ? AND offering_language = ? AND lat BETWEEN ? AND ? AND lng BETWEEN ? AND ?', 
         params[:tandem][:type], 
@@ -13,6 +14,17 @@ class TandemsController < ApplicationController
         (params[:tandem][:lng].to_f - 2.0),
         (params[:tandem][:lng].to_f + 2.0)
       ], :page => page)
+      else #pen pal search
+         @tandems = Tandem.paginate(:all, :conditions => 
+      ['post_type = ? AND offering_language = ? AND lat BETWEEN ? AND ? AND lng BETWEEN ? AND ?', 
+        params[:tandem][:type], 
+        params[:tandem][:language],
+        (params[:tandem][:lat].to_f - 50.0),
+        (params[:tandem][:lat].to_f + 50.0),
+        (params[:tandem][:lng].to_f - 50.0),
+        (params[:tandem][:lng].to_f + 50.0)
+      ], :page => page)
+      end
     else
       @tandems = Tandem.paginate(:all, :page => page)
     end
@@ -25,7 +37,6 @@ class TandemsController < ApplicationController
   def new
     @tandem = Tandem.new
     @types = {'Tandem partner' => 1, 'Pen pal' => 2}
-    @payments = {'Visa' => 1, 'Mastercard' => 2, 'Switch' => 3}
   end
   
   def create

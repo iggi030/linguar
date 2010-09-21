@@ -7,8 +7,12 @@
 	</div>
 	<div class="left-col">	
 		<%= avatar_for(post.user) %>
+		<p>Looking for a <b><%= h post.post_type_to_string(post.post_type-1) %></b></p> <br />
 		<p>Offering: <%= h find_name_for_language(post.offering_language) %></p>
-		<p>Wants to learn: <%= h find_name_for_language(post.learning_language) %></p>
+		<p>Wants to learn: <%= h find_name_for_language(post.learning_language) %></p><br>
+		<% if post.location != nil %>		
+			<p>Lives in: <%= h post.location %></p>		
+		<% end %>
 	</div>
 	<div class="right-col">
 		<h2>Motivation</h2>
@@ -16,7 +20,5 @@
 		<h2>Description</h2>
 		<p><%= h post.user.bio %></p>
 		
-		<% if post.location != nil %>		
-			<p>location: <%= h post.location %></p>		
-		<% end %>
+		
 </div>

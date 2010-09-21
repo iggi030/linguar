@@ -18,4 +18,9 @@ class Tandem < ActiveRecord::Base
   def learning_language_to_string
     Language.find_by_id(self.learning_language).name    
   end
+  
+  def post_type_to_string(type)
+    types = ['language partner', 'pen pal' ]
+    types[type]
+  end
 end
