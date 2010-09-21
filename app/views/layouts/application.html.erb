@@ -18,7 +18,7 @@
   <div class="wrapper">
     <%= render :file => 'shared/reminders' unless locked_out? -%>
     <div class="header">
-		<%= link_to image_tag "logo_big.png", {:action => :home} %>
+		<%= link_to (image_tag "logo_big.png"), root_url %>
     	<%= render :file => 'shared/tabs' unless locked_out? -%>  
 
     </div>
