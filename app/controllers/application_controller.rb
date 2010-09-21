@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
     redirect_to root_path and return false
   end
   
-  def get_settings
+  def get_settings   
     @settings ||= Setting.find(:first)
     raise ActiveRecord::SettingsNotFound if @settings.nil?
   end
