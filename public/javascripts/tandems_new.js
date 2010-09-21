@@ -4,6 +4,14 @@ var startZoom = 2;
 var map;
 var marker
 
+function limitText(limitField, limitCount, limitNum) {
+	if (limitField.value.length > limitNum) {
+		limitField.value -= 1;
+	} else {
+		limitCount.value = limitNum - limitField.value.length;
+	}
+}
+
 function init() { 
 	if (GBrowserIsCompatible()) {
 		map = new GMap2(document.getElementById("map"));

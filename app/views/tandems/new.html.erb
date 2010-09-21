@@ -17,7 +17,11 @@
   		</p>
 		<p>
     		Why are you learning it?<br />
-    		<%= f.text_area :motivation, :style => "width: 30em; height: 5em;" %>
+    		<%= f.text_area :motivation, :style => "width: 30em; height: 5em;", :maxlength=>"250", :cols => "50",
+							:onKeyDown => "limitText(this.form.tandem_motivation,this.form.countdown,250);",
+							:onKeyUp => "limitText(this.form.tandem_motivation,this.form.countdown,250);" %>
+			<br />You have <input readonly type="text" name="countdown" style="width: 2em;" value="250"> characters left.
+			
   		</p>
 		<p>
 		Where do you live? (click on the map to select)

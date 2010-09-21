@@ -16,9 +16,9 @@
 	</div>
 	<div class="right-col">
 		<h2>Motivation</h2>
-		<p><%= h post.motivation %></p>
+		<p><%=  simple_format(sanitize(post.motivation))  %></p>
 		<h2>Description</h2>
-		<p><%= h post.user.bio %></p>
+		<p><%=  simple_format(sanitize(post.user.bio))  %></p>
 		
 		
 </div>
