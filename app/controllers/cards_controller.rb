@@ -1,8 +1,10 @@
 class CardsController < ApplicationController
   
   def index
+  page = params[:page] || 1
     @glossary = Glossary.find(params[:glossary_id])
-    @cards = @glossary.cards unless @glossary.cards.nil?
+    @cards = Card.paginate(:all,  :conditions => ['glossary_id = ?', params[:glossary_id] ], :page => page, :order => 'created_at DESC' )
+    @page = page
     if !logged_in?
       render :action => "public"
     end
