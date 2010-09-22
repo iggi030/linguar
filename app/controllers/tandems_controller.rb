@@ -13,7 +13,7 @@ class TandemsController < ApplicationController
         (params[:tandem][:lat].to_f + 2.0),
         (params[:tandem][:lng].to_f - 2.0),
         (params[:tandem][:lng].to_f + 2.0)
-      ], :page => page)
+      ], :page => page, :order => 'created_at DESC')
       else #pen pal search
          @tandems = Tandem.paginate(:all, :conditions => 
       ['post_type = ? AND offering_language = ? AND lat BETWEEN ? AND ? AND lng BETWEEN ? AND ?', 
@@ -23,10 +23,10 @@ class TandemsController < ApplicationController
         (params[:tandem][:lat].to_f + 50.0),
         (params[:tandem][:lng].to_f - 50.0),
         (params[:tandem][:lng].to_f + 50.0)
-      ], :page => page)
+      ], :page => page, :order => 'created_at DESC')
       end
     else
-      @tandems = Tandem.paginate(:all, :page => page)
+      @tandems = Tandem.paginate(:all, :page => page, :order => 'created_at DESC')
     end
   end
   
