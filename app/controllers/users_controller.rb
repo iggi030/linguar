@@ -2,8 +2,8 @@ class UsersController < ApplicationController
   
   before_filter :can_edit, :only => [:edit, :update, :destroy, :confirm_delete]
   before_filter :require_admin, :only => [:admin, :ban, :remove_ban]
-  before_filter :require_login, :except => [:login, :register, :new, :create]
-  skip_filter :check_privacy, :only => [:login, :logout]
+  before_filter :require_login, :except => [:login, :register, :new, :create, :forgot_password]
+  skip_filter :check_privacy, :only => [:login, :logout, :forgot_password]
   
   
   def index
@@ -116,6 +116,32 @@ class UsersController < ApplicationController
     flash[:notice] = "Message to #{User.find(params[:id])} sent sucessfully"
     redirect_to :controller => "home", :action => "index"
   end
+  
+  def forgot_password
+    logger.debug("___---Sinking")
+    if params[:user]
+      u = User.find_by_email(params[:user][:email])
+      if u and u.send_new_password
+        logger.debug("SenT password!")
+        flash[:notice]  = "A new password has been sent by email."
+        redirect_to login_url
+      else
+        logger.debug("Couldnt send password!")
+        flash[:notice]  = "Couldn't send password"
+        redirect_to login_url
+      end
+    end
+  end
+
+  def change_password
+    @user=session[:user]
+    if request.post?
+      @user.update_attributes(:password=>params[:user][:password], :password_confirmation => params[:user][:password_confirmation])
+      if @user.save
+        flash[:message]="Password Changed"
+      end
+    end
+  end
     
   protected
     
@@ -131,4 +157,5 @@ class UsersController < ApplicationController
     user.save!
     redirect_to root_path
   end
+    
 end

@@ -23,13 +23,15 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :themes, :member => {:select => :post, :deselect => :post}
   map.resources :topics, :member => {:show_new => :get}, :collection => {:mark_all_viewed => :get}
   map.resources :uploads
-  map.resources :users, :member => {:contact => :get, :sendmail => :post, :admin => :post, :ban => :get, :remove_ban => :post, :confirm_delete => :get}, 
-                        :has_many => [:articles, :posts] 
-                   
   
+  map.resources :users, :member => {:contact => :get, :sendmail => :post, :admin => :post, :ban => :get, :remove_ban => :post, :confirm_delete => :get}, 
+                        :has_many => [:articles, :posts]
+                        
+                        
   map.search 'search', :controller => 'search', :action => 'index'
   map.refresh_chatters 'refresh_chatters', :controller => 'messages', :action => 'refresh_chatters'
   
+  map.forgot_password '/forgot_password', :controller => 'users', :action => 'forgot_password' 
   map.login 'login', :controller => 'users', :action => 'login'
   map.logout 'logout', :controller => 'users', :action => 'logout'
   map.register 'register', :controller => 'users', :action => 'new'
@@ -44,6 +46,6 @@ ActionController::Routing::Routes.draw do |map|
   #map.glossaries 'gloss', :controller => 'glossaries', :action => 'index' 
   map.exceptions 'logged_exceptions/:action/:id', :controller => 'logged_exceptions', :action => 'index', :id => nil
   
-  map.catch_all '*path', :controller => 'topics', :action => 'unknown_request'
+  #map.catch_all '*path', :controller => 'topics', :action => 'unknown_request'
   
 end
