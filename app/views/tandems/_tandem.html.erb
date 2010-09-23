@@ -2,10 +2,11 @@
 	
 	<div class="tandem_header">
 	<% link_to(post.user) do %>
-		<h2><%= h post.user.login.capitalize! %> (29,  
-		<% if post.location != nil %>
-			<%= h post.location %>)</h2>
-		<% end %>		
+		<h2><%= h post.user.login.capitalize! %> </h2>
+			
+	<% end %>
+	<% if post.location != nil %>
+		<%= h post.location %>
 	<% end %>
 	</div>
 	<div class="left-col">	
@@ -17,7 +18,5 @@
 		<h2>Motivation</h2>
 		<p><%=  simple_format(sanitize(post.motivation))  %></p>
 		<h2>Description</h2>
-		<p><%=  simple_format(sanitize(post.user.bio))  %></p>
-		
-		
+		<p><%=  simple_format(sanitize(post.user.bio))  %></p>		
 </div>
