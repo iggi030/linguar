@@ -4,19 +4,19 @@
 <% form_for @tandem do |f| %>
   <%= f.error_messages %>
 		<p>
-    		What are you searching for?<br />
+    		<b>1</b>. What are you searching for?<br />
     		<%= select_tag 'tandem[post_type]', options_for_select(@types),  :size => 1 %>
   		</p>
 		<p>
-    		Which language are you offering?<br />
+    		<b>2 </b>. Which language are you offering?<br />
     		<%= select("tandem", "offering_language", Language.find(:all, :order => "name").collect {|l| [l.name, l.id] })%>
   		</p>
   		<p>
-    		Which language are you learning?<br />
+    		<b>3</b>. Which language are you learning?<br />
     		<%= select("tandem", "learning_language", Language.find(:all, :order => "name").collect {|l| [l.name, l.id] })%>
   		</p>
 		<p>
-    		Why are you learning it?<br />
+    		<b>4</b>. Why are you learning it?<br />
     		<%= f.text_area :motivation, :style => "width: 30em; height: 5em;", :maxlength=>"250", :cols => "50",
 							:onKeyDown => "limitText(this.form.tandem_motivation,this.form.countdown,250);",
 							:onKeyUp => "limitText(this.form.tandem_motivation,this.form.countdown,250);" %>
@@ -24,13 +24,13 @@
 			
   		</p>
 		<p>
-		Where do you live? (click on the map to select)
+		<b>5</b>. Where do you live? (click on the map to select)
 		<div id="map" style="width: 400px; height: 300px"></div>
 		</p>
 		<input type="hidden" id="lat" name="tandem[lat]" />
 		<input type="hidden" id="lng" name="tandem[lng]" />
   		<p>
-    		<%= f.submit 'Create' %>
+    		<b>6</b>. <%= f.submit 'Send!' %>
   		</p>
 	<% end %>
 </div>

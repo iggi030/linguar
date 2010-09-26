@@ -43,9 +43,8 @@ ActionController::Routing::Routes.draw do |map|
   map.files 'files', :controller => 'uploads', :action => 'index'
   map.forum_root 'forum', :controller => 'forums', :action => 'index'
   map.help 'help', :controller => 'home', :action => 'help'
-  #map.glossaries 'gloss', :controller => 'glossaries', :action => 'index' 
   map.exceptions 'logged_exceptions/:action/:id', :controller => 'logged_exceptions', :action => 'index', :id => nil
   
-  #map.catch_all '*path', :controller => 'topics', :action => 'unknown_request'
+  map.catch_all '*path', :controller => 'topics', :action => 'unknown_request'
   
 end

@@ -4,21 +4,21 @@
 <div class="form">
 <% form_tag tandems_path, :method => 'get' do %>
 		<p>
-    		What are you searching for?<br />
+    		<b>1</b>. What are you searching for?<br />
     		<%= select_tag 'tandem[type]', options_for_select(@types),  :size => 1 %>
   		</p>
   		<p>
-    		Which language are you learning?<br />
+    		<b>2</b>. Which language are you learning?<br />
     		<%= select("tandem", "language", Language.find(:all, :order => "name").collect {|l| [l.name, l.id] })%>
   		</p>
 		<p>
-		In which area do you want to search? (click on the map to select)
+		<b>3</b>. Click on the area you want to search
 		<div id="map" style="width: 400px; height: 300px"></div>
 		</p>
 		<input type="hidden" id="lat" name="tandem[lat]" />
 		<input type="hidden" id="lng" name="tandem[lng]" />
   		<p>
-    		<%= submit_tag 'Search', :name => nil%>
+    	<b>4</b>.	<%= submit_tag 'Search Linguar.com', :name => nil%>
   		</p>
 	<% end %>
 </div>
