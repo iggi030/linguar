@@ -950,3 +950,7 @@ cite {
   margin-left: 1em;
   list-style-type: circle;
 }
+
+.welcome-text h2 {
+  margin-bottom: 0.5em;
+}
