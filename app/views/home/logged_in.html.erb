@@ -1,10 +1,38 @@
 <div class="home-left">
-<h2>Welcome <%=current_user%>!</h2>
-<% if current_user.bio.blank? %><p>
-Your user profile seems to be empty. <br />If you are looking for a tandem partner or pen pal we recommend 
-writing a bit about yourself, to make it easier for other users to find you! </p>
-	<%= link_to 'Edit my profile', edit_user_path(@user), :class => "large blue button" %> 
+
+<% if (current_user.bio.blank? && @tandems.count < 1) %>
+
+<h2>Welcome to linguar.com!</h2>
+
+<p>This site consists of three areas.</p>
+<ul class="welcome-text">
+	<li class="welcome-text">
+		<%= link_to '<h2>Language exchange partner forum</h2>', tandems_path %> 
+	It’s easier to learn a language with the help of a native speaker. This forum lets you easily find someone in your local area to meet up with or if you prefer a pen pal or skype pal for distance communication.
+	</li>
+	<li class="welcome-text">
+		<%= link_to '<h2>Vocabulary drill tool</h2>', glossaries_path %> 
+	You will undoubtedly learn a lot of new words from you language friend. 
+	Create your own flashcard sets and enter all new expression,
+	words or any things you need to remember here and use the trainer to remember them. <br />
+	There are also possibilities to share your sets with other users on the
+	site or even cooperate with them.</li>	
+	<li class="welcome-text">
+		<%= link_to '<h2>Forum for foreign languages and cultures</h2>', forums_path %>
+	Having problems with the grammar, translating expressions or maybe
+	something else related to the country / language? Then this is the place
+	to ask others for help.</li>
+</ul>
 <% end %>
+
+<% if current_user.bio.blank? && @tandems.count >= 1 %>
+
+<h2>Your user profile seems to be empty</h2>
+If you are looking for a tandem partner or pen pal we recommend 
+writing a bit about yourself and maybe upload a picture 
+to make it easier for other users to find you! </p>
+	<%= link_to 'Edit my profile', edit_user_path(current_user), :class => "large blue button" %> 
+<%end%>
 
 <% if @tandems.count >= 1 %>
 <h3>Your tandem posts</h3>
@@ -14,15 +42,18 @@ writing a bit about yourself, to make it easier for other users to find you! </p
 			<%= h tandem.learning_language_to_string %> 
 			<%= h tandem.created_at.to_s %> <br/>
 	    <%end%>
-		
 	<% end %>
+<% end %>
 
-<% elsif current_user.bio  %>
+<% if current_user.bio == "disabled"  %>
+<h2>Welcome <%=current_user%>!</h2>
 <p>Are you looking for a pen pal or tandem partner? </p>
 	<%= link_to 'Insert a new post', new_tandem_path, :class => "large blue button" %> 
+Your user profile seems to be empty. <br />If you are looking for a tandem partner or pen pal we recommend 
+writing a bit about yourself, to make it easier for other users to find you! </p>
+	<%= link_to 'Edit my profile', edit_user_path(@user), :class => "large blue button" %> 
 <%end%>
-
-<h3>Latest topics in forum</h3>
-  <%= render :file => 'topics/list_home' %>
 </div> 
 <div class="clear"> </div>
+<h3 style="border-top: 1px dotted; padding-top: 1em;">Latest topics in forum</h3>
+  <%= render :file => 'topics/list_home' %>

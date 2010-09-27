@@ -2,15 +2,14 @@
 <% if current_user.glossaries.count < 1 %>
   <p>Hi <%=current_user%>! You seem to be new on our site. There are already
   a lot of flashcard sets which other users have created and decided to share
-  with the rest of us. Would you like to take a look inside and see if there is
+  with the rest of us. Would you like to take a look inside the database and see if there is
   anything you could use?</p>
    <p>
       <%= link_to 'Yes! take me to the catalogue', catalogue_path, :class => "large blue button" %> 
     </p>
   <p>
-    If you cant find anything which fit your need, you can also create a new set of cards.
-    all you have to enter is a short description and between which languages
-    you are translating. Enjoy!
+    If you cant find anything which fits your need, you can also create a new set of cards.
+    Enjoy!
   </p>
   <p>
     <%= link_to 'New set', new_glossary_path, :class => "large blue button" %> 
@@ -53,23 +52,27 @@
 <%end%>
 <% else %>
 
-<p>
-This is a vocabulary drill tool which is an excellent supplement to your meetings with tandem partner, 
+
+<h2>This is a vocabulary drill tool</h2>
+<p>An excellent supplement to your meetings with tandem partner, 
 language course, pen pal or for individual study.
 </p>
 <p>
-Instead of using traditional flash cards this vocabulary trainer uses a unique approach to
+Instead of using traditional flashcards this vocabulary trainer uses a unique approach to
 learning vocabulary which is optimized for lifetime learning,
-not just for short-term memorization.<br />Works with any target language!
+not just for short-term memorization.<br /><br />Works with any target language!
 </p>
 <p>
-Either create a new set of flashcards which you can share to your friends or even cooperate
-with them on it. Cooperating can be very helpful when you are a group of people
-learning a new language and each member can enter a few words or expressions a day.
+Create a your own set of flashcards containing words and expressions
+you have to learn. Or if you are a group of people learning together then
+we also offer the possibility for you all to cooperate on the same set!</p>
+<p>
+There is also public catalogue of sets which other users have been creating.
+Have a look here first to see if someone already have created something
+which you could use!
 </p>
 <p>
-Browse through our database of already existing <%=link_to 'flashcard sets', catalogue_path %> </a>
-and see if there is anything which would be useful for you!
+<%=link_to 'Browse flashcard sets', catalogue_path, :class =>  "large blue button" %> </a>
 </p>
 
 <%end%>
