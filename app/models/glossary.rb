@@ -6,6 +6,11 @@ class Glossary < ActiveRecord::Base
 
   attr_accessor :language_order
   
+  def to_param
+  normalized_name = title.gsub(' ', '-').gsub(/[^a-zA-Z0-9\_\-\.]/, '')
+  "#{self.id}-#{normalized_name.parameterize}"
+  end
+  
   def find_questions_for_this_session(user, max_cards, max_new_cards)
     logger.debug("-----#{language_order}")
     @todays_questions = Array.new
