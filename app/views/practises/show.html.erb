@@ -62,7 +62,7 @@
           method: "post",
           parameters: "data=" + strJSON,
           onComplete: function(transport) {
-							window.location = "/glossaries"
+							window.location = "<%= glossaries_path %>"
                         }
         });
     }

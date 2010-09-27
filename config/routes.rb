@@ -7,17 +7,17 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :categories, :member => {:confirm_delete => :get}
   map.resources :comments
   map.resources :events
-  map.resources :glossaries , :member => { :add_shared => :get, :clone => :get} do |glossary|
+  map.resources :glossaries , :as => 'vocabulary_trainer', :member => { :add_shared => :get, :clone => :get} do |glossary|
     glossary.resources :cards
     glossary.resource   :practise, :member => {:update_scores => :post}
   end
-  map.resource  :catalogue
+  map.resource  :catalogue, :as => 'flashcards_sets'
   map.resources :forums, :member => {:confirm_delete => :get}
   map.resources :headers, :member => {:vote_up => :post, :vote_down => :post}
   map.resources :messages, :collection => {:more => :get, :refresh => :get}
   map.resources :posts, :member => {:quote => :get, :topic => :get}
   map.resources :ranks
-  map.resources :tandems, :collection => {:search => :get}
+  map.resources :tandems, :as => 'language_partners', :collection => {:search => :get}
   map.resources :settings
   map.resources :subscriptions, :collection => {:toggle => :post}
   map.resources :themes, :member => {:select => :post, :deselect => :post}
@@ -27,7 +27,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users, :member => {:contact => :get, :sendmail => :post, :admin => :post, :ban => :get, :remove_ban => :post, :confirm_delete => :get}, 
                         :has_many => [:articles, :posts]
                         
-                        
+                
   map.search 'search', :controller => 'search', :action => 'index'
   map.refresh_chatters 'refresh_chatters', :controller => 'messages', :action => 'refresh_chatters'
   
@@ -35,7 +35,6 @@ ActionController::Routing::Routes.draw do |map|
   map.login 'login', :controller => 'users', :action => 'login'
   map.logout 'logout', :controller => 'users', :action => 'logout'
   map.register 'register', :controller => 'users', :action => 'new'
-  
   map.admin 'admin', :controller => 'settings', :action => 'index'
   map.blog 'blog', :controller => 'articles', :action => 'index'
   map.blog_archives 'blog/archives', :controller => 'articles', :action => 'archives'
@@ -46,5 +45,4 @@ ActionController::Routing::Routes.draw do |map|
   map.exceptions 'logged_exceptions/:action/:id', :controller => 'logged_exceptions', :action => 'index', :id => nil
   
   map.catch_all '*path', :controller => 'topics', :action => 'unknown_request'
-  
 end
