@@ -8,7 +8,7 @@ function init() {
 	if (GBrowserIsCompatible()) {
 		map = new GMap2(document.getElementById("map"));
 		map.setUIToDefault();
-		map.enableGoogleBar(); 
+		 
 		var location = new GLatLng(centerLatitude, centerLongitude); 
 		map.setCenter(location, startZoom);
 		
