@@ -1,0 +1,30 @@
+xml.instruct!
+xml.urlset "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
+  @tandems.each do |entry|
+    xml.url do
+      xml.loc url_for(:controller => 'tandems', 
+                      :action => 'show', 
+                      :id => entry.to_param,
+                      :only_path => false)
+      xml.lastmod entry.updated_at.to_date
+    end
+  end
+  @glossaries.each do |entry|
+    xml.url do
+      xml.loc url_for(:controller => 'cards', 
+                      :action => 'index', 
+                      :glossary_id => entry.to_param,
+                      :only_path => false)
+      xml.lastmod entry.updated_at.to_date
+    end
+  end
+  @topics.each do |entry|
+    xml.url do
+      xml.loc url_for(:controller => 'topics', 
+                      :action => 'show', 
+                      :id => entry.to_param,
+                      :only_path => false)
+      xml.lastmod entry.updated_at.to_date
+    end
+  end
+end
