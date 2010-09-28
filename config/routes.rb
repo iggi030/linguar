@@ -44,5 +44,7 @@ ActionController::Routing::Routes.draw do |map|
   map.help 'help', :controller => 'home', :action => 'help'
   map.exceptions 'logged_exceptions/:action/:id', :controller => 'logged_exceptions', :action => 'index', :id => nil
   
+  map.connect 'sitemap.xml', :controller => "sitemap", :action => "sitemap"
+  
   map.catch_all '*path', :controller => 'topics', :action => 'unknown_request'
 end
