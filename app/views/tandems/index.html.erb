@@ -1,7 +1,5 @@
 <%= link_to 'Search!', search_tandems_url, :class => "large blue button" %> 
-<% if logged_in? %>
 <%= link_to 'Insert new tandem post', new_tandem_url, :class => "large blue button" %> 
-<% end %>
 
 <% if @tandems.count < 1 %>
 	<p>
