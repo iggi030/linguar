@@ -31,10 +31,17 @@ module ApplicationHelper
     page = @settings.tagline if current_controller == 'home'
     page = "Vocabulary trainer" if current_controller == 'glossaries'
     
+    page = "Searching for a #{@tandem.offering_language_to_string} to
+    #{@tandem.learning_language_to_string}
+      language partner" if (current_controller == 'tandems' && @tandem)
+      
+    page = "Language partners" if (current_controller == 'tandems' && !@tandem)
+    
     if current_controller == 'cards' || current_controller == 'practises'
       glossary_name = Glossary.find(params[:glossary_id]).title
       page = "#{glossary_name}"
     end
+    
     "#{item || page}"
   end
   

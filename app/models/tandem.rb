@@ -25,7 +25,8 @@ class Tandem < ActiveRecord::Base
   end
   
   def to_param
-  normalized_name = motivation.gsub(' ', '-').gsub(/[^a-zA-Z0-9\_\-\.]/, '')
-  "#{self.id}-#{normalized_name[0..40].parameterize}"
+  description ="Searching for a #{self.offering_language_to_string} to
+    #{self.learning_language_to_string} #{self.post_type_to_string(self.post_type-1)}".gsub(' ', '-').gsub(/[^a-zA-Z0-9\_\-\.]/, '')
+  "#{self.id}-#{description.parameterize}"
   end
 end
