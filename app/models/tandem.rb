@@ -23,4 +23,9 @@ class Tandem < ActiveRecord::Base
     types = ['language partner', 'pen pal' ]
     types[type]
   end
+  
+  def to_param
+  normalized_name = motivation.gsub(' ', '-').gsub(/[^a-zA-Z0-9\_\-\.]/, '')
+  "#{self.id}-#{normalized_name[0..40].parameterize}"
+  end
 end
