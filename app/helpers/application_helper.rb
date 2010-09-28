@@ -33,7 +33,7 @@ module ApplicationHelper
     
     page = "Searching for a #{@tandem.offering_language_to_string} to
     #{@tandem.learning_language_to_string}
-      language partner" if (current_controller == 'tandems' && @tandem)
+      language partner" if (current_controller == 'tandems' && action_name == 'show')
       
     page = "Language partners" if (current_controller == 'tandems' && !@tandem)
     

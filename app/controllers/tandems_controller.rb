@@ -1,6 +1,7 @@
 class TandemsController < ApplicationController
   before_filter :find_parent_user_or_class, :only => [:index]
-  
+  before_filter :require_login, :only => [:new]
+                                            
   def index
     page = params[:page] || 1
     if params[:tandem]
