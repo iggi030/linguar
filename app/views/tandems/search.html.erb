@@ -1,25 +1,26 @@
-<%= javascript_include_tag "tandems_search" %>
+<% javascript_include_tag "tandems_search" %>
 
 <h2>Find a tandem partner</h2>
 <div class="form">
 <% form_tag tandems_path, :method => 'get' do %>
 		<p>
-    		<b>1</b>. What are you searching for?<br />
-    		<%= select_tag 'tandem[type]', options_for_select(@types),  :size => 1 %>
-  		</p>
-  		<p>
-    		<b>2</b>. Which language are you learning?<br />
-    		<%= select("tandem", "language", Language.find(:all, :order => "name").collect {|l| [l.name, l.id] })%>
-  		</p>
-		<p>
-		<b>3</b>. Click on the area you want to search
-		<div id="map" style="width: 400px; height: 300px"></div>
+			<b>1</b>. What are you searching for?<br />
+			Tandem partner<%= check_box_tag('filters[tandem_partner]', true) %><br />
+			Teacher <%= check_box_tag 'filters[teacher]', true %><br />
+			Pen pal <%= check_box_tag 'filters[pen_pal]', true %><br />
+			Skype pal <%= check_box_tag 'filters[skype_pal]', true %><br />
 		</p>
-		<input type="hidden" id="lat" name="tandem[lat]" />
-		<input type="hidden" id="lng" name="tandem[lng]" />
-  		<p>
-    	<b>4</b>.	<%= submit_tag 'Search Linguar.com', :name => nil%>
-  		</p>
+		<p>
+			<b>2</b>. Which language are you learning?<br />
+			<%= select("filters", "language", Language.find(:all, :order => "name").collect {|l| [l.name, l.id] })%>
+		</p>
+		<p>
+		<b>3</b>. Where do you want to search? (ex Berlin, Friedrichshain)<br />
+		<%= text_field_tag('filters[location]') %>
+		<p>
+		<b>4</b>.<br />
+		<%= submit_tag 'Search Linguar.com', :name => nil%>
+		</p>
 	<% end %>
 </div>
 

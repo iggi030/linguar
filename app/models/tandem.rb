@@ -1,8 +1,7 @@
 class Tandem < ActiveRecord::Base  
-  attr_accessor :latlng
-  
   belongs_to :user
   validates_presence_of :user_id, :motivation, :post_type, :lat, :lng, :learning_language
+  acts_as_mappable
   
   def self.per_page
     8
@@ -28,5 +27,5 @@ class Tandem < ActiveRecord::Base
   description ="Searching for a #{self.offering_language_to_string} to
     #{self.learning_language_to_string} #{self.post_type_to_string(self.post_type-1)}".gsub(' ', '-').gsub(/[^a-zA-Z0-9\_\-\.]/, '')
   "#{self.id}-#{description.parameterize}"
-  end
+  end  
 end
