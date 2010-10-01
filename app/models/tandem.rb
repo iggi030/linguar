@@ -1,7 +1,6 @@
 class Tandem < ActiveRecord::Base  
   belongs_to :user
   validates_presence_of :user_id, :motivation, :post_type, :lat, :lng, :learning_language
-  acts_as_mappable
   
   def self.per_page
     8
