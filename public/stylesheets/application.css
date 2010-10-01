@@ -14,7 +14,6 @@ body {
 
 input {
   	padding:0.15em;
-	width:14em;
 	border:2px solid black;
 	background:white;
 	font:bold 0.95em arial, sans-serif;
@@ -953,4 +952,22 @@ cite {
 
 .welcome-text h2 {
   margin-bottom: 0.5em;
+}
+
+.form {
+  margin: 10px;
+}
+
+.form input {
+  margin-top: 4px;
+  padding: 0.4em;
+  width: 15em;
+}
+
+.form select {
+  margin-top: 10px;
+}
+#filters_tandem_partner, #filters_pen_pal {
+  width: auto;
+  margin-right: 1em;
 }

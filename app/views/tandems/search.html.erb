@@ -1,14 +1,16 @@
 <% javascript_include_tag "tandems_search" %>
 
-<h2>Find a tandem partner</h2>
+<h2>Find a language partner</h2>
 <div class="form">
 <% form_tag tandems_path, :method => 'get' do %>
-		<p>
-			<b>1</b>. What are you searching for?<br />
-			Tandem partner<%= check_box_tag('filters[tandem_partner]', true) %><br />
-			Teacher <%= check_box_tag 'filters[teacher]', true %><br />
-			Pen pal <%= check_box_tag 'filters[pen_pal]', true %><br />
-			Skype pal <%= check_box_tag 'filters[skype_pal]', true %><br />
+		<p class="label_checkbox_pair">
+			<b>1</b>. What are you searching for?</p>
+			<%= check_box_tag('filters[tandem_partner]', true) -%>
+			<%= label_tag :tandem_partner,  'Tandem partner (for meeting up locally)' %>
+			<br />
+			<%= check_box_tag 'filters[pen_pal]', true -%>
+			Pen pal
+			<br />
 		</p>
 		<p>
 			<b>2</b>. Which language are you learning?<br />

@@ -5,17 +5,9 @@ class TandemsController < ApplicationController
   def index
     page = params[:page] || 1
     if params[:filters]
-      res = Geokit::Geocoders::YahooGeocoder.geocode(params[:filters][:location])
-      logger.debug "#{res}"
-      @tandems = Tandem.paginate(:all, :conditions => 
-      ['post_type = ? AND offering_language = ? AND lat BETWEEN ? AND ? AND lng BETWEEN ? AND ?', 
-        params[:filters][:type], 
-        params[:filters][:language],
-        (200.0),
-        (200.0),
-        (200.0),
-        (200.0)
-      ], :page => page, :order => 'created_at DESC')
+      @search = Search.new(Tandem, params[:filters])
+      logger.debug "#{@search}"
+      @tandems = Tandem.search(@search, :page => params[:page])
     else
       @tandems = Tandem.paginate(:all, :page => page, :order => 'created_at DESC')
     end
@@ -32,11 +24,6 @@ class TandemsController < ApplicationController
   
   def create
     @tandem = current_user.tandems.new(params[:tandem])
-    if params[:search]
-      if params[:search] != "search the map"
-       @tandem.location = (params[:search]).capitalize!
-      end
-    end
     if @tandem.save
       redirect_to(@tandem)
     else
@@ -59,9 +46,4 @@ class TandemsController < ApplicationController
     @types = {'Tandem partner' => 1, 'Pen pal' => 2}
   end
     
-  def search_create
-    map_center = params[:map_center]
-    @tandems = Tandem.find_from_gmap_point(map_center, 50) #takes radious as an argument
-    render :action => "search"
-  end
 end

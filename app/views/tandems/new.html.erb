@@ -4,11 +4,11 @@
 <% form_for @tandem do |f| %>
   <%= f.error_messages %>
 		<p>
-    		<b>1</b>. What are you searching for?<br />
+    		<b>1</b>. What are you searching for? <br />
     		<%= select_tag 'tandem[post_type]', options_for_select(@types),  :size => 1 %>
   		</p>
 		<p>
-    		<b>2 </b>. Which language are you offering?<br />
+    		<b>2</b>. Which language are you offering?<br />
     		<%= select("tandem", "offering_language", Language.find(:all, :order => "name").collect {|l| [l.name, l.id] })%>
   		</p>
   		<p>
@@ -24,13 +24,11 @@
 			
   		</p>
 		<p>
-		<b>5</b>. Where do you live? (click on the map to select)
-		<div id="map" style="width: 400px; height: 300px"></div>
+		<b>5</b>. Where do you live?<br />
+		<%= f.text_field :location%> (ex Berlin, Friedrichshain)
 		</p>
-		<input type="hidden" id="lat" name="tandem[lat]" />
-		<input type="hidden" id="lng" name="tandem[lng]" />
   		<p>
-    		<b>6</b>. <%= f.submit 'Send!' %>
+    	<b>6</b>. <br /><%= f.submit 'Send!' %>
   		</p>
 	<% end %>
 </div>
