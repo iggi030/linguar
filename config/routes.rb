@@ -17,7 +17,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :messages, :collection => {:more => :get, :refresh => :get}
   map.resources :posts, :member => {:quote => :get, :topic => :get}
   map.resources :ranks
-  map.resources :tandems, :as => 'language_partners', :collection => {:search => :get}
+  map.resources :tandems, :as => 'language_partners', :collection => {:update_map => :get, :search => :get}
   map.resources :settings
   map.resources :subscriptions, :collection => {:toggle => :post}
   map.resources :themes, :member => {:select => :post, :deselect => :post}

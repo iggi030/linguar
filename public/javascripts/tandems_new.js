@@ -1,9 +1,3 @@
-var centerLatitude = 52.523404; 
-var centerLongitude = 13.41139952; 
-var startZoom = 2;
-var map;
-var marker
-
 function limitText(limitField, limitCount, limitNum) {
 	if (limitField.value.length > limitNum) {
 		limitField.value -= 1;
@@ -12,7 +6,7 @@ function limitText(limitField, limitCount, limitNum) {
 	}
 }
 
-function init() { 
+function old_init() { 
 	if (GBrowserIsCompatible()) {
 		map = new GMap2(document.getElementById("map"));
 		map.setUIToDefault();
@@ -41,19 +35,3 @@ function init() {
 		});
 	}
 }
-
-	
-
-function get_markers() {
-	var markers = map.ge
-	var latlong = markers[0].getLatLng();
-
-	alert("tjo" + latlong);
-	
-}
-
-
-window.onload = init;
-window.onunload = GUnload;
-
-

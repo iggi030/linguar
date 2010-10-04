@@ -1,4 +1,5 @@
 <%= javascript_include_tag "tandems_new" %>
+
 <h2>Create a new tandem post</h2>
 <div class="form">
 <% form_for @tandem do |f| %>
@@ -25,7 +26,13 @@
   		</p>
 		<p>
 		<b>5</b>. Where do you live?<br />
-		<%= f.text_field :location%> (ex Berlin, Friedrichshain)
+		<%= f.text_field :location, :value => @visitors_town || "" %>
+			
+		<%= link_to_remote "Locate on map", :url => update_map_tandems_path,
+:with => "'address='+encodeURIComponent($F('tandem_location'))",
+:method => :get %>
+		
+		<%= @map.div(:width => 500,:height => 300) %>
 		</p>
   		<p>
     	<b>6</b>. <br /><%= f.submit 'Send!' %>
