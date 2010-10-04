@@ -1,0 +1,4 @@
+page << @map.clear_overlays
+page << @map.add_overlay(@marker)
+
+page << @map.set_center(@center,4)
