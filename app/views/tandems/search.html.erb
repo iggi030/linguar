@@ -5,10 +5,10 @@
 <% form_tag tandems_path, :method => 'get' do %>
 		<p class="label_checkbox_pair">
 			<b>1</b>. What are you searching for?</p>
-			<%= check_box_tag('filters[tandem_partner]', true) -%>
+			<%= check_box_tag('filters[tandem_partner]', 1, true) -%>
 			<%= label_tag :tandem_partner,  'Tandem partner (for meeting up locally)' %>
 			<br />
-			<%= check_box_tag 'filters[pen_pal]', true -%>
+			<%= check_box_tag 'filters[pen_pal]', 1, true -%>
 			Pen pal
 			<br />
 		</p>
