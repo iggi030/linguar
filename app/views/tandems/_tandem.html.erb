@@ -1,7 +1,7 @@
 <div class="tandem-post">
 	
 	<div class="tandem_header">
-	<% link_to(post.user, :rel => 'nofollow' )do %>
+	<% link_to(post, :rel => 'nofollow', :target => '_blank'  )do %>
 		<h2><%= h post.user.login.capitalize %> </h2>
 			
 	<% end %>
@@ -16,8 +16,8 @@
 	</div>
 	<div class="right-col">
 		<h2>Motivation</h2>
-		<p><%=  simple_format(sanitize(post.motivation))  %></p>
-		<h2>Description</h2>
-		<p><%=  simple_format(sanitize(post.user.bio))  %></p>		
+		<p><%=  truncate(simple_format(sanitize(post.motivation)), 50, '...') %></p>
+		<h2>Users description</h2>
+		<p><%=  truncate(simple_format(sanitize(post.user.bio)), 100, '...')  %></p>		
 	</div>
 </div>

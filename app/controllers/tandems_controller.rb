@@ -29,7 +29,7 @@ class TandemsController < ApplicationController
     @visitors_town = user_location.city
     logger.debug "location: #{user_location}"
     @map = GMap.new("map_div")
-    @map.control_init(:large_map => true,:map_type => true) 
+    @map.control_init(:large_map => false,:map_type => true) 
     @map.set_map_type_init(GMapType::G_HYBRID_MAP)
     @map.center_zoom_init([user_location.lat,user_location.lng],4)
     @map.overlay_init(GMarker.new([user_location.lat,user_location.lng],
