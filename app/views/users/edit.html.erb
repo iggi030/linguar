@@ -1,7 +1,7 @@
 <%= error_messages_for :user %>
 <% form_for @user do |f| -%>
   <div class="box" id="box-users-edit">
-    <span class="top">Edit User</span>
+    <span class="top">Your profile</span>
     <p class="label"><label for="user_username">Username</label></p>
     <p><%= f.text_field :login, :style => "width:31%" %></p>
     <p class="label"><label for="user_email">Email</label></p>
@@ -18,9 +18,9 @@
     <p class="label"><label for="user_time_zone">Timezone</label></p>
     <p><%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones %></p>
     <p>
-	<h2>
-		<%= link_to "Choose your profile picture", avatars_path %>
-	</h2>
+	<span class="profile-avatar-left"><%= avatar_for(@user) %></span><br/>
+	(<%= link_to "Choose your profile picture", avatars_path %>)
+	</p>
       <%= submit_tag 'Save Changes', :style => "width: 20%;", :disable_with => 'Save Changes' %>&nbsp; 
       <% link_to 'Delete your account', confirm_delete_user_path %> &nbsp;
       <%= link_to 'Cancel', @user %>

@@ -584,6 +584,11 @@ cite {
   margin: 10px 0;
 }
 
+.profile-avatar-left img {
+  width: 20%;
+  margin: 10px 0;
+}
+
 .profile-title {
   color: #333;
   font-size: 20px;
