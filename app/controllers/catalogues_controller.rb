@@ -14,7 +14,7 @@ class CataloguesController < ApplicationController
      @glossaries = Glossary.find(:all, :conditions => {:from_language => @language,
                                                        :to_language => @language,
                                                        :public => true})   
-     @glossaries = Glossary.find(:all, :conditions => ["from_language = ? or 'to_language' = ?", @language, @language])
+     @glossaries = Glossary.find(:all, :conditions => ["from_language = ? or 'to_language' = ? and 'public' = ?", @language, @language, true])
      @languages = Language.find(:all)
     render :show
    end
