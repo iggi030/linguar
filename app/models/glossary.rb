@@ -56,4 +56,17 @@ class Glossary < ActiveRecord::Base
   def find_to_language
     Language.find(self.to_language).name
   end
+  
+  def clone_with_cards
+    new_glossary = self.clone
+    new_glossary.public = false
+    new_glossary.shared = false
+      
+    self.cards.each do |card|
+      new_glossary.cards << card.clone
+    end
+    
+    new_glossary.save
+    return new_glossary
+  end
 end

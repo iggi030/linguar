@@ -74,20 +74,11 @@ class GlossariesController < ApplicationController
   end
   
   def clone
-    this_glossary = Glossary.find(params[:id])  
+    glossary = Glossary.find(params[:id])
+    cloned_glossary = glossary.clone_with_cards
     
-    new_glossary = this_glossary.clone
-    new_glossary.public = false
-    new_glossary.shared = false
-    new_glossary.save
-    
-    this_glossary.cards.each do |card|
-      new_card = card.clone
-      new_card.glossary_id = new_glossary.id
-      new_card.save
-    end
-    
-    current_user.glossaries << new_glossary
-    redirect_to(glossaries_path)
+    current_user.glossaries << cloned_glossary
+    flash[:notice] = "Set was imported sucessfully!"
+    redirect_to url_for(cloned_glossary)
   end
 end
