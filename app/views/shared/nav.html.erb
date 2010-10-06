@@ -25,14 +25,14 @@
           <% else %><%= link_to 'Start a New Topic', new_topic_path %>
           <% end %>
         <% elsif current_controller == 'uploads' %><%= link_to 'Upload a New File', new_upload_path %>
-        <% elsif current_controller == 'users' %><%= link_to 'Register a New User', new_user_path %>
+        <% elsif current_controller == 'users' %><% link_to 'Register a New User', new_user_path %>
         <% end %>
       <% end %>
       &nbsp; 
   	<% if current_controller == 'forums' %>
 		<%= link_to 'Search', search_path(:type => current_controller) %>
 	<% elsif current_controller == 'users' %>
-		<%= link_to 'Search', search_path(:type => current_controller) %>
+		<% link_to 'Search', search_path(:type => current_controller) %>
     <%end%>
   <% if admin? && current_controller == 'home' %>
         &nbsp; <%= link_to 'Admin', admin_path %>
