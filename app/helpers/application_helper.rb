@@ -28,7 +28,7 @@ module ApplicationHelper
   def page_title
     item = [@article, @category, @event, @forum, @header, @message, @topic, @user].compact.first if %w(show edit).include?(current_action)
     page = request.env['PATH_INFO'].delete('/').sub('new','').capitalize unless request.env['PATH_INFO'].nil?
-    page = @settings.tagline if current_controller == 'home'
+    page = "Linguar.com - Language learning community" if current_controller == 'home'
     page = "Vocabulary trainer" if current_controller == 'glossaries'
     
     page = "Searching for a #{@tandem.offering_language_to_string} to

@@ -61,8 +61,9 @@ class Glossary < ActiveRecord::Base
     new_glossary = self.clone
     new_glossary.public = false
     new_glossary.shared = false
+    cards = self.cards
       
-    self.cards.each do |card|
+    cards.each do |card|
       new_glossary.cards << card.clone
     end
     
