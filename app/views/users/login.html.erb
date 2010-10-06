@@ -17,4 +17,8 @@
 <%= link_to '(I have forgotten my password)', forgot_password_url %>
 </p>
 
-<%= javascript_tag "$('user_login').focus();" %>
+<% if (error_messages_for :user).nil? %>
+	<%= javascript_tag "$('user_login').focus();" %>
+<% else %>
+	<%= javascript_tag "$('user_password').focus();" %>
+<%end-%>

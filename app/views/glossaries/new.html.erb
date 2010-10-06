@@ -20,12 +20,14 @@
     <%= f.text_area :description, :style => "width: 350px; height: 200px;" %>
   </p>
    <p>
+	 <%= f.check_box :public, {:checked => false, :style => 'width: 20px;'}%>
     <%= f.label "Should it appear in the Catalogue?" %>
-    <%= f.check_box :public, {:checked => false}%>
+   
   </p>
   <p>
+	  <%= f.check_box :shared, {:checked => false, :style => 'width: 20px;'}%>
     <%= f.label "Allow others to edit?" %>
-    <%= f.check_box :shared, {:checked => false}%>
+  
   </p>
   <p>
       <%= f.label "Import a Mnemosyne file?" %><br />

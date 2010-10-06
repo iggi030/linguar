@@ -1,7 +1,7 @@
 <% if logged_in? %>
 <% if current_user.glossaries.count < 1 %>
   <p>Hi <%=current_user%>! You seem to be new on our site. There are already
-  a lot of flashcard sets which other users have created and decided to share
+  a lot of flashcard sets (<a href="http://http://en.wikipedia.org/wiki/Flashcard">what is a flashcard?</a>) which other users have created and are sharing
   with the rest of us. Would you like to take a look inside the database and see if there is
   anything you could use?</p>
    <p>
@@ -22,7 +22,7 @@
   
   <% @glossaries.each do |glossary| %>
     <tr>
-      <td><%= link_to ("practise!"), new_glossary_practise_path(glossary) %>
+      <td><%= link_to ("Practise!"), new_glossary_practise_path(glossary) %>
       </td>
       <td><%= h glossary.title %>
       </td>
@@ -46,13 +46,11 @@
   </table>
   
   <ul class="action_list">
-      <li><%= link_to 'Create new', new_glossary_path %></li>
+      <li><%= link_to 'Create new set', new_glossary_path %></li>
       <li><%= link_to 'Select from catalogue', catalogue_path %></li>
     </ul>  
 <%end%>
-<% else %>
-
-
+<% else %> 
 <h2>This is a vocabulary drill tool</h2>
 <p>An excellent supplement to your meetings with tandem partner, 
 language course, pen pal or for individual study.

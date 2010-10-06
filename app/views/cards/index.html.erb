@@ -1,18 +1,18 @@
 <% if @glossary %>
 <h2 class="title"> "<%= h @glossary.title %>" </h2>
 <% if !is_owner? && !in_user_glossary_list? %>
-
 <p>
-    <%= link_to "Make your own copy of this glossary", clone_glossary_url(@glossary) %>
+<%= link_to 'Copy this set to your profile', clone_glossary_url(@glossary) , :class => "large blue button" %>
 </p>
-<% if @glossary.shared? %>
+<% if @glossary.shared? && false %> #disabled for now...
     <p>
-        This glossary is also <b>editable</b> by everybody, instead of making your own copy
-        you can choose to cooperate with others.<br /> All your changes are then going
-        to affect everybody.
-    </p>
+        This glossary is also <b>editable by everybody</b>
+	</p>
+ 		Instead of making your own working copy you can choose to cooperate with others.
+		This is especially useful for groups of people learning together. 
+	</p>			
     <p>
-        <%= link_to "Cooperate on this glossary", add_shared_glossary_url(@glossary) %>  
+        <%= link_to "Cooperate on this glossary", add_shared_glossary_url(@glossary), :class => "large blue button" %>  
     </p>
 <%end-%>
 <%end-%>

@@ -1,3 +1,16 @@
+<% form_for :catalogue, :url => {:action => :show } do |f| -%>
+<p>Sort by language: 
+ 
+  <%= select_tag :language,
+    options_from_collection_for_select(@languages, 'id', 'name', @language.to_i), {
+  	  
+      :style => "width: 150px;",
+      :id => "language"}
+    %>
+  
+  <%= submit_tag 'Continue' %>
+<% end -%>
+
 <div id="glossaries_container">
 <% @glossaries.each do |glossary| %>
 

@@ -1,7 +1,8 @@
 class CataloguesController < ApplicationController
         
    def show
-      @glossaries = Glossary.find(:all, :conditions => {:public => true})
+     @languages = Language.find(:all)
+     @glossaries = Glossary.find(:all, :conditions => {:public => true})
    end
    
    def new
@@ -9,18 +10,20 @@ class CataloguesController < ApplicationController
    end
    
    def create
-     @native_language = params[:native_language].join(',')
+     @language = params[:language]
+     @glossaries = Glossary.find(:all, :conditions => {:from_language => @language,
+                                                       :to_language => @language,
+                                                       :public => true})   
+     @glossaries = Glossary.find(:all, :conditions => ["from_language = ? or 'to_language' = ?", @language, @language])
      @languages = Language.find(:all)
+    render :show
    end
    
    def update
-      @native_languages = params[:native_language].split(',')
-      @foreign_languages = params[:foreign_language]
-      
-      @glossaries = Glossary.find(:all, :conditions => {:from_language => @native_languages + @foreign_languages,
-                                                        :to_language => @foreign_languages + @native_languages,
-                                                        :public => true})
-      
+      language = params[:language]
+      @glossaries = Glossary.find(:all, :conditions => {:from_language => language,
+                                                        :to_language => language,
+                                                        :public => true})   
       render :show
    end
     
