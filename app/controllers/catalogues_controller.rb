@@ -10,7 +10,7 @@ class CataloguesController < ApplicationController
    
    def create
      @language = params[:language]
-     @glossaries = Glossary.find(:all, :conditions => ['("from_language" = ? OR "to_language" = ?) AND "public" = ?', @language, @language, true])
+     @glossaries = Glossary.find(:all, :conditions => ['(`from_language` = ? OR `to_language` = ?) AND `public` = ?', @language, @language, true])
   
      @glossaries = Glossary.find(:all) if admin?
   
