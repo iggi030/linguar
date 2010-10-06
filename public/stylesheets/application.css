@@ -972,6 +972,9 @@ cite {
 .form select {
   margin-top: 10px;
 }
+.tandem-post:hover {
+
+}
 #filters_tandem_partner, #filters_pen_pal {
   width: auto;
   margin-right: 1em;
