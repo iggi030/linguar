@@ -57,6 +57,14 @@ module ApplicationHelper
     end
   end
   
+  def avatar_url_for(user)
+    if user.avatar.nil?
+      'user-icon.jpg'
+    else
+      user.avatar
+    end
+  end
+  
   def rank_for(user)
     return 'Administrator' if user.admin
     return 'Banned' if user.banned?

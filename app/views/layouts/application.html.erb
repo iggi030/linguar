@@ -2,10 +2,19 @@
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <meta name="description" content="<%=h page_title -%>" />
-  <meta name="google-site-verification" content="adJS4t8nvjIMoArQc5nNOgQQ2In3gl7wD82IPqPPQw4" />
-  <meta name="msvalidate.01" content="8EF49DFC339289D255EE8F42D8CAD968" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  	<meta name="description" content="<%=h page_title -%>" />
+ 	<meta name="google-site-verification" content="adJS4t8nvjIMoArQc5nNOgQQ2In3gl7wD82IPqPPQw4" />
+	<meta name="msvalidate.01" content="8EF49DFC339289D255EE8F42D8CAD968" />
+	<% if current_controller == 'tandems' && current_action == 'show' %>
+		<meta property="og:title" content="<%= h @tandem.user.login.capitalize! -%>"/> 
+		<meta property="og:type" content="public_figure"/> 
+		<meta property="og:image" content="<%= request.protocol + request.host_with_port + image_path('logo_big.png') %>"/>
+		<meta property="og:url" content="<%= request.protocol + request.host_with_port + request.request_uri %>"/> 
+		<meta property="og:site_name" content="Linguar.com"/>   
+		<meta property="fb:admins" content="614291758"/>
+	<% end %>
+
   <title><%=h page_title -%></title>
   <%= render :file => 'shared/rss' unless @settings.private? %>
   <%= javascript_include_tag "prototype", "audio_player", "calendar_date_select", "prototip", :cache => true %>

@@ -6,11 +6,11 @@
 <div class="tandem-post">
 	
 	<div class="tandem_header">	
-	<h2><%= h @tandem.user.login.capitalize %> </h2>
+	<h2><%= h @tandem.user.login.capitalize %></h2>
 	<% if @tandem.location != nil %>
-		<%= h @tandem.location %>
+		Living in: <%= h @tandem.location %>
 	<% end %>
-  
+  	
 	</div>
 	<div class="left-col">	
 		<%= avatar_for(@tandem.user) %>
@@ -26,7 +26,8 @@
 		<h2>Motivation</h2>
 		<p><%=  simple_format(sanitize(@tandem.motivation))  %></p>
 		<h2>Description</h2>
-		<p><%=  simple_format(sanitize(@tandem.user.bio))  %></p>		
+		<p><%=  simple_format(sanitize(@tandem.user.bio))  %></p>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Flocalhost%3A3000%2Flanguage_partners%2F11-searching-for-a-english-to-english-language-partner&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=recommend&amp;colorscheme=light&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:30px;" allowTransparency="true"></iframe>		
 	</div>
 </div>
 

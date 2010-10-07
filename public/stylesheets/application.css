@@ -41,6 +41,7 @@ input:hover, input:focus {
   background-color: #fff;
 }
 .header img{
+float: left;
   margin-left: -20px;
 }
 
