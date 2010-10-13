@@ -41,6 +41,7 @@ input:hover, input:focus {
   background-color: #fff;
 }
 .header img{
+float: left;
   margin-left: -20px;
 }
 
@@ -584,6 +585,11 @@ cite {
   margin: 10px 0;
 }
 
+.profile-avatar-left img {
+  width: 20%;
+  margin: 10px 0;
+}
+
 .profile-title {
   color: #333;
   font-size: 20px;
@@ -966,6 +972,9 @@ cite {
 
 .form select {
   margin-top: 10px;
+}
+.tandem-post:hover {
+
 }
 #filters_tandem_partner, #filters_pen_pal {
   width: auto;

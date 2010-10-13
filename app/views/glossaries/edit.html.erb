@@ -20,12 +20,14 @@
     <%= f.text_area :description, :style => "width: 350px; height: 200px;" %>
   </p>
    <p>
+	<%= f.check_box :public %>
     <%= f.label "Should it appear in the Catalogue?" %>
-    <%= f.check_box :public %>
+   
   </p>
   <p>
-    <%= f.label "Allow others to edit?" %>
-    <%= f.check_box :shared %>
+	<%= f.check_box :shared %>    
+	<%= f.label "Allow others to edit?" %>
+    
   </p>
   <p>
     <%= f.submit 'Update' %>

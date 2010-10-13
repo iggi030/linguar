@@ -28,7 +28,7 @@ module ApplicationHelper
   def page_title
     item = [@article, @category, @event, @forum, @header, @message, @topic, @user].compact.first if %w(show edit).include?(current_action)
     page = request.env['PATH_INFO'].delete('/').sub('new','').capitalize unless request.env['PATH_INFO'].nil?
-    page = @settings.tagline if current_controller == 'home'
+    
     page = "Vocabulary trainer" if current_controller == 'glossaries'
     
     page = "Searching for a #{@tandem.offering_language_to_string} to
@@ -41,7 +41,7 @@ module ApplicationHelper
       glossary_name = Glossary.find(params[:glossary_id]).title
       page = "#{glossary_name}"
     end
-    
+    page = "Language exchange partners and flashcard practise on Linguar.com" if current_controller == 'home'
     "#{item || page}"
   end
   
@@ -54,6 +54,14 @@ module ApplicationHelper
       image_tag('user-icon.jpg')
     else
       image_tag user.avatar
+    end
+  end
+  
+  def avatar_url_for(user)
+    if user.avatar.nil?
+      'user-icon.jpg'
+    else
+      user.avatar
     end
   end
   

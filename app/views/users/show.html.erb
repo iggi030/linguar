@@ -4,11 +4,13 @@
   <span class="profile-avatar"><%= avatar_for(@user) %></span>
   <div style="margin-top:10px;">
     <span class="profile-title"><%=h @user %></span>&nbsp;
-    <span class="profile-rank"><%=h rank_for(@user) %> &mdash; <%= link_to number_with_delimiter(@user.posts_count) + ' posts', user_posts_path(@user) %></span>
+    <span class="profile-rank"><%=h rank_for(@user) %> &mdash; 
+	<%= link_to number_with_delimiter(@user.posts_count) + ' forum posts', user_posts_path(@user) %></span>
   </div>
   
   <div class="profile-bio">
-    <p><%=h @user.bio %></p>
+    <h2>Users description</h2>
+<p><%=simple_format(sanitize(@user.bio))  %></p>
   </div>
   
   <% if !@user.signature.blank? %>
@@ -18,8 +20,6 @@
   <p style="margin-top:20px"> 
     <b>Last Visit</b>: <%= time_ago_or_time_stamp(@user.online_at) %> &nbsp;
   </p>
-<p>
-<%= link_to 'Contact User', contact_user_path(@user) , :class => "large blue button" %> 
-  </p>  
+
   <div class="clear"> </div>  
 </div>

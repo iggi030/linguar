@@ -134,5 +134,5 @@ class User < ActiveRecord::Base
     logger.debug("asdjsajdsa")
     Notifications.deliver_forgot_password(self.email, self.login, new_pass)
   end
-  
+
 end

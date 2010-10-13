@@ -1,5 +1,7 @@
-<div class="tandem-post">
+<div class="tandem-post" onclick="window.open(href='<%= url_for(post) %>'); return false;">
+	
 	<div class="tandem_header">
+		
 	<% link_to(post, :rel => 'nofollow', :target => '_blank'  )do %>
 		<h2><%= h post.user.login.capitalize %> </h2>
 			

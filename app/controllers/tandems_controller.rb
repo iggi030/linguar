@@ -19,7 +19,7 @@ class TandemsController < ApplicationController
   
   def new
     @tandem = Tandem.new
-    @types = {'Tandem partner' => 1, 'Pen pal' => 2}
+    @types = {'Tandem partner' => 1, 'Pen / Skype pal' => 2}
     
     request_ip = request.remote_ip
       if request_ip == "127.0.0.1"
@@ -50,7 +50,7 @@ class TandemsController < ApplicationController
     if @tandem.save
       redirect_to(@tandem)
     else
-      @types = {'Tandem partner' => 1, 'Pen pal' => 2}
+      @types = {'Tandem partner' => 1, 'Pen / Skype pal' => 2}
       render :action => "new"
     end    
   end
@@ -66,7 +66,7 @@ class TandemsController < ApplicationController
   end
     
   def search
-    @types = {'Tandem partner' => 1, 'Pen pal' => 2}
+    @types = {'Tandem partner' => 1, 'Pen / Skype pal' => 2}
   end
     
 end

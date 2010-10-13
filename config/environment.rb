@@ -10,13 +10,13 @@ Rails::Initializer.run do |config|
   config.active_record.partial_updates = true
   config.frameworks -= [:active_resource]
   config.action_controller.session = {:key => CONFIG['session_key'], :secret => CONFIG['session_secret']}
-  config.gem "paperclip", :version => "2.3.0"
-  config.gem "right_aws", :version => "1.9.0"
-  config.gem "right_http_connection", :version => "1.2.4"
-  config.gem "searchlogic", :version => "2.3.9"
-  config.gem "will_paginate"
+  config.gem "paperclip", :version => "2.3.0", :gem_options => "--no-ri --no-rdoc"
+  config.gem "right_aws", :version => "2.0.0", :gem_options => "--no-ri --no-rdoc"
+  config.gem "right_http_connection", :version => "1.2.4", :gem_options => "--no-ri --no-rdoc"
+  config.gem "searchlogic", :version => "2.3.9", :gem_options => "--no-ri --no-rdoc"
+  config.gem "will_paginate", :gem_options => "--no-ri --no-rdoc"
   #config.gem "ambethia-smtp-tls", :version => "1.1.2", :lib => "smtp-tls"
-  config.gem "hoptoad_notifier", :version => "2.2.2"
-  config.gem "geokit"
-  config.gem "nokogiri"
+  config.gem "hoptoad_notifier", :version => "2.2.2", :gem_options => "--no-ri --no-rdoc"
+  config.gem "geokit", :gem_options => "--no-ri --no-rdoc"
+  config.gem "nokogiri", :gem_options => "--no-ri --no-rdoc"
 end

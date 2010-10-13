@@ -38,7 +38,7 @@ class Tandem < ActiveRecord::Base
   end
   
   def post_type_to_string(type)
-    types = ['language partner', 'pen pal' ]
+    types = ['language partner', 'pen / skype pal' ]
     types[type]
   end
   
