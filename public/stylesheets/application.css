@@ -222,7 +222,7 @@ h3 {
 
 table {
   width: 100%;
-  border: 1px solid #35604d;
+  border: 0px solid #35604d;
   margin-bottom: 10px;
 }
 
@@ -243,14 +243,14 @@ thead .tcm {
 }
 
 tbody {
-  background: #f1f1f1;
+  //background: #f1f1f1;
 }
 
 tbody td {
   padding: 5px;
   vertical-align: top;
-  border-top: 1px solid #cedeb9;
-  border-right: 1px solid #cedeb9;
+  //border-top: 1px solid #cedeb9;
+  border-bottom: 1px solid #cedeb9;
 }
 
 tbody .tci {
@@ -920,35 +920,28 @@ cite {
 /*
 	Tandem börse
 */
-.tandem-post .tandem_header {
-	margin: 10px 0 0 0;
-	background-color: #eee;	
+.tandem_post img {
+ max-height: 100px;
+ max-width: 150px;
 }
-.tandem-post .tandem_header h2{
-	margin: 0px;
-	background-color: #eee;	
+.tandem_table {
+  border: 0px;
 }
-.tandem-post .left-col{
-	float: left; 
-	width: 200px;
+.tandem_table tr{
+  background-color: white;
 }
-.tandem-post .left-col p{
-	margin: 0px;
+.tandem_table td{
+  border: 0px;
+  width: 200px;
 }
-.tandem-post .left-col img{
-	height:100px; 
+.tandem_table td.left_col{
+  width: 10em;
 }
-.tandem-post .right-col{
-	float: left; 
-	width: 600px;
-	background-color: #fafafa;
+.tandem_table p{
+  margin: 0px;
 }
-.tandem-post .right-col h2{
-	margin: 0;
-	font-size: 12px;
-}
-.tandem-post .right-col h2 a:hover{
-	text-decoration: underline;
+.post_bottom {
+  border-bottom: 1px dotted;
 }
 
 .welcome-text {

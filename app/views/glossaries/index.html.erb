@@ -22,7 +22,7 @@
   
   <% @glossaries.each do |glossary| %>
     <tr>
-      <td><%= link_to ("Practise!"), new_glossary_practise_path(glossary) %>
+      <td><%= link_to ("Rehearse the words!"), new_glossary_practise_path(glossary) %>
       </td>
       <td><%= h glossary.title %>
       </td>
@@ -46,8 +46,8 @@
   </table>
   
   <ul class="action_list">
-      <li><%= link_to 'Create new set', new_glossary_path %></li>
-      <li><%= link_to 'Select from catalogue', catalogue_path %></li>
+      <li><%= link_to 'Create new (empty) set', new_glossary_path, :class => "blue button" %></li>
+      <li style="margin-top: 1em;"><%= link_to 'Copy a set from the catalogue', catalogue_path, :class => "blue button" %></li>
     </ul>  
 <%end%>
 <% else %> 

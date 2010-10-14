@@ -1,24 +1,39 @@
-<div class="tandem-post" onclick="window.open(href='<%= url_for(post) %>'); return false;">
-	
-	<div class="tandem_header">
-		
+<div class="tandem_post">
+	<div class="post_header">
 	<% link_to(post, :rel => 'nofollow', :target => '_blank'  )do %>
-		<h2><%= h post.user.login.capitalize %> </h2>
-			
-	<% end %>
-	<% if post.location != nil %>
-		<%= h post.location %>
+		<h2><%= h post.user.login.capitalize %></h2>
 	<% end %>
 	</div>
-	<div class="left-col">	
+	<div style="float: left; width:20%;">
 		<%= avatar_for(post.user) %>
-		<p>Looking for a <br /><b><%= h find_name_for_language(post.learning_language) %> <%= h post.post_type_to_string(post.post_type-1) %></b></p> <br />
-		<p>Offering: <%= h find_name_for_language(post.offering_language) %></p>
+		<% if post.location != nil %>
+			<p>Living in: <%= h post.location %></p>
+		<% end %>
 	</div>
-	<div class="right-col">
-		<h2>Motivation</h2>
-		<p><%=  truncate(simple_format(sanitize(post.motivation)), 50, '...') %></p>
-		<h2>Users description</h2>
-		<p><%=  truncate(simple_format(sanitize(post.user.bio)), 100, '...')  %></p>		
+	
+	<div style="float: left; margin-left:50px;">
+		<table class="tandem_table">
+			<tr>
+				<td class="left_col">Looking for: </td>
+				<td>
+					<b><%= h post.post_type_to_string(post.post_type-1).capitalize %></b>
+				</td>
+			</tr>
+			<tr>
+				<td class="left_col">Offering language:</td>
+				<td><%= h find_name_for_language(post.offering_language) %></td>
+			</tr>
+			<tr>
+				<td class="left_col">Wants to learn:</td>
+				<td><%= h find_name_for_language(post.learning_language) %></td>
+			</tr>
+			<tr>
+				<td class="left_col">Description:</td>
+				<td><%= simple_format(sanitize(post.motivation)) %></td>
+				<td style="vertical-align:bottom;">
+					<%= link_to 'Read more', url_for(post), :class => "large blue button" %></td>
+			</tr>
+		</table>
 	</div>
 </div>
+<div style="clear: both; border-bottom:  1px dotted;"></div>

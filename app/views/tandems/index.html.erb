@@ -1,17 +1,24 @@
-<%= link_to 'Search!', search_tandems_url, :class => "large blue button" %> 
-<%= link_to 'Insert new tandem post', new_tandem_url, :class => "large blue button" %> 
-
 <% if @tandems.count < 1 %>
 	<p>
-		Sorry we couldnt find any tandem partners in this area for you!
-	</p>	
+		Sorry we couldnt find any tandem partners in this area for you! </p>
+	<p>	<%= link_to 'Try posting your own?', new_tandem_url, :class => "large blue button" %> or
+		<%= link_to 'Change your search options', search_tandems_url, :class => "large blue button" %>  
+	</p>
+<% else %>
+	<%= link_to 'Change your search options', search_tandems_url, :class => "blue button" %>  
+	<%= link_to 'Insert new tandem post', new_tandem_url, :class => " blue button" %>
 <% end %>
+<div>
+	
 <% @tandems.each do |tandem| %>
-	<div class="tandem-post">
-		<%= render :partial => 'tandem', :locals => 
-		                   { :post => tandem } %>
-		<div style="clear: both;">
-	</div>	
+	
+	<%= render 	:partial => 'tandem',
+				:locals => { :post => tandem } %>
+	
+		
 <% end %>
+</div>
+<div style="clear: both;">
+	
 <%= will_paginate @tandems %>
 
