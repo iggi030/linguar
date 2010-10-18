@@ -47,7 +47,7 @@ class Tandem < ActiveRecord::Base
     #{self.learning_language_to_string} #{self.post_type_to_string(self.post_type-1)}".gsub(' ', '-').gsub(/[^a-zA-Z0-9\_\-\.]/, '')
   "#{self.id}-#{description.parameterize}"
   end
-  
+ 
   private
   
   def geocode_location
@@ -61,4 +61,6 @@ class Tandem < ActiveRecord::Base
                     :page => args[:page],
                     :order => 'created_at DESC'}
   end
+  
+  
 end

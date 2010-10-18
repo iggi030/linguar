@@ -1,26 +1,24 @@
-<% if @tandem.user == current_user %>
-<%= link_to 'Remove post', @tandem, 
-					        :class => "list-actions", :confirm => 'Are you sure?', 
-					        :method => :delete %>
-<%end%>
+<iframe src="http://www.facebook.com/plugins/like.php?href=<%=CGI::escape(request.protocol + request.host_with_port + request.request_uri) %>&amp;layout=standard&amp;
+show_faces=true&amp;width=450&amp;action=recommend&amp;colorscheme=light&amp;height=30" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:40px;" allowTransparency="true"></iframe>
 
 <div class="tandem_post">
-	<div class="post_header">
-	<% link_to(@tandem, :rel => 'nofollow', :target => '_blank'  )do %>
-		<h2><%= h @tandem.user.login.capitalize %></h2>
-		
-	<% end %>
-	<iframe src="http://www.facebook.com/plugins/like.php?href=<%=CGI::escape(request.protocol + request.host_with_port + request.request_uri) %>&amp;layout=standard&amp;
-	show_faces=true&amp;width=450&amp;action=recommend&amp;colorscheme=light&amp;height=30" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:40px;" allowTransparency="true"></iframe>
-
-	</div>
-	
 	<div style="float: left; width:20%;">
+		<b><%= h @tandem.user.login.capitalize %> 	</b>
+		<p>
+			<%= "#{current_user.age} years old, " unless @tandem.user.age == nil %>	
+			<%= "#{current_user.gender_to_s}<br />" unless @tandem.user.gender == nil %>		
+			<%= h "Living in: #{@tandem.location}" unless @tandem.location == nil %>
+		</p>
 		<%= avatar_for(@tandem.user) %>
-		<% if @tandem.location != nil %>
-			<p>Living in: <%= h @tandem.location %></p>
-		<% end %>
-		
+		<p><%= link_to 'Contact User', contact_user_path(@tandem.user) , :class => "large blue button" unless @tandem.user == current_user %>
+			<% if @tandem.user == current_user %>
+			<p><%= link_to 'Change details', edit_tandem_path(@tandem), 
+								        :class => "blue button" %></p>
+			<%= link_to 'Remove post', @tandem, 
+								        :class => "blue button", :confirm => 'Are you sure?', 
+								        :method => :delete %>
+			<%end%>		
+		</p>	
 	</div>
 	
 	<div style="float: left; margin-left:50px;">
@@ -28,7 +26,9 @@
 			<tr>
 				<td class="left_col">Looking for: </td>
 				<td>
-					<b><%= h @tandem.post_type_to_string(@tandem.post_type-1).capitalize %></b>
+					<b><%= h find_name_for_language(@tandem.learning_language) %>
+					 <%= h @tandem.post_type_to_string(@tandem.post_type-1) %>  
+					<%= h " in #{@tandem.location.capitalize}" unless @tandem.location == nil %></b>
 				</td>
 			</tr>
 			<tr>
@@ -40,12 +40,16 @@
 				<td><%= h find_name_for_language(@tandem.learning_language) %></td>
 			</tr>
 			<tr>
-				<td class="left_col">Short description:</td>
-				<td><%=  simple_format(sanitize(@tandem.motivation))  %></td>	
-			</tr>
-			<tr>
 				<td class="left_col">About me:</td>
 				<td><%=  simple_format(sanitize(@tandem.user.bio))  %></td>	
+			</tr>	
+			<tr>
+				<td class="left_col">Hobbies / interests:</td>
+				<td><%= simple_format(sanitize(@tandem.user.hobbies)) %></td>	
+			</tr>
+			<tr>
+				<td class="left_col">Profession:</td>
+				<td><%= simple_format(sanitize(@tandem.user.profession)) %></td>	
 			</tr>
 		</table>
 	</div>
@@ -53,8 +57,8 @@
 
 <div style="clear: both;"></div>
 <div style="text-align: right;">
-					
-<%= link_to 'Contact User', contact_user_path(@tandem.user) , :class => "large blue button" %>
+	
+
 </div>
 <p>
 <% link_to 'More language partners', tandems_path %>

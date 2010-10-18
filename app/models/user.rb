@@ -134,5 +134,11 @@ class User < ActiveRecord::Base
     logger.debug("asdjsajdsa")
     Notifications.deliver_forgot_password(self.email, self.login, new_pass)
   end
+  
+  def gender_to_s
+    h = {1 => "male", 2 => "female"}
+    h[self.gender]
+  end
+  
 
 end

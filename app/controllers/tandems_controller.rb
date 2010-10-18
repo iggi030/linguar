@@ -37,6 +37,30 @@ class TandemsController < ApplicationController
                                   :info_window => "This description<br/> can have <b>HTML</b> in it!"))
   end
   
+  def edit
+     @tandem = current_user.tandems.find(params[:id])
+     @types = {'Tandem partner' => 1, 'Pen / Skype pal' => 2}
+    logger.debug "#{@tandem.post_type}"
+     @map = GMap.new("map_div")
+     @map.control_init(:large_map => false,:map_type => true) 
+     @map.set_map_type_init(GMapType::G_HYBRID_MAP)
+     @map.center_zoom_init([@tandem.lat, @tandem.lng],4)
+     @map.overlay_init(GMarker.new([@tandem.lat, @tandem.lng],
+                                   :title => "Title",
+                                   :info_window => "This description<br/> can have <b>HTML</b> in it!"))
+  end
+  
+  def update
+    @tandem = current_user.tandems.find(params[:id])
+    @tandem.update_attributes(params[:tandem])
+    
+    if @tandem.save
+      redirect_to @tandem
+    else
+      render :action => "edit"
+    end
+  end
+  
   def update_map
 	  @map = Variable.new("map")
 	  location = Geokit::Geocoders::YahooGeocoder.geocode(params[:address])
@@ -67,6 +91,5 @@ class TandemsController < ApplicationController
     
   def search
     @types = {'Tandem partner' => 1, 'Pen / Skype pal' => 2}
-  end
-    
+  end  
 end

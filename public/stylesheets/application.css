@@ -925,17 +925,24 @@ cite {
  max-width: 150px;
 }
 .tandem_table {
+  margin-top: 25px;
   border: 0px;
 }
 .tandem_table tr{
   background-color: white;
 }
 .tandem_table td{
+  padding: 0 0 5px 0;
   border: 0px;
-  width: 200px;
+  width: 40em;
+}
+.tandem_table td.small{
+  padding: 0 0 5px 0;
+  border: 0px;
+  width: 20em;
 }
 .tandem_table td.left_col{
-  width: 10em;
+  width: 12em;
 }
 .tandem_table p{
   margin: 0px;

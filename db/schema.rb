@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100906073820) do
+ActiveRecord::Schema.define(:version => 20101014133335) do
 
   create_table "articles", :force => true do |t|
     t.integer  "user_id"
@@ -73,6 +73,14 @@ ActiveRecord::Schema.define(:version => 20100906073820) do
 
   add_index "events", ["date"], :name => "index_events_on_date"
 
+  create_table "folders", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "parent_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "forums", :force => true do |t|
     t.integer "category_id"
     t.string  "name"
@@ -117,6 +125,22 @@ ActiveRecord::Schema.define(:version => 20100906073820) do
 
   create_table "languages", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "mails", :force => true do |t|
+    t.integer  "author_id"
+    t.string   "subject"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "message_copies", :force => true do |t|
+    t.integer  "recipient_id"
+    t.integer  "message_id"
+    t.integer  "folder_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -235,6 +259,10 @@ ActiveRecord::Schema.define(:version => 20100906073820) do
     t.boolean  "logged_out",         :default => false
     t.integer  "articles_count",     :default => 0
     t.datetime "all_viewed_at"
+    t.string   "hobbies"
+    t.string   "profession"
+    t.integer  "age"
+    t.integer  "gender"
   end
 
   add_index "users", ["chatting_at"], :name => "index_users_on_chatting_at"
