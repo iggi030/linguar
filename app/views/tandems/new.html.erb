@@ -6,7 +6,7 @@
   <%= f.error_messages %>
 		<p>
     		<b>1</b>. What are you searching for? <br />
-    		<%= select_tag 'tandem[post_type]', options_for_select(@types),  :size => 1 %>
+    		<%= select 'tandem', 'post_type', options_for_select(@types, 1) %>
   		</p>
 		<p>
     		<b>2</b>. Which language are you offering?<br />

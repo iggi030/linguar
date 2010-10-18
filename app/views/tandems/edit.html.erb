@@ -1,14 +1,15 @@
 <%= javascript_include_tag "tandems_new" %>
 
+<h2>Post details</h2>
 <div class="form">
 <% form_for @tandem do |f| %>
   <%= f.error_messages %>
 		<p>
-    		<b>1</b>. What are you searching for?<br />
-    		<%= select_tag 'tandem[post_type]', options_for_select(@types),  :size => 1 %>
+    		<b>1</b>. What are you searching for? <br />
+    		<%= select ("tandem", "post_type", options_for_select(@types, @tandem.post_type)) %>
   		</p>
 		<p>
-    		<b>2 </b>. Which language are you offering?<br />
+    		<b>2</b>. Which language are you offering?<br />
     		<%= select("tandem", "offering_language", Language.find(:all, :order => "name").collect {|l| [l.name, l.id] })%>
   		</p>
   		<p>
@@ -16,7 +17,7 @@
     		<%= select("tandem", "learning_language", Language.find(:all, :order => "name").collect {|l| [l.name, l.id] })%>
   		</p>
 		<p>
-    		<b>4</b>. Why are you learning it?<br />
+    		<b>4</b>. Write a short description text for the search page<br />
     		<%= f.text_area :motivation, :style => "width: 30em; height: 5em;", :maxlength=>"250", :cols => "50",
 							:onKeyDown => "limitText(this.form.tandem_motivation,this.form.countdown,250);",
 							:onKeyUp => "limitText(this.form.tandem_motivation,this.form.countdown,250);" %>
@@ -24,19 +25,22 @@
 			
   		</p>
 		<p>
-		<b>5</b>. Where do you live? (click on the map to select)
-		<div id="map" style="width: 400px; height: 300px"></div>
+		<b>5</b>. Where do you live? (ex Berlin, Kreuzberg)<br />
+		<%= f.text_field :location, :value => @tandem.location || "" %>
+			
+		<%= link_to_remote "Locate on map", :url => update_map_tandems_path,
+:with => "'address='+encodeURIComponent($F('tandem_location'))",
+:method => :get %>
+		
+		<%= @map.div(:width => 500,:height => 300) %>
 		</p>
-		<input type="hidden" id="lat" name="tandem[lat]" />
-		<input type="hidden" id="lng" name="tandem[lng]" />
   		<p>
-    		<b>6</b>. <%= f.submit 'Send!' %>
+    	<b>6</b>. <br /><%= f.submit 'Update!' %>
   		</p>
 	<% end %>
 </div>
 
-<%= link_to 'Remove post', @tandem, 
-					        :class => "list-actions", :confirm => 'Are you sure?', 
-					        :method => :delete %></td>
-
 <%= link_to 'Back', tandems_path %>
+
+
+
