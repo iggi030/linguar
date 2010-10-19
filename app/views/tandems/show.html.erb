@@ -26,7 +26,8 @@ show_faces=true&amp;width=450&amp;action=recommend&amp;colorscheme=light&amp;hei
 			<tr>
 				<td class="left_col">Looking for: </td>
 				<td>
-					<b><%= h find_name_for_language(@tandem.learning_language) %>
+					<b><%= h find_name_for_language(@tandem.offering_language) %> to
+					<%= h find_name_for_language(@tandem.learning_language) %>
 					 <%= h @tandem.post_type_to_string(@tandem.post_type-1) %>  
 					<%= h " in #{@tandem.location.capitalize}" unless @tandem.location == nil %></b>
 				</td>
