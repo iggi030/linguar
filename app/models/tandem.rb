@@ -3,7 +3,8 @@ class Tandem < ActiveRecord::Base
   validates_presence_of :user_id, :motivation, :post_type, :location, :learning_language
   before_save :geocode_location
   
-  attr_accessor :tandem_partner, :pen_pal, :language
+  attr_accessor :bio, :hobbies, :profession
+  
   
   def self.search(search, args = {})
     self.build_search_hash search, args

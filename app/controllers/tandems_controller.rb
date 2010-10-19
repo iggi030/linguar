@@ -63,7 +63,11 @@ class TandemsController < ApplicationController
   def update
     @tandem = current_user.tandems.find(params[:id])
     @tandem.update_attributes(params[:tandem])
+    current_user.bio = @tandem.bio unless @tandem.bio == nil
+    current_user.hobbies = @tandem.hobbies unless @tandem.hobbies == nil
+    current_user.profession = @tandem.profession unless @tandem.profession == nil
     
+    current_user.save
     if @tandem.save
       redirect_to @tandem
     else

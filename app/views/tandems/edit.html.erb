@@ -6,7 +6,7 @@
   <%= f.error_messages %>
 		<p>
     		<b>1</b>. What are you searching for? <br />
-    		<%= select ("tandem", "post_type", options_for_select(@types, @tandem.post_type)) %>
+    		<%= select "tandem", "post_type", options_for_select(@types, @tandem.post_type) %>
   		</p>
 		<p>
     		<b>2</b>. Which language are you offering?<br />
@@ -25,7 +25,31 @@
 			
   		</p>
 		<p>
-		<b>5</b>. Where do you live? (ex Berlin, Kreuzberg)<br />
+    		<b>5</b>. Give others a more detailed text about of your self: (optional)<br />
+    		<%= f.text_area :bio, 
+							:style => "width: 30em; height: 5em;",
+							:maxlength=>"250", :cols => "50",
+							:value => current_user.bio %>
+			
+  		</p>
+		<p>
+    		<b>6</b>. Hobbies: (optional)<br />
+    		<%= f.text_area :hobbies,
+							:style => "width: 30em; height: 5em;",
+							:maxlength=>"250",
+							:cols => "50",
+							:value => current_user.hobbies%>
+  		</p>
+		<p>
+    		<b>7</b>. Profession: (optional)<br />
+    		<%= f.text_area :profession,
+							:style => "width: 30em; height: 5em;",
+							:maxlength=>"250",
+							:cols => "50",
+							:value => current_user.profession%>
+  		</p>
+		<p>
+		<b>8</b>. Where do you live? (ex Berlin, Kreuzberg)<br />
 		<%= f.text_field :location, :value => @tandem.location || "" %>
 			
 		<%= link_to_remote "Locate on map", :url => update_map_tandems_path,
@@ -35,7 +59,7 @@
 		<%= @map.div(:width => 500,:height => 300) %>
 		</p>
   		<p>
-    	<b>6</b>. <br /><%= f.submit 'Update!' %>
+    	<b>9</b>. <br /><%= f.submit 'Update!' %>
   		</p>
 	<% end %>
 </div>

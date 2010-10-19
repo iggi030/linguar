@@ -26,8 +26,8 @@ show_faces=true&amp;width=450&amp;action=recommend&amp;colorscheme=light&amp;hei
 			<tr>
 				<td class="left_col">Looking for: </td>
 				<td>
-					<b><%= h find_name_for_language(@tandem.offering_language) %> to
-					<%= h find_name_for_language(@tandem.learning_language) %>
+					<b><%= h find_name_for_language(@tandem.learning_language) %> -
+					<%= h find_name_for_language(@tandem.offering_language) %>
 					 <%= h @tandem.post_type_to_string(@tandem.post_type-1) %>  
 					<%= h " in #{@tandem.location.capitalize}" unless @tandem.location == nil %></b>
 				</td>
@@ -42,15 +42,26 @@ show_faces=true&amp;width=450&amp;action=recommend&amp;colorscheme=light&amp;hei
 			</tr>
 			<tr>
 				<td class="left_col">About me:</td>
-				<td><%=  simple_format(sanitize(@tandem.user.bio))  %></td>	
+				<td><%=  simple_format(sanitize(@tandem.user.bio))  %>
+					<% if (@tandem.user == current_user) && @tandem.user.bio == ""%>
+						<%= link_to '--write something about yourself--', edit_tandem_url(@tandem) %>
+					<% end %>
+				</td>	
 			</tr>	
 			<tr>
 				<td class="left_col">Hobbies / interests:</td>
-				<td><%= simple_format(sanitize(@tandem.user.hobbies)) %></td>	
+				<td><%= simple_format(sanitize(@tandem.user.hobbies)) %>
+				<% if (@tandem.user == current_user) && @tandem.user.hobbies == ""%>
+						<%= link_to '--add your hobbies--', edit_tandem_url(@tandem) %>
+					<% end %>
+				</td>	
 			</tr>
 			<tr>
 				<td class="left_col">Profession:</td>
-				<td><%= simple_format(sanitize(@tandem.user.profession)) %></td>	
+				<td><%= simple_format(sanitize(@tandem.user.profession)) %>
+				<% if (@tandem.user == current_user) && @tandem.user.profession == ""%>
+						<%= link_to '--add your profession--', edit_tandem_url(@tandem) %>
+				<% end %></td>	
 			</tr>
 		</table>
 	</div>
