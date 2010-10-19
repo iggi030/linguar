@@ -129,14 +129,6 @@ ActiveRecord::Schema.define(:version => 20101014133335) do
     t.datetime "updated_at"
   end
 
-  create_table "mails", :force => true do |t|
-    t.integer  "author_id"
-    t.string   "subject"
-    t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "message_copies", :force => true do |t|
     t.integer  "recipient_id"
     t.integer  "message_id"
@@ -146,12 +138,12 @@ ActiveRecord::Schema.define(:version => 20101014133335) do
   end
 
   create_table "messages", :force => true do |t|
-    t.integer  "user_id"
+    t.integer  "author_id"
+    t.string   "subject"
     t.text     "body"
     t.datetime "created_at"
+    t.datetime "updated_at"
   end
-
-  add_index "messages", ["created_at"], :name => "index_messages_on_created_at"
 
   create_table "posts", :force => true do |t|
     t.integer  "user_id"

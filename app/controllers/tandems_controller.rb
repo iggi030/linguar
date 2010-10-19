@@ -4,6 +4,13 @@ class TandemsController < ApplicationController
   
   def index
     page = params[:page] || 1
+    if params[:filters] != nil
+      @selected_town = params[:filters][:location] 
+      @tandem_checked = !params[:filters][:tandem_partner].nil?
+      @pen_pal_checked = !params[:filters][:pen_pal].nil?
+      @language = params[:filters][:language].to_i
+    end
+    
     if params[:filters]
       @search = Search.new(Tandem, params[:filters])
       logger.debug "#{@search}"

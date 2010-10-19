@@ -4,15 +4,17 @@
 		<h2><%= h post.user.login.capitalize %></h2>
 	<% end %>
 	</div>
-	<div style="float: left; width:20%;">
+	<div style="float: left; width:25%;">
 		<%= avatar_for(post.user) %>
 		<% if post.location != nil %>
 			<p>Living in: <%= h post.location %></p>
+			<p>
+			</p>
 		<% end %>
 	</div>
 	
-	<div style="float: left; margin-left:50px;">
-		<table class="tandem_table">
+	<div style="float: left; width: 60%;">
+		<table class="tandem_table index">
 			<tr>
 				<td class="left_col">Looking for: </td>
 				<td class="small">
@@ -29,11 +31,10 @@
 			</tr>
 			<tr>
 				<td class="left_col">Description:</td>
-				<td class="small"><%= simple_format(sanitize(post.motivation)) %></td>
-				<td class="small" style="vertical-align:bottom;">
-					<%= link_to 'Read more', url_for(post), :class => "large blue button" %></td>
+				<td class="small"><%= simple_format(sanitize(post.motivation)) %></td>				
 			</tr>
 		</table>
+		
 	</div>
 </div>
-<div style="clear: both; border-bottom:  1px dotted;"></div>
+<div style="clear: both;"></div>

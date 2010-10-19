@@ -62,12 +62,14 @@ class Search
     
     if with_location?
       coords = get_coordinates
-      and_conditions << "#{@model.table_name}.lat BETWEEN ? AND ? "
-       and_conditions << "#{@model.table_name}.lng BETWEEN ? AND ? "
-      parameters << "#{coords.lat - 5.0}"
-      parameters << "#{coords.lat + 5.0}"
-      parameters << "#{coords.lng - 5.0}"
-      parameters << "#{coords.lng + 5.0}"
+      if coords.lat
+        and_conditions << "#{@model.table_name}.lat BETWEEN ? AND ? "
+        and_conditions << "#{@model.table_name}.lng BETWEEN ? AND ? "
+        parameters << "#{coords.lat - 5.0}"
+        parameters << "#{coords.lat + 5.0}"
+        parameters << "#{coords.lng - 5.0}"
+        parameters << "#{coords.lng + 5.0}"
+      end
     end
     
     unless conditions.empty?

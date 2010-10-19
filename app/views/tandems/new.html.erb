@@ -17,7 +17,7 @@
     		<%= select("tandem", "learning_language", Language.find(:all, :order => "name").collect {|l| [l.name, l.id] })%>
   		</p>
 		<p>
-    		<b>4</b>. Write a short description text for the search page<br />
+    		<b>4</b>. Write a short description of yourself for the search page<br />
     		<%= f.text_area :motivation, :style => "width: 30em; height: 5em;", :maxlength=>"250", :cols => "50",
 							:onKeyDown => "limitText(this.form.tandem_motivation,this.form.countdown,250);",
 							:onKeyUp => "limitText(this.form.tandem_motivation,this.form.countdown,250);" %>
@@ -25,7 +25,8 @@
 			
   		</p>
 		<p>
-		<b>5</b>. Where do you live? (ex Berlin, Kreuzberg)<br />
+		<b>5</b>. Where do you live? <br >
+		(ex New York, Brooklyn)<br />
 		<%= f.text_field :location, :value => @visitors_town || "" %>
 			
 		<%= link_to_remote "Locate on map", :url => update_map_tandems_path,

@@ -920,14 +920,35 @@ cite {
 /*
 	Tandem börse
 */
+.tandem_search {
+  width: 20%;
+  margin: 1.5em 0 0 0;
+  float: left;
+  border: 1px dotted;
+}
+.tandem_search .form input{
+ width: 13em; 
+}
+
+.tandem_posts {
+  float: left;
+  width: 75%;
+  margin-left: 20px;
+}
+
 .tandem_post img {
  max-height: 100px;
- max-width: 150px;
+ max-width: 120px;
 }
 .tandem_table {
-  margin-top: 25px;
   border: 0px;
 }
+
+.view_item.tandem_table {
+  border: 0px;
+  margin-top: 25px;
+}
+
 .tandem_table tr{
   background-color: white;
 }
@@ -947,8 +968,16 @@ cite {
 .tandem_table p{
   margin: 0px;
 }
+.post_header a h2{
+   color: #222;
+  
+}
+.post_header {
+ 
+  background-color: #a6c9ce;
+}
 .post_bottom {
-  border-bottom: 1px dotted;
+  border-bottom: 0px dotted;
 }
 
 .welcome-text {

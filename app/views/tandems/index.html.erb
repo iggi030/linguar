@@ -1,21 +1,53 @@
 <% if @tandems.count < 1 %>
 	<p>
 		Sorry we couldnt find any tandem partners in this area for you! </p>
-	<p>	<%= link_to 'Try posting your own?', new_tandem_url, :class => "large blue button" %> or
-		<%= link_to 'Change your search options', search_tandems_url, :class => "large blue button" %>  
+	<p>	<%= link_to 'Create a language partner request', new_tandem_url, :class => "large blue button" %> 
+		<% link_to 'Change your search options', search_tandems_url, :class => "large blue button" %>  
 	</p>
 <% else %>
-	<%= link_to 'Change your search options', search_tandems_url, :class => "blue button" %>  
-	<%= link_to 'Insert new tandem post', new_tandem_url, :class => " blue button" %>
+	<% link_to 'Change your search options', search_tandems_url, :class => "blue button" %>  
+	<%= link_to 'Create a language partner request', new_tandem_url, :class => " blue button" %>
 <% end %>
 <div>
 	
+
+<%= javascript_include_tag "tandems_search" %>
+
+<div class="tandem_search">
+<div class="form">
+<% form_tag tandems_path, :method => 'get' do %>
+		<p class="label_checkbox_pair">
+			<b>1</b>. What are you searching for?</p>
+			<%= check_box_tag('filters[tandem_partner]', 1, @tandem_checked) -%>
+			<%= label_tag :tandem_partner,  'Tandem partner (for meeting up locally)' %>
+			<br />
+			<%= check_box_tag 'filters[pen_pal]', 1, @pen_pal_checked -%>
+			Pen / Skype pal
+			<br />
+		</p>
+		<p>
+			<b>2</b>. Which language are you learning?<br />
+			<%= select("filters", "language", Language.find(:all, :order => "name").collect {|l| [l.name, l.id] }, :selected => @language)%>
+		</p>
+		<p>
+		<b>3</b>. In which town? <br />(ex. New York, Brooklyn)<br />
+		<%= text_field_tag('filters[location]', @selected_town || "" ) %>
+		<p>
+		<b>4</b>.<br />
+		<%= submit_tag 'Search', :name => nil%>
+		</p>
+	<% end %>
+</div>
+</div>
+
+<div class="tandem_posts">
 <% @tandems.each do |tandem| %>
 	
 	<%= render 	:partial => 'tandem',
 				:locals => { :post => tandem } %>
-	
-		
+<div style="text-align: right;">
+<%= link_to "Read more about #{tandem.user.login.capitalize}", url_for(tandem), :class => "blue button" %>
+</div>
 <% end %>
 </div>
 <div style="clear: both;">
