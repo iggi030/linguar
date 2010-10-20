@@ -7,8 +7,8 @@ a img { border: 0; }
 body {
   background: white;
   color: #333;
-  font-family: verdana, sans-serif;
-  font-size: 11px;
+  font-family:  lucida, sans-serif;
+  font-size: 12px;
 }
 
 
@@ -69,13 +69,13 @@ a:active, a:hover {
 }
 
 h1 { 
-  font-family: 'Trebuchet MS', Verdana, Sans-Serif;
+  font-family: Arial, Sans-Serif;
   font-size: 20px;
   font-weight: bold;
 }
 
 h2 { 
-  font-family: 'Trebuchet MS', Verdana, Sans-Serif;
+  font-family:  Lucida, Sans-Serif;
   font-size: 16px;
   font-weight:normal;
 }
@@ -969,11 +969,11 @@ cite {
   margin: 0px;
 }
 .post_header a h2{
+	padding: 3px;
    color: #222;
   
 }
 .post_header {
- 
   background-color: #a6c9ce;
 }
 .post_bottom {
