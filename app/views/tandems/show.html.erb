@@ -10,6 +10,10 @@ show_faces=true&amp;width=450&amp;action=recommend&amp;colorscheme=light&amp;hei
 			<%= h "Living in: #{@tandem.location}" unless @tandem.location == nil %>
 		</p>
 		<%= avatar_for(@tandem.user) %>
+		<p>
+		<% if (@tandem.user == current_user)  %>
+				<%= link_to '--Change your picture--', avatars_path %>
+		<% end %></p>
 		<p><%= link_to 'Contact User', contact_user_path(@tandem.user) , :class => "large blue button" unless @tandem.user == current_user %>
 			<% if @tandem.user == current_user %>
 			<p><%= link_to 'Change details', edit_tandem_path(@tandem), 
@@ -44,23 +48,23 @@ show_faces=true&amp;width=450&amp;action=recommend&amp;colorscheme=light&amp;hei
 				<td class="left_col">About me:</td>
 				<td><%=  simple_format(sanitize(@tandem.user.bio))  %>
 					<% if (@tandem.user == current_user) && @tandem.user.bio == ""%>
-						<%= link_to '--write something about yourself--', edit_tandem_url(@tandem) %>
+						<%= link_to '--Write something about yourself--', edit_tandem_url(@tandem) %>
 					<% end %>
 				</td>	
 			</tr>	
 			<tr>
 				<td class="left_col">Hobbies / interests:</td>
 				<td><%= simple_format(sanitize(@tandem.user.hobbies)) %>
-				<% if (@tandem.user == current_user) && @tandem.user.hobbies == ""%>
-						<%= link_to '--add your hobbies--', edit_tandem_url(@tandem) %>
+				<% if (@tandem.user == current_user) && @tandem.user.hobbies.to_s == ""%>
+						<%= link_to '--Add your hobbies--', edit_tandem_url(@tandem) %>
 					<% end %>
 				</td>	
 			</tr>
 			<tr>
 				<td class="left_col">Profession:</td>
 				<td><%= simple_format(sanitize(@tandem.user.profession)) %>
-				<% if (@tandem.user == current_user) && @tandem.user.profession == ""%>
-						<%= link_to '--add your profession--', edit_tandem_url(@tandem) %>
+				<% if (@tandem.user == current_user) && @tandem.user.profession.to_s == ""%>
+						<%= link_to '--Add your profession--', edit_tandem_url(@tandem) %>
 				<% end %></td>	
 			</tr>
 		</table>

@@ -1,3 +1,6 @@
+<p>
+	<%= link_to 'Upload a New Avatar', new_avatar_path, :class => "blue button" %>
+</p>
 <div class="avatar-list">
   <% for avatar in @avatars %>
     <div class="avatar">
@@ -16,5 +19,7 @@
     </div>
   <% end %>
 </div>
-<div class="clear"> </div>
+
+<div class="clear"> <p><%= link_to 'Back', tandems_url, :class => "blue button" %></p></div>
+
 

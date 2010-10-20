@@ -12,7 +12,7 @@
       <% unless @settings.admin_only_create.include?(current_controller) && !admin? %>
         <% if current_controller == 'home' %>
         <% elsif current_controller == 'articles' %><%= link_to 'Post a New Article', new_article_path %>
-        <% elsif current_controller == 'avatars' %><%= link_to 'Upload a New Avatar', new_avatar_path %>
+
         <% elsif current_controller == 'categories' %><%= link_to 'Start a New Topic', new_topic_path %>
         <% elsif current_controller == 'events' %><%= link_to 'Add a New Event', new_event_path %>
         <% elsif current_controller == 'forums' %><%= link_to 'Start a New Topic', new_topic_path(:forum_id => params[:id]) %>
