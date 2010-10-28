@@ -6,7 +6,7 @@
 	</p>
 <% else %>
 	<% link_to 'Change your search options', search_tandems_url, :class => "blue button" %>  
-	<%= link_to 'Create a language partner request', new_tandem_url, :class => " blue button" %>
+	<%= link_to 'Create a language partner request', new_tandem_url, :class => "large blue button" %>
 <% end %>
 <div>
 	
@@ -27,7 +27,10 @@
 		</p>
 		<p>
 			<b>2</b>. Which language are you learning?<br />
-			<%= select("filters", "language", Language.find(:all, :order => "name").collect {|l| [l.name, l.id] }, :selected => @language)%>
+			<%= select("filters", "language", Language.find(:all, 
+							:order => "name").collect {|l| [l.name, l.id] }, 
+							:selected => @language || 12, 
+							:include_blank => false)%>
 		</p>
 		<p>
 		<b>3</b>. In which town? <br />(ex. New York, Brooklyn)<br />

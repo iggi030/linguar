@@ -1,13 +1,10 @@
-<iframe src="http://www.facebook.com/plugins/like.php?href=<%=CGI::escape(request.protocol + request.host_with_port + request.request_uri) %>&amp;layout=standard&amp;
-show_faces=true&amp;width=450&amp;action=recommend&amp;colorscheme=light&amp;height=30" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:40px;" allowTransparency="true"></iframe>
-
 <div class="tandem_post">
 	<div style="float: left; width:20%;">
 		<b><%= h @tandem.user.login.capitalize %> 	</b>
 		<p>
-			<%= "#{current_user.age} years old, " unless @tandem.user.age == nil %>	
-			<%= "#{current_user.gender_to_s}<br />" unless @tandem.user.gender == nil %>		
-			<%= h "Living in: #{@tandem.location}" unless @tandem.location == nil %>
+			<%= "#{@tandem.user.age} years old, " unless @tandem.user.age == nil %>	
+			<%= "#{@tandem.user.gender_to_s}<br />" unless @tandem.user.gender == nil %>		
+			<%= h "Living in: #{@tandem.location.capitalize}" unless @tandem.location == nil %>
 		</p>
 		<%= avatar_for(@tandem.user) %>
 		<p>

@@ -7,8 +7,8 @@ a img { border: 0; }
 body {
   background: white;
   color: #333;
-  font-family:  lucida, sans-serif;
-  font-size: 12px;
+  font-family:  'Lucida Grande', sans-serif;
+  font-size: 11px;
 }
 
 
@@ -69,13 +69,13 @@ a:active, a:hover {
 }
 
 h1 { 
-  font-family: Arial, Sans-Serif;
+  font-family: 'Lucida Grande', Sans-Serif;
   font-size: 20px;
   font-weight: bold;
 }
 
 h2 { 
-  font-family:  Lucida, Sans-Serif;
+  font-family:  'Lucida Grande', Sans-Serif;
   font-size: 16px;
   font-weight:normal;
 }
@@ -99,7 +99,7 @@ h3 {
 	margin-left: -10px;
 	padding: 0;
 	bottom: 0;
-	font-size: 10px;
+	font-size: 11px;
 	background-color: #9abcbe;
 	width: 858px;
 	-moz-box-shadow:0 2px 3px rgba(0, 0, 0, 0.25);
@@ -194,7 +194,7 @@ h3 {
 
 .box .top {
   display: block;
-  background: #35604d;
+  background: #555;
   color: #fff;
   padding: 4px 5px;
   margin: 0 -10px;
@@ -640,12 +640,19 @@ cite {
 
 .home-left {
 	float: left;
-	width: 68%;
+	width: 60%;
 }
 
 .home-right {
 	float: right;
-	width: 30%;
+	text-align: right;
+	margin: 5px 10px 5px 0px;
+	width: 35%;
+}
+
+.home-right img {
+	margin-top: 1em;
+	width: 100%;
 }
 
 .home-left .topics-index .tcr {
