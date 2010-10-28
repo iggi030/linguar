@@ -41,7 +41,7 @@ module ApplicationHelper
       glossary_name = Glossary.find(params[:glossary_id]).title
       page = "#{glossary_name}"
     end
-    page = "Language exchange partners and flashcard practise on Linguar.com" if current_controller == 'home'
+    page = "Easily find your Language exchange partner on Linguar.com" if current_controller == 'home'
     "#{item || page}"
   end
   
